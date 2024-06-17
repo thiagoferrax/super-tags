@@ -1,5 +1,5 @@
 import { Email } from "./Email"
-
+import ValidationError from './ValidationError'
 export type CredentialsProps = {
     username?: string,
     password?: string
@@ -12,7 +12,11 @@ export class Credentials {
     constructor(props: CredentialsProps) {
         this.username = new Email(props.username!)
         if (!props.password) {
-            throw new Error("PASSWORD_REQUIRED")
+            throw new ValidationError({
+                code: "PASSWORD_REQUIRED",
+                object: "Credentials",
+                value: props.password
+            })
         }
         this.password = props.password
     }

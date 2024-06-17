@@ -15,14 +15,15 @@ export class SignIn {
     async Execute(params: SignInParams): Promise<void> {
         const credentials = new Credentials({ username: params.username, password: params.password })
 
-        const response = await fetch("http://localhost:3001", {
-            body: JSON.stringify({
-                username: credentials.username.value,
-                password: credentials.password,
+        // const response = await fetch("http://localhost:3001", {
+        //     body: JSON.stringify({
+        //         username: credentials.username.value,
+        //         password: credentials.password,
 
-            })
-        })
-        const token = await response.json()
+        //     })
+        // })
+        // const token = await response.json()
+        const token = "some_token"
         // const token = this.authGateway.Login(credentials);
         window.localStorage.setItem("token", token);
 

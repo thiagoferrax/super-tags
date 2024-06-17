@@ -3,40 +3,22 @@ import React, { useState } from 'react'
 import { SignIn as SignInUseCase } from '../../../core/use-cases/SignIn'
 import ValidationError from '@/core/models/ValidationError'
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 const SignIn = () => {
 	const router = useRouter();
 	const [formData, setFormData] = useState({
-		username: '',
+		name: "",
+		email: '',
 		password: ''
 	})
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		try {
-			// const signInUseCase = new SignInUseCase()
-			// await signInUseCase.Execute({
-			// 	username: formData.username,
-			// 	password: formData.password
-			// })
-			const res = await fetch("http://localhost:3000/api/signin", {
+			await fetch("http://localhost:3000/api/users", {
 				method: "POST",
 				body: JSON.stringify(formData)
 			})
-			if(res.status === 200) {
-				// guardar o token no localstorage
-				router.push('/');
-			}
-			else {
-				const data = await res.json()
-				alert(data.error)
-			}
+			router.push('/signin');
 		} catch (error) {
-			// if (error instanceof ValidationError) {
-			// 	alert((error as ValidationError).message)
-			// } else {
-			// 	alert("Unexpected error. Please try again or contact system administrator.")
-			// 	console.log(error)
-			// }
 			console.error(error)
 		}
 
@@ -47,13 +29,21 @@ const SignIn = () => {
 	return (
 		<div>
 			<form onSubmit={onSubmit}>
-				<p>Sign In</p>
-				<label htmlFor="username">Username</label>
-				<input id="username" name="username" type="text"
+				<p>Register In</p>
+				<label htmlFor="name">Name</label>
+				<input id="name" name="name" type="text"
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 						setFormData({
 							...formData,
-							username: e.target.value
+							name: e.target.value
+						})
+					}} />
+				<label htmlFor="email">Eamil</label>
+				<input id="email" name="email" type="text"
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+						setFormData({
+							...formData,
+							email: e.target.value
 						})
 					}} />
 				<label htmlFor="password">Password</label>
@@ -65,9 +55,8 @@ const SignIn = () => {
 						})
 					}}
 				/>
-				<input type='submit' value="Log In" />
+				<input type='submit' value="Register" />
 			</form>
-			<Link href="/register">Register</Link>
 		</div>
 	)
 }
