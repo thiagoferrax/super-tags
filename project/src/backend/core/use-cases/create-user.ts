@@ -5,6 +5,8 @@ export type CreateUserParams = {
     email: string,
     password: string
 }
+
+const REGEX_EMAIL = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 export class CreateUser {
     constructor() {
 
@@ -15,6 +17,10 @@ export class CreateUser {
         }
         if (!params.email) {
             throw new ValidationError("CreateUserParams", "email", "EMAIL_REQUIRED")
+        }
+
+        if (!REGEX_EMAIL.test(params.email)) {
+            throw new ValidationError("CreateUserParams", "email", "INVALID_EMAIL")
         }
     }
 }
