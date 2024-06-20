@@ -13,5 +13,8 @@ export class CreateUser {
         if (!params.name) {
             throw new ValidationError("CreateUserParams", "name", "NAME_REQUIRED")
         }
+        if (!params.email) {
+            throw new ValidationError("CreateUserParams", "email", "EMAIL_REQUIRED")
+        }
     }
 }
