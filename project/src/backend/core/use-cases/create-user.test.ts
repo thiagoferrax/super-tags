@@ -31,4 +31,14 @@ describe("CreateUser usecase tests", () => {
         })).rejects.toThrow(new ValidationError("CreateUserParams", "email", "INVALID_EMAIL")
         )
     });
+
+	test('Should throw ValidationError if no password is provided', async () => {
+        const sut = new CreateUser();
+        await expect(() => sut.Execute({
+            name: faker.person.fullName(),
+            email: faker.internet.email(),
+            password: undefined as any,
+        })).rejects.toThrow(new ValidationError("CreateUserParams", "password", "PASSWORD_REQUIRED")
+        )
+    });
 })

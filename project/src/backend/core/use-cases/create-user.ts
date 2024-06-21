@@ -22,5 +22,9 @@ export class CreateUser {
         if (!REGEX_EMAIL.test(params.email)) {
             throw new ValidationError("CreateUserParams", "email", "INVALID_EMAIL")
         }
+
+		if (!params.password) {
+            throw new ValidationError("CreateUserParams", "password", "PASSWORD_REQUIRED")
+        }
     }
 }
