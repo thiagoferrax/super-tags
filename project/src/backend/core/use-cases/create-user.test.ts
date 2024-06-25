@@ -3,6 +3,7 @@ import { CreateUser, CreateUserParams } from "./create-user";
 import { ValidationError } from "../errors/validationError";
 import { IAddUserRepository } from "@/backend/db/user-repository";
 import { User } from "../models/user";
+import { IHasher } from "../protocols/IHasher";
 
 class UserRepositoryMock implements IAddUserRepository {
     user: User | undefined
@@ -13,18 +14,28 @@ class UserRepositoryMock implements IAddUserRepository {
     }
 
 }
+class HasherMock implements IHasher {
+    value?: string
+    result?: string
+    async Hash(value: string): Promise<string> {
+        this.value = value
+        return this.result!
+    }
+}
 
 type makeSutResult = {
     sut: CreateUser,
-    userRepository: UserRepositoryMock
+    userRepository: UserRepositoryMock,
+    passwordHasher: HasherMock,
 }
 
 
 const makeSut = (): makeSutResult => {
+    const passwordHasher = new HasherMock()
     const userRepository = new UserRepositoryMock()
-    const sut = new CreateUser(userRepository);
+    const sut = new CreateUser(userRepository, passwordHasher);
 
-    return { sut, userRepository }
+    return { sut, userRepository, passwordHasher }
 }
 
 describe("CreateUser usecase tests", () => {
@@ -84,8 +95,8 @@ describe("CreateUser usecase tests", () => {
     });
 
 
-    test('Should call userRepository with correct params and only once', async () => {
-        const { sut, userRepository } = makeSut()
+    test('Should call hasher with correct password', async () => {
+        const { sut, passwordHasher } = makeSut()
         const password = faker.internet.password({ length: 2, pattern: /[A-Z]/ }) +
             faker.internet.password({ length: 2, pattern: /[a-z]/ }) +
             faker.internet.password({ length: 2, pattern: /[0-9]/ }) +
@@ -96,7 +107,23 @@ describe("CreateUser usecase tests", () => {
             password,
         }
         await sut.Execute(sutParams)
-        expect(userRepository.user).toEqual(new User(null, sutParams.name, sutParams.email, sutParams.password))
+        expect(passwordHasher.value).toEqual(password)
+    });
+
+    test('Should call userRepository with correct params and only once', async () => {
+        const { sut, userRepository, passwordHasher } = makeSut()
+        passwordHasher.result = "some_hasValue"
+        const password = faker.internet.password({ length: 2, pattern: /[A-Z]/ }) +
+            faker.internet.password({ length: 2, pattern: /[a-z]/ }) +
+            faker.internet.password({ length: 2, pattern: /[0-9]/ }) +
+            faker.internet.password({ length: 2, pattern: /[!@#\$%\^&\*]/ })
+        const sutParams = {
+            name: faker.person.fullName(),
+            email: faker.internet.email(),
+            password,
+        }
+        await sut.Execute(sutParams)
+        expect(userRepository.user).toEqual(new User(null, sutParams.name, sutParams.email, passwordHasher.result))
         expect(userRepository.count).toBe(1)
     });
 })
