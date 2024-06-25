@@ -1,10 +1,11 @@
 'use client'
 import React, { useState } from 'react'
-import { SignIn as SignInUseCase } from '../../../core/use-cases/SignIn'
+import { SignIn as SignInUseCase } from '../../../../core/use-cases/SignIn'
 import ValidationError from '@/core/models/ValidationError'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-const SignIn = () => {
+
+export default function Page() {
 	const router = useRouter()
 	const [formData, setFormData] = useState({
 		username: '',
@@ -70,5 +71,3 @@ const SignIn = () => {
 		</div>
 	)
 }
-
-export default SignIn
