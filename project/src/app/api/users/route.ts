@@ -1,4 +1,4 @@
-import { User } from "@/backend/User";
+import { User } from "../../../backend/core/models/user";
 import { IUserRepository } from "@/backend/db/user-repository";
 import { UserRepositoryInMemory } from "@/backend/db/user-repository-in-memory"
 import { MakeUserRepository } from "@/backend/main/db-factories";
@@ -12,7 +12,7 @@ export const GET = async () => {
 
 export const POST = async (request: Request) => {
     const body = await request.json()
-    userRepository.Add(new User(undefined, body.name, body.email, body.password))
+    userRepository.Add(new User(null, body.name, body.email, body.password))
     return new Response("Success", { status: 201 })
 }
 

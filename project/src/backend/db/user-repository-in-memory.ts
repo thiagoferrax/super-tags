@@ -1,4 +1,4 @@
-import { User } from "../User"
+import { User } from "../core/models/user"
 import { IUserRepository } from "./user-repository"
 
 type UsersDTO = {
