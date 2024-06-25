@@ -5,11 +5,10 @@ import Link from "next/link";
 interface Props {
     name: string,
     email: string,
-    role: string,
     photo: StaticImageData,
 };
 
-export default function UserInfo ({name, email, role, photo}: Props): React.JSX.Element {
+export default function UserInfo ({name, email, photo}: Props): React.JSX.Element {
     return (
         <div className="flex flex-col flex-wrap max-h-12">
             <div className="text-white">{name}</div>

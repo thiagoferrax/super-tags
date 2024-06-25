@@ -12,7 +12,6 @@ export default function Header() {
             <UserInfo
                 name={"Filipe Torres"}
                 email={"filipe.virginio.torres@gmail.com"}
-                role={"admin"}
                 photo={profilePic}
             />
         </header>

@@ -10,7 +10,7 @@ export default function Page() {
 		<div className="h-screen grid grid-cols-12 grid-rows-[auto_1fr]">
 			<Header />
 			<Nav />
-			<Content></Content>
+			<Content>Editor</Content>
 		</div>
 	)
 }
