@@ -1,22 +1,22 @@
-import { User } from "../../../backend/core/models/user";
-import { IUserRepository } from "@/backend/db/user-repository";
-import { UserRepositoryInMemory } from "@/backend/db/user-repository-in-memory"
-import { MakeUserRepository } from "@/backend/main/db-factories";
+import { MakeUserRepository } from "@/core/main/infra/db/make-user-repository";
+import { MakeCreateUser } from "@/core/main/use-cases/make-create-user";
 
-
-const userRepository: IUserRepository = MakeUserRepository()
 export const GET = async () => {
-    const users = await userRepository.GetAll();
+    const users = await MakeUserRepository().GetAll();
     return Response.json(users)
 }
 
 export const POST = async (request: Request) => {
+    const createUserUseCase = MakeCreateUser()
+
     const body = await request.json()
-    userRepository.Add(new User(null, body.name, body.email, body.password))
+    createUserUseCase.Execute({
+        name: body.name, email: body.email, password: body.password
+    })
     return new Response("Success", { status: 201 })
 }
 
 export const DELETE = async (request: Request) => {
-    await userRepository.ClearAll();
+    await MakeUserRepository().ClearAll();
     return new Response(undefined, { status: 204 })
 }
