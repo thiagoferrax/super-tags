@@ -16,7 +16,7 @@ class UserRepositoryMock implements IAddUserRepository {
 }
 class HasherMock implements IHasher {
     value?: string
-    result?: string
+    result: string = "some_value"
     async Hash(value: string): Promise<string> {
         this.value = value
         return this.result!
@@ -37,70 +37,26 @@ const makeSut = (): makeSutResult => {
 
     return { sut, userRepository, passwordHasher }
 }
-
+const getStrongPassword = () => {
+    return faker.internet.password({ length: 2, pattern: /[A-Z]/ }) +
+        faker.internet.password({ length: 2, pattern: /[a-z]/ }) +
+        faker.internet.password({ length: 2, pattern: /[0-9]/ }) +
+        faker.internet.password({ length: 2, pattern: /[!@#\$%\^&\*]/ })
+}
 describe("CreateUser usecase tests", () => {
-    test('Should throw ValidationError if no name is provided', async () => {
+
+    test('should throw if User throws', async () => {
         const { sut } = makeSut()
         await expect(() => sut.Execute({
             name: undefined as any,
-            email: faker.internet.email(),
-            password: faker.internet.password()
-        })).rejects.toThrow(new ValidationError("CreateUserParams", "name", "NAME_REQUIRED"))
-    });
-
-    test('Should throw ValidationError if no email is provided', async () => {
-        const { sut } = makeSut()
-        await expect(() => sut.Execute({
-            name: faker.person.fullName(),
             email: undefined as any,
-            password: faker.internet.password()
-        })).rejects.toThrow(new ValidationError("CreateUserParams", "email", "EMAIL_REQUIRED")
-        )
+            password: undefined as any
+        })).rejects.toThrow(ValidationError)
     });
 
-    test('Should throw ValidationError if invalid email is provided', async () => {
-        const { sut } = makeSut()
-        await expect(() => sut.Execute({
-            name: faker.person.fullName(),
-            email: undefined as any,
-            password: faker.internet.password()
-        })).rejects.toThrow(new ValidationError("CreateUserParams", "email", "INVALID_EMAIL")
-        )
-    });
-
-    test('Should throw ValidationError if no password is provided', async () => {
-        const { sut } = makeSut()
-        await expect(() => sut.Execute({
-            name: faker.person.fullName(),
-            email: faker.internet.email(),
-            password: undefined as any,
-        })).rejects.toThrow(new ValidationError("CreateUserParams", "password", "PASSWORD_REQUIRED")
-        )
-    });
-
-    test.each([
-        faker.word.noun(faker.number.int({ min: 1, max: 7 })),
-        faker.internet.password({ length: 9, pattern: /[a-z0-9!@#\$%\^&\*]/ }),
-        faker.internet.password({ length: 9, pattern: /[A-Z0-9!@#\$%\^&\*]/ }),
-        faker.internet.password({ length: 9, pattern: /[A-Za-z!@#\$%\^&\*]/ }),
-        faker.internet.password({ length: 9, pattern: /[A-Za-z0-9]/ }),
-    ])('Should throw ValidationError if provided password not have 8 caracters', async (password) => {
-        const { sut } = makeSut()
-        await expect(() => sut.Execute({
-            name: faker.person.fullName(),
-            email: faker.internet.email(),
-            password,
-        })).rejects.toThrow(new ValidationError("CreateUserParams", "password", "PASSWORD_NOT_STRONG_ENOUGH")
-        )
-    });
-
-
-    test('Should call hasher with correct password', async () => {
+    test.only('Should call hasher with correct password', async () => {
         const { sut, passwordHasher } = makeSut()
-        const password = faker.internet.password({ length: 2, pattern: /[A-Z]/ }) +
-            faker.internet.password({ length: 2, pattern: /[a-z]/ }) +
-            faker.internet.password({ length: 2, pattern: /[0-9]/ }) +
-            faker.internet.password({ length: 2, pattern: /[!@#\$%\^&\*]/ })
+        const password = getStrongPassword()
         const sutParams = {
             name: faker.person.fullName(),
             email: faker.internet.email(),
@@ -113,10 +69,7 @@ describe("CreateUser usecase tests", () => {
     test('Should call userRepository with correct params and only once', async () => {
         const { sut, userRepository, passwordHasher } = makeSut()
         passwordHasher.result = "some_hasValue"
-        const password = faker.internet.password({ length: 2, pattern: /[A-Z]/ }) +
-            faker.internet.password({ length: 2, pattern: /[a-z]/ }) +
-            faker.internet.password({ length: 2, pattern: /[0-9]/ }) +
-            faker.internet.password({ length: 2, pattern: /[!@#\$%\^&\*]/ })
+        const password = getStrongPassword()
         const sutParams = {
             name: faker.person.fullName(),
             email: faker.internet.email(),

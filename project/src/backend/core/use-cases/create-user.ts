@@ -2,6 +2,7 @@ import { IAddUserRepository } from "@/backend/db/user-repository"
 import { ValidationError } from "../errors/validationError"
 import { User } from "../models/user"
 import { IHasher } from "../protocols/IHasher"
+import { PasswordStrong } from "../models/password-strong"
 
 export type CreateUserParams = {
     name: string,
@@ -9,34 +10,17 @@ export type CreateUserParams = {
     password: string
 }
 
-const REGEX_EMAIL = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
-const REGEX_PASSWORD = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/
+
+
 export class CreateUser {
-    constructor(private readonly addUserRepository: IAddUserRepository, private readonly hasher: IHasher) {
+    constructor(private readonly addUserRepository: IAddUserRepository, private readonly hasher: IHasher) { }
 
-    }
     async Execute(params: CreateUserParams): Promise<void> {
-        if (!params.name) {
-            throw new ValidationError("CreateUserParams", "name", "NAME_REQUIRED")
-        }
-        if (!params.email) {
-            throw new ValidationError("CreateUserParams", "email", "EMAIL_REQUIRED")
-        }
 
-        if (!REGEX_EMAIL.test(params.email)) {
-            throw new ValidationError("CreateUserParams", "email", "INVALID_EMAIL")
-        }
-
-        if (!params.password) {
-            throw new ValidationError("CreateUserParams", "password", "PASSWORD_REQUIRED")
-        }
-        if (!REGEX_PASSWORD.test(params.password)) {
-            throw new ValidationError("CreateUserParams", "password", "PASSWORD_NOT_STRONG_ENOUGH")
-        }
-
+        new PasswordStrong(params.password)
         const hashedPassword = await this.hasher.Hash(params.password)
-
         const newUser = new User(null, params.name, params.email, hashedPassword);
+
         await this.addUserRepository.Add(newUser)
     }
 }
