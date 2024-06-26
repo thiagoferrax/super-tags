@@ -35,3 +35,33 @@
 
 ### Node
 - Instalar nvm para gerir várias versões do node
+
+
+## Iniciar projeto
+
+Configurar base de dados
+podemos utilizar neste momento 3 tipos de armazenamento de dados
+- em memória
+- SQLite
+- Postgres
+
+para configurar o validar que tipo de repositório está a ser usado é necessário:
+1- ir à pasta projeto/src/core/main/infra/db
+2- abrir ficheiro make-user-repository 
+3- validar que implementação está a ser usada
+
+para utilizar postgres 
+- deve-se utilizar o método MakeUserRepositoryPostgres nas funções exportadas
+- abrir linha de comandos na pasta inicial do repositório e executar "docker-compose up -d"
+- abrir nova linha de comandos na pasta projeto e executar "npm run postgres:migration"
+
+para utilizar sqllite 
+- deve-se utilizar o método MakeUserRepositorySQLite nas funções exportadas
+- abrir nova linha de comandos na pasta projeto e executar "npm run sqlite:migration"
+
+para utilizar inMemory 
+- deve-se utilizar o método MakeUserRepositoryInMemory nas funções exportadas
+
+
+
+para abrir o projeto basta abrir uma linha de comando na pasta projeto e executar npm run dev
