@@ -38,5 +38,6 @@ next-env.d.ts
 
 
 dev.db
+dev.sqlite
 
 postgres

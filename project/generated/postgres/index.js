@@ -137,7 +137,8 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma/postgres",
   "clientVersion": "5.15.1",
@@ -164,8 +165,8 @@ const fs = require('fs')
 config.dirname = __dirname
 if (!fs.existsSync(path.join(__dirname, 'schema.prisma'))) {
   const alternativePaths = [
-    "../../generated/postgres",
-    "../generated/postgres",
+    "generated/postgres",
+    "postgres",
   ]
   
   const alternativePath = alternativePaths.find((altPath) => {
@@ -194,7 +195,7 @@ Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
-path.join(process.cwd(), "../../generated/postgres/query_engine-windows.dll.node")
+path.join(process.cwd(), "generated/postgres/query_engine-windows.dll.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
-path.join(process.cwd(), "../../generated/postgres/schema.prisma")
+path.join(process.cwd(), "generated/postgres/schema.prisma")
