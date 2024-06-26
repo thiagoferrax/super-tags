@@ -1,5 +1,8 @@
 {
-	"editor.formatOnSave": true,
-	"editor.tabSize": 4,
-	"editor.insertSpaces": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "code-runner.executorMap": {
+        "typescript": "npx ts-node",
+    }
 }
