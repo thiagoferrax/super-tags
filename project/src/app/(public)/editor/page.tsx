@@ -5,12 +5,13 @@ import Nav from '@/ui/components/nav'
 import Content from '@/ui/components/content'
 
 export default function Page() {
-
 	return (
-		<div className="h-screen grid grid-cols-12 grid-rows-[auto_1fr]">
+		<div className="h-screen flex flex-col overflow-hidden">
 			<Header />
-			<Nav />
-			<Content>Editor</Content>
+			<div className="flex grow bg-black overflow-auto">
+				<Nav />
+				<Content>Editor</Content>
+			</div>
 		</div>
 	)
 }

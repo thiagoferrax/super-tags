@@ -7,3 +7,15 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 }
+
+nav:has(input) {
+  transition: width .25s ease-in-out, padding-left .25s ease-in-out, opacity .25s ease-in-out;
+}
+
+nav:has(input:checked) {
+  overflow: hidden;
+  opacity: 0;
+  width: 0;
+  padding-left: 0;
+  transition: width .25s ease-in-out, padding-left .25s ease-in-out, opacity .25s ease-in-out;
+}
