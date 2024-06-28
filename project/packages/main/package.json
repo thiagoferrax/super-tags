@@ -1,0 +1,17 @@
+{
+    "name": "@repo/main",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.ts",
+    "scripts": {},
+    "keywords": [],
+    "author": "José Micael Almeida Costa",
+    "license": "ISC",
+    "devDependencies": {
+        "@repo/eslint-config": "*",
+        "@repo/typescript-config": "*",
+        "@repo/domain": "*",
+        "@repo/infra-db": "*",
+        "@repo/infra-cryptography": "*"
+    }
+}

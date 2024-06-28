@@ -1,0 +1,31 @@
+{
+    "name": "@repo/infra-cryptography",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.ts",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "jest --passWithNoTests --no-cache --runInBand",
+        "test:watch": "npm test -- --watch",
+        "test:staged": "npm test -- --findRelatedTests",
+        "test:ci": "npm test -- --coverage",
+        "test:coveralls": "npm run test:ci && coveralls < covarage/lcov.info"
+    },
+    "keywords": [],
+    "author": "José Micael Almeida Costa",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "@repo/domain": "*"
+    },
+    "devDependencies": {
+        "@faker-js/faker": "^8.4.1",
+        "@repo/eslint-config": "*",
+        "@repo/jest-config": "*",
+        "@repo/typescript-config": "*",
+        "@types/jest": "^29.5.11",
+        "jest": "^29.7.0"
+    }
+}
