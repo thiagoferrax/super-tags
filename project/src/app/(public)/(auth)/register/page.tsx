@@ -39,7 +39,7 @@ export default function Page() {
 							})
 						}} />
 					<label className="text-sm mb-1" htmlFor="email">E-mail</label>
-					<input className="h-11 mb-1.5 bg-black rounded border-2 border-white/[.15]" id="email" name="email" type="text"
+					<input className="h-11 mb-1.5 bg-black rounded border-2 border-white/[.15]" id="email" name="email" required type="email"
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 							setFormData({
 								...formData,
