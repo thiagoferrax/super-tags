@@ -1,5 +1,5 @@
 import UserInfo from "./user-info";
-import profilePic from './../../../public/filipe-torres.jpg'
+import profilePic from './../../public/filipe-torres.jpg'
 
 export default function Header() {
     return (

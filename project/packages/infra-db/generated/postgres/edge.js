@@ -31,12 +31,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.15.1
- * Query Engine version: 5675a3182f972f1a8f31d16eee6abf4fd54910e3
+ * Prisma Client JS version: 5.16.1
+ * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
  */
 Prisma.prismaVersion = {
-  client: "5.15.1",
-  engine: "5675a3182f972f1a8f31d16eee6abf4fd54910e3"
+  client: "5.16.1",
+  engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -119,7 +119,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\_\\Pessoal\\COD3R\\super-tags\\project\\generated\\postgres",
+      "value": "C:\\Users\\filip\\Estudos\\cod3r\\super-tags\\project\\packages\\infra-db\\generated\\postgres",
       "fromEnvVar": null
     },
     "config": {
@@ -133,6 +133,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
+    "sourceFilePath": "C:\\Users\\filip\\Estudos\\cod3r\\super-tags\\project\\packages\\infra-db\\prisma\\postgres\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -140,8 +141,8 @@ const config = {
     "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma/postgres",
-  "clientVersion": "5.15.1",
-  "engineVersion": "5675a3182f972f1a8f31d16eee6abf4fd54910e3",
+  "clientVersion": "5.16.1",
+  "engineVersion": "34ace0eb2704183d2c05b60b52fba5c43c13f303",
   "datasourceNames": [
     "db"
   ],

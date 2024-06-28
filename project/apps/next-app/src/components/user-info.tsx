@@ -1,7 +1,7 @@
 import React from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
-import { ProfileIcon, SettingsIcon } from '@/ui/components/icon';
+import { ProfileIcon, SettingsIcon } from './icon';
 
 
 interface Props {
