@@ -1,33 +1,28 @@
 import Link from 'next/link'
 import React from 'react'
+import { ProfileIcon, SettingsIcon } from './icon'
 
 export default function Nav() {
     return (
-        <nav className="w-80 pl-5 pt-8 opacity-100 border-r border-neutral-600 overflow-auto">
-            <input type="checkbox" className="absolute top-9 z-[2] left-5 w-5 h-4 opacity-0" />
-            <ul className="menu menu-xs rounded-lg w-[17.5rem] max-w-xs p-0 bg-transparent">
+        <nav className="[&:has(input)] w-80 pl-5 pt-8 opacity-100 border-r border-neutral-600 overflow-auto">
+            <input type="checkbox" name="menuCollapse" className="absolute top-9 z-[2] left-5 w-5 h-4 opacity-0" />
+            <ul className="menu menu-xs w-[17.5rem] max-w-xs p-0 bg-transparent">
                 <li className="mb-3">
                     <Link href="/profile" className="rounded-none text-base">
-                        <svg className="mx-0.5" width="12" height="18" viewBox="0 0 12 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2.54962 4.4C2.54962 5.30174 2.90783 6.16654 3.54546 6.80416C4.18308 7.44179 5.04789 7.8 5.94962 7.8C6.85136 7.8 7.71616 7.44179 8.35378 6.80416C8.99141 6.16654 9.34962 5.30174 9.34962 4.4C9.34962 3.49826 8.99141 2.63346 8.35378 1.99584C7.71616 1.35821 6.85136 1 5.94962 1C5.04789 1 4.18308 1.35821 3.54546 1.99584C2.90783 2.63346 2.54962 3.49826 2.54962 4.4Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            <path d="M0.849609 16.3002V14.6002C0.849609 13.6985 1.20782 12.8337 1.84545 12.196C2.48307 11.5584 3.34787 11.2002 4.24961 11.2002H7.64961C8.55135 11.2002 9.41615 11.5584 10.0538 12.196C10.6914 12.8337 11.0496 13.6985 11.0496 14.6002V16.3002" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <ProfileIcon width={12} height={18} className="mx-0.5" />
                         Meu Perfil
                     </Link>
                 </li>
                 <li className="mb-3">
                     <Link href="/settings" className="rounded-none text-base">
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.25 7.6999C5.25 8.3762 5.51866 9.02481 5.99688 9.50302C6.4751 9.98124 7.1237 10.2499 7.8 10.2499C8.4763 10.2499 9.1249 9.98124 9.60312 9.50302C10.0813 9.02481 10.35 8.3762 10.35 7.6999C10.35 7.0236 10.0813 6.375 9.60312 5.89678C9.1249 5.41856 8.4763 5.1499 7.8 5.1499C7.1237 5.1499 6.4751 5.41856 5.99688 5.89678C5.51866 6.375 5.25 7.0236 5.25 7.6999Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                            <path d="M2.7002 3.6001C2.7002 3.04781 3.14791 2.6001 3.7002 2.6001H5.26098C5.5262 2.6001 5.78055 2.49474 5.96809 2.3072L7.09309 1.1822C7.48361 0.79168 8.11678 0.79168 8.5073 1.1822L9.6323 2.3072C9.81984 2.49474 10.0742 2.6001 10.3394 2.6001H11.9002C12.4525 2.6001 12.9002 3.04781 12.9002 3.6001V5.16088C12.9002 5.4261 13.0056 5.68045 13.1931 5.86799L14.3181 6.99299C14.7086 7.38351 14.7086 8.01668 14.3181 8.4072L13.1931 9.5322C13.0056 9.71974 12.9002 9.97409 12.9002 10.2393V11.8001C12.9002 12.3524 12.4525 12.8001 11.9002 12.8001H10.3394C10.0742 12.8001 9.81984 12.9055 9.6323 13.093L8.5073 14.218C8.11678 14.6085 7.48361 14.6085 7.09309 14.218L5.96809 13.093C5.78055 12.9055 5.5262 12.8001 5.26098 12.8001H3.7002C3.14791 12.8001 2.7002 12.3524 2.7002 11.8001V10.2393C2.7002 9.97409 2.59484 9.71974 2.4073 9.5322L1.2823 8.4072C0.891778 8.01668 0.891778 7.38351 1.2823 6.99299L2.4073 5.86799C2.59484 5.68045 2.7002 5.4261 2.7002 5.16088V3.6001Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <SettingsIcon width={16} height={16} />
                         Configurações
                     </Link>
                 </li>
                 <li>
                     <a className="text-base">
                         <svg
-                            xmlns="http://www.w3.org/2000/svg"
+                            xmlnsXlink="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             strokeWidth="1.5"
@@ -46,7 +41,7 @@ export default function Nav() {
                     <details open>
                         <summary className="text-base">
                             <svg
-                                xmlns="http://www.w3.org/2000/svg"
+                                xmlnsXlink="http://www.w3.org/2000/svg"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 strokeWidth="1.5"
@@ -64,7 +59,7 @@ export default function Nav() {
                             <li>
                                 <a className="text-base">
                                     <svg
-                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlnsXlink="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         strokeWidth="1.5"
@@ -82,7 +77,7 @@ export default function Nav() {
                             <li>
                                 <a className="text-base">
                                     <svg
-                                        xmlns="http://www.w3.org/2000/svg"
+                                        xmlnsXlink="http://www.w3.org/2000/svg"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         strokeWidth="1.5"
@@ -101,7 +96,7 @@ export default function Nav() {
                                 <details open>
                                     <summary className="text-base">
                                         <svg
-                                            xmlns="http://www.w3.org/2000/svg"
+                                            xmlnsXlink="http://www.w3.org/2000/svg"
                                             fill="none"
                                             viewBox="0 0 24 24"
                                             strokeWidth="1.5"
@@ -119,7 +114,7 @@ export default function Nav() {
                                         <li>
                                             <a className="text-base">
                                                 <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlnsXlink="http://www.w3.org/2000/svg"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     strokeWidth="1.5"
@@ -137,7 +132,7 @@ export default function Nav() {
                                     <li>
                                         <a className="text-base">
                                             <svg
-                                                xmlns="http://www.w3.org/2000/svg"
+                                                xmlnsXlink="http://www.w3.org/2000/svg"
                                                 fill="none"
                                                 viewBox="0 0 24 24"
                                                 strokeWidth="1.5"
@@ -156,7 +151,7 @@ export default function Nav() {
                                         <details open>
                                             <summary className="text-base">
                                                 <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlnsXlink="http://www.w3.org/2000/svg"
                                                     fill="none"
                                                     viewBox="0 0 24 24"
                                                     strokeWidth="1.5"
@@ -174,7 +169,7 @@ export default function Nav() {
                                                 <li>
                                                     <a className="text-base">
                                                         <svg
-                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            xmlnsXlink="http://www.w3.org/2000/svg"
                                                             fill="none"
                                                             viewBox="0 0 24 24"
                                                             strokeWidth="1.5"
@@ -201,7 +196,7 @@ export default function Nav() {
                 <li>
                     <a className="text-base">
                         <svg
-                            xmlns="http://www.w3.org/2000/svg"
+                            xmlnsXlink="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             strokeWidth="1.5"
