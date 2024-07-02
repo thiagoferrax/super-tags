@@ -119,7 +119,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\filip\\Estudos\\cod3r\\super-tags\\project\\packages\\infra-db\\generated\\postgres",
+      "value": "C:\\_\\Pessoal\\COD3R\\super-tags\\project\\packages\\infra-db\\generated\\postgres",
       "fromEnvVar": null
     },
     "config": {
@@ -133,7 +133,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\filip\\Estudos\\cod3r\\super-tags\\project\\packages\\infra-db\\prisma\\postgres\\schema.prisma",
+    "sourceFilePath": "C:\\_\\Pessoal\\COD3R\\super-tags\\project\\packages\\infra-db\\prisma\\postgres\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
