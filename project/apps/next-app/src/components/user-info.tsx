@@ -9,7 +9,7 @@ interface Props {
     photo: StaticImageData,
 };
 
-export default function UserInfo ({name, email, photo}: Props) {
+export default function UserInfo({ name, email, photo }: Props) {
     return (
         <div className="flex flex-col flex-wrap max-h-12">
             <div className="text-white">{name}</div>
@@ -24,19 +24,19 @@ export default function UserInfo ({name, email, photo}: Props) {
                     <li className="menu-title border-b border-neutral-600">Minha Conta</li>
                     <li>
                         <Link href="/profile" className="rounded-none">
-                            <ProfileIcon width={12} height={18} className="mx-0.5" />
+                            <ProfileIcon width={12} className="mx-0.5" />
                             Meu Perfil
                         </Link>
                     </li>
                     <li>
                         <Link href="/settings" className="rounded-none">
-                            <SettingsIcon width={16} height={16} />
+                            <SettingsIcon width={16} />
                             Configurações
                         </Link>
                     </li>
                     <li className="text-orange-700 border-t border-neutral-600">
                         <Link href="/signin?logout=true" className="rounded-t-none rounded-b-md">
-                            <SignoutIcon width={16} height={16} />
+                            <SignoutIcon width={16} />
                             Sair da Aplicação
                         </Link>
                     </li>
