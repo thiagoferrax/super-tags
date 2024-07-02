@@ -1,192 +1,95 @@
 import Link from 'next/link'
 import React from 'react'
-import { ProfileIcon, SettingsIcon } from './icon'
+import * as icon from './icon'
 
 export default function Nav() {
     return (
-        <nav className="[&:has(input)] w-80 pl-5 pt-8 opacity-100 border-r border-neutral-600 overflow-auto">
-            <input type="checkbox" name="menuCollapse" className="absolute top-9 z-[2] left-5 w-5 h-4 opacity-0" />
-            <ul className="menu menu-xs w-[17.5rem] max-w-xs p-0 bg-transparent">
-                <li className="mb-3">
-                    <Link href="/profile" className="rounded-none text-base">
-                        <ProfileIcon width={12} height={18} className="mx-0.5" />
+        <nav className="w-80 pl-5 py-10 opacity-100 border-r border-neutral-600 overflow-auto text-white">
+            <input type="checkbox" className="absolute top-9 z-[2] left-5 w-5 h-4 opacity-0" />
+            <ul className="menu menu-xs rounded-lg w-[17.5rem] max-w-xs p-0 mb-7 bg-transparent">
+                <li className="mb-4">
+                    <Link href="/profile" className="rounded-none text-[.938rem]">
+                        <icon.ProfileIcon width={12} className="mx-0.5" />
                         Meu Perfil
                     </Link>
                 </li>
-                <li className="mb-3">
-                    <Link href="/settings" className="rounded-none text-base">
-                        <SettingsIcon width={16} height={16} />
+                <li className="mb-7">
+                    <Link href="/settings" className="rounded-none text-[.938rem]">
+                        <icon.SettingsIcon width={18} />
                         Configurações
                     </Link>
                 </li>
-                <li>
-                    <a className="text-base">
-                        <svg
-                            xmlnsXlink="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="h-4 w-4">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
-                            />
-                        </svg>
-                        resume.pdf
-                    </a>
-                </li>
+                <li className="text-[.813rem] text-white">SUPER TAGS</li>
                 <li>
                     <details open>
-                        <summary className="text-base">
-                            <svg
-                                xmlnsXlink="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                className="h-4 w-4">
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
-                                />
-                            </svg>
-                            My Files
+                        <summary className="text-base font-medium">
+                            <icon.UserIcon width={29} />
+                            <span className="truncate">Fundamentos</span>
                         </summary>
                         <ul>
                             <li>
-                                <a className="text-base">
-                                    <svg
-                                        xmlnsXlink="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth="1.5"
-                                        stroke="currentColor"
-                                        className="h-4 w-4">
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
-                                        />
-                                    </svg>
-                                    Project-final.psd
-                                </a>
-                            </li>
-                            <li>
-                                <a className="text-base">
-                                    <svg
-                                        xmlnsXlink="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth="1.5"
-                                        stroke="currentColor"
-                                        className="h-4 w-4">
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" 
-                                        />
-                                    </svg>
-                                    Project-final-2.psd
-                                </a>
-                            </li>
-                            <li>
                                 <details open>
-                                    <summary className="text-base">
-                                        <svg
-                                            xmlnsXlink="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="1.5"
-                                            stroke="currentColor"
-                                            className="h-4 w-4">
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
-                                            />
-                                        </svg>
-                                        Images
+                                    <summary className="text-base font-medium">
+                                        <icon.Number1Icon width={29} />
+                                        <span className="truncate">1-trilha-inicial</span>
                                     </summary>
                                     <ul>
                                         <li>
-                                            <a className="text-base">
-                                                <svg
-                                                    xmlnsXlink="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth="1.5"
-                                                    stroke="currentColor"
-                                                    className="h-4 w-4">
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                                                    />
-                                                </svg>
-                                                Screenshot1.png
+                                            <a className="text-base font-medium">
+                                                <icon.PenguinIcon width={29} />
+                                                <span className="truncate">aula-1</span>
                                             </a>
                                         </li>
-                                    <li>
-                                        <a className="text-base">
-                                            <svg
-                                                xmlnsXlink="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth="1.5"
-                                                stroke="currentColor"
-                                                className="h-4 w-4">
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                                                />
-                                            </svg>
-                                            Screenshot2.png
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <details open>
-                                            <summary className="text-base">
-                                                <svg
-                                                    xmlnsXlink="http://www.w3.org/2000/svg"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                    strokeWidth="1.5"
-                                                    stroke="currentColor"
-                                                    className="h-4 w-4">
-                                                    <path
-                                                        strokeLinecap="round"
-                                                        strokeLinejoin="round"
-                                                        d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
-                                                    />
-                                                </svg>
-                                                Others
-                                            </summary>
-                                            <ul>
-                                                <li>
-                                                    <a className="text-base">
-                                                        <svg
-                                                            xmlnsXlink="http://www.w3.org/2000/svg"
-                                                            fill="none"
-                                                            viewBox="0 0 24 24"
-                                                            strokeWidth="1.5"
-                                                            stroke="currentColor"
-                                                            className="h-4 w-4">
-                                                            <path
-                                                                strokeLinecap="round"
-                                                                strokeLinejoin="round"
-                                                                d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
-                                                            />
-                                                        </svg>
-                                                        Screenshot3.png
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </details>
-                                    </li>
+                                        <li>
+                                            <a className="text-base font-medium">
+                                                <icon.CraneIcon width={29} />
+                                                <span className="truncate">Aula 2</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li>
+                                <details open>
+                                    <summary className="text-base font-medium">
+                                        <icon.Number2Icon width={25} />
+                                        <span className="truncate">2-trilha-web</span>
+                                    </summary>
+                                    <ul>
+                                        <li>
+                                            <a className="text-base font-medium">
+                                                <icon.EmojiIcon width={29} />
+                                                <span className="truncate">aula-1</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="text-base font-medium">
+                                                <icon.InvadersIcon width={29} />
+                                                <span className="truncate">Aula 2</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </details>
+                            </li>
+                            <li>
+                                <details open>
+                                    <summary className="text-base font-medium">
+                                        <icon.Number3Icon width={25} />
+                                        <span className="truncate">3-trilha-terminal</span>
+                                    </summary>
+                                    <ul>
+                                        <li>
+                                            <a className="text-base font-medium">
+                                                <icon.RobotIcon width={29} />
+                                                <span className="truncate">aula-1</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="text-base font-medium">
+                                                <icon.SnakeIcon width={29} />
+                                                <span className="truncate">Aula 2</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </details>
                             </li>
@@ -194,24 +97,60 @@ export default function Nav() {
                     </details>
                 </li>
                 <li>
-                    <a className="text-base">
-                        <svg
-                            xmlnsXlink="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth="1.5"
-                            stroke="currentColor"
-                            className="h-4 w-4">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"
-                            />
-                        </svg>
-                        reports-final-2.pdf
+                    <details open>
+                        <summary className="text-base font-medium">
+                            <icon.UserIcon width={25} />
+                            <span className="truncate">2-inteligencia-artificial</span>
+                        </summary>
+                        <ul>
+                            <li>
+                                <details open>
+                                    <summary className="text-base font-medium">
+                                        <icon.WindowIcon width={29} />
+                                        <span className="truncate">1-trilha-inicial</span>
+                                    </summary>
+                                    <ul>
+                                        <li>
+                                            <a className="text-base font-medium">
+                                                <icon.EmojiIcon width={29} />
+                                                conceitos-basicos
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="text-base font-medium">
+                                                <icon.AppleIcon width={29} />
+                                                <span className="truncate">conceitos-basicos</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="text-base font-medium">
+                                                <icon.PenguinIcon width={29} />
+                                                <span className="truncate">o-que-e-python</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a className="text-base font-medium">
+                                                <icon.CraneIcon width={29} />
+                                                <span className="truncate">orientacao-objetos</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </details>
+                            </li>
+                        </ul>
+                    </details>
+                </li>
+                <li>
+                    <a className="text-base font-medium">
+                        <icon.InvadersIcon width={29} />
+                        <span className="truncate">reports-final-2.pdf</span>
                     </a>
                 </li>
             </ul>
+            <button className="btn btn-wide h-10 min-h-10 font-normal text-[.938rem] border-neutral-600 hover:border-neutral-400">
+                <icon.AddPropIcon width={24} />
+                Nova SuperTag
+            </button>
         </nav>
     )
 }
