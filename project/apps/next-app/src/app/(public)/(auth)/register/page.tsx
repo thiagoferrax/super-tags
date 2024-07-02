@@ -19,7 +19,7 @@ export default function Page() {
 				<h1 className="text-[2rem] font-black text-center leading-8">Cadastre-se na plataforma</h1>
 				<fieldset className="flex flex-col bg-zinc-900 rounded-[5px] border-2 border-white/[.15] p-8 mt-3.5">
 					<label className="text-sm mb-1" htmlFor="name">Name</label>
-					<input className="h-11 mb-1.5 bg-black rounded border-2 border-white/[.15]" id="name" name="name" type="text"
+					<input className="h-11 mb-1.5 bg-black rounded border-2 border-white/[.15]" id="name" name="name" required type="text"
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 							setFormData({
 								...formData,
@@ -37,7 +37,7 @@ export default function Page() {
 						}} />
 					<span>{formErrors.email}</span>
 					<label className="text-sm mb-1" htmlFor="password">Password</label>
-					<input className="h-11 mb-9 bg-black rounded border-2 border-white/[.15]" id="password" name="password" type="password"
+					<input className="h-11 mb-9 bg-black rounded border-2 border-white/[.15]" id="password" required name="password" type="password"
 						onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 							setFormData({
 								...formData,

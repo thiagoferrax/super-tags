@@ -38,10 +38,10 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 		email: undefined,
 		password: undefined
 	})
-	useEffect(() => {
-		const newErrors = GetErrors()
-		setErrors(newErrors);
-	}, [formData])
+	// useEffect(() => {
+	// 	const newErrors = GetErrors()
+	// 	setErrors(newErrors);
+	// }, [formData])
 
 	function HasErrors(_errors: Errors): boolean {
 		return Object.keys(_errors).some(key => _errors[key])
@@ -85,7 +85,7 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 		RegisterUser,
 		formErrors: errors,
 		setFormData,
-		isSubmitDisabled: HasErrors(errors) || isRequesting,
+		isSubmitDisabled: isRequesting,
 		formData
 	}
 }
