@@ -18,6 +18,10 @@ export default function ContentHeader() {
         unified: "1f423"
     });
 
+    const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.target.value)
+    };
+
     const emojiClick = (emojiObject: any) => {
         setChosenEmoji(emojiObject);
     };
@@ -37,7 +41,8 @@ export default function ContentHeader() {
             </div>
             <div className="inline-block">
                 {/* <h1 className="font-black text-5xl text-white outline-none">{title}</h1> */}
-                <input className="font-black text-5xl text-white outline-none bg-transparent" type="text" name="input" value={title} onChange={(e) => setTitle(e.target.value)} />
+                <input className="font-black text-5xl text-white outline-none bg-transparent" type="text" name="input" value={title} onChange={handleTitleChange} />
+
             </div>
 
         </div>
