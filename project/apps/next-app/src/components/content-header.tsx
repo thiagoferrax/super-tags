@@ -15,17 +15,13 @@ export default function ContentHeader() {
     const [chosenEmoji, setChosenEmoji] = useState<{
         unified: string;
     }>({
-        unified: "1f423"
+        unified: "0031-fe0f-20e3"
     });
-
-    const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.target.value)
-    };
-
     const emojiClick = (emojiObject: any) => {
         setChosenEmoji(emojiObject);
     };
 
+    // Set new title
     const [title, setTitle] = useState('Sem título')
 
     return (
@@ -33,16 +29,14 @@ export default function ContentHeader() {
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-link no-animation pl-0">
                     <ChevronDownIcon className="size-3 text-white" />
-                    <Emoji unified={chosenEmoji ? chosenEmoji.unified : "1f423"} size={50} />
+                    <Emoji unified={chosenEmoji.unified} size={50} />
                 </div>
                 <div tabIndex={0} className="dropdown-content menu menu-horizontal z-[1] left-0 top-14 p-2 rounded bg-base-200 shadow">
                     <EmojiPicker onEmojiClick={emojiClick} />
                 </div>
             </div>
             <div className="inline-block">
-                {/* <h1 className="font-black text-5xl text-white outline-none">{title}</h1> */}
-                <input className="font-black text-5xl text-white outline-none bg-transparent" type="text" name="input" value={title} onChange={handleTitleChange} />
-
+                <input className="font-black text-5xl text-white outline-none bg-transparent" type="text" name="input" value={title} onChange={(e) => setTitle(e.target.value)} />
             </div>
 
         </div>
