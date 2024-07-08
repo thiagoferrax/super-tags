@@ -31,11 +31,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.16.1
+ * Prisma Client JS version: 5.16.0
  * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
  */
 Prisma.prismaVersion = {
-  client: "5.16.1",
+  client: "5.16.0",
   engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
 }
 
@@ -120,7 +120,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\_\\Pessoal\\COD3R\\super-tags\\project\\packages\\infra-db\\generated\\postgres",
+      "value": "/Users/alessandrocarvalhodesouza/Documents/projetos/super-tags/project/packages/infra-db/generated/postgres",
       "fromEnvVar": null
     },
     "config": {
@@ -129,20 +129,19 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "windows",
+        "value": "darwin",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\_\\Pessoal\\COD3R\\super-tags\\project\\packages\\infra-db\\prisma\\postgres\\schema.prisma",
+    "sourceFilePath": "/Users/alessandrocarvalhodesouza/Documents/projetos/super-tags/project/packages/infra-db/prisma/postgres/schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../prisma/postgres",
-  "clientVersion": "5.16.1",
+  "clientVersion": "5.16.0",
   "engineVersion": "34ace0eb2704183d2c05b60b52fba5c43c13f303",
   "datasourceNames": [
     "db"
@@ -195,8 +194,8 @@ exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
-path.join(__dirname, "query_engine-windows.dll.node");
-path.join(process.cwd(), "generated/postgres/query_engine-windows.dll.node")
+path.join(__dirname, "libquery_engine-darwin.dylib.node");
+path.join(process.cwd(), "generated/postgres/libquery_engine-darwin.dylib.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/postgres/schema.prisma")

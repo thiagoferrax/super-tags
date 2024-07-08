@@ -1,0 +1,29 @@
+version: '3.9'
+volumes:
+  node_modules_app:
+  db_postgres_supertags:
+services:
+  postgres:
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - db_postgres_supertags:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_USER=user
+      - POSTGRES_DB=super-tags
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - .:/project
+      - node_modules_app:/project/node_modules
+    working_dir: /project
+    command: npm run dev
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
