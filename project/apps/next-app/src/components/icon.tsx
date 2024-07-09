@@ -10,7 +10,7 @@ import snakeIcon from "./../../public/snakeIcon.png";
 import userIcon from "./../../public/userIcon.png";
 import windowIcon from "./../../public/windowIcon.png";
 
-interface IconProperties {
+interface IconProps {
     width?: number;
     className?: string;
 }
@@ -19,21 +19,21 @@ interface IconProperties {
 Ícones Menu: utilizados nos itens do menu de usuário e do menu de navegação.
 */
 // Ícones SVG
-export const ProfileIcon = ({ width, className }: IconProperties) => (
+export const ProfileIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} viewBox="0 0 12 18" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path d="M2.54962 4.4C2.54962 5.30174 2.90783 6.16654 3.54546 6.80416C4.18308 7.44179 5.04789 7.8 5.94962 7.8C6.85136 7.8 7.71616 7.44179 8.35378 6.80416C8.99141 6.16654 9.34962 5.30174 9.34962 4.4C9.34962 3.49826 8.99141 2.63346 8.35378 1.99584C7.71616 1.35821 6.85136 1 5.94962 1C5.04789 1 4.18308 1.35821 3.54546 1.99584C2.90783 2.63346 2.54962 3.49826 2.54962 4.4Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M0.849609 16.3002V14.6002C0.849609 13.6985 1.20782 12.8337 1.84545 12.196C2.48307 11.5584 3.34787 11.2002 4.24961 11.2002H7.64961C8.55135 11.2002 9.41615 11.5584 10.0538 12.196C10.6914 12.8337 11.0496 13.6985 11.0496 14.6002V16.3002" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
 );
 
-export const SettingsIcon = ({ width, className }: IconProperties) => (
+export const SettingsIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} viewBox="0 0 16 16" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path d="M5.25 7.6999C5.25 8.3762 5.51866 9.02481 5.99688 9.50302C6.4751 9.98124 7.1237 10.2499 7.8 10.2499C8.4763 10.2499 9.1249 9.98124 9.60312 9.50302C10.0813 9.02481 10.35 8.3762 10.35 7.6999C10.35 7.0236 10.0813 6.375 9.60312 5.89678C9.1249 5.41856 8.4763 5.1499 7.8 5.1499C7.1237 5.1499 6.4751 5.41856 5.99688 5.89678C5.51866 6.375 5.25 7.0236 5.25 7.6999Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M2.7002 3.6001C2.7002 3.04781 3.14791 2.6001 3.7002 2.6001H5.26098C5.5262 2.6001 5.78055 2.49474 5.96809 2.3072L7.09309 1.1822C7.48361 0.79168 8.11678 0.79168 8.5073 1.1822L9.6323 2.3072C9.81984 2.49474 10.0742 2.6001 10.3394 2.6001H11.9002C12.4525 2.6001 12.9002 3.04781 12.9002 3.6001V5.16088C12.9002 5.4261 13.0056 5.68045 13.1931 5.86799L14.3181 6.99299C14.7086 7.38351 14.7086 8.01668 14.3181 8.4072L13.1931 9.5322C13.0056 9.71974 12.9002 9.97409 12.9002 10.2393V11.8001C12.9002 12.3524 12.4525 12.8001 11.9002 12.8001H10.3394C10.0742 12.8001 9.81984 12.9055 9.6323 13.093L8.5073 14.218C8.11678 14.6085 7.48361 14.6085 7.09309 14.218L5.96809 13.093C5.78055 12.9055 5.5262 12.8001 5.26098 12.8001H3.7002C3.14791 12.8001 2.7002 12.3524 2.7002 11.8001V10.2393C2.7002 9.97409 2.59484 9.71974 2.4073 9.5322L1.2823 8.4072C0.891778 8.01668 0.891778 7.38351 1.2823 6.99299L2.4073 5.86799C2.59484 5.68045 2.7002 5.4261 2.7002 5.16088V3.6001Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
 );
 
-export const SignoutIcon = ({ width, className }: IconProperties) => (
+export const SignoutIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} height="18" viewBox="0 0 18 18" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path d="M10.2054 5.83104V4.37328C10.2054 3.98666 10.0518 3.61588 9.77841 3.34249C9.50502 3.06911 9.13424 2.91553 8.74762 2.91553H3.64547C3.25885 2.91553 2.88806 3.06911 2.61468 3.34249C2.3413 3.61588 2.18771 3.98666 2.18771 4.37328V13.1198C2.18771 13.5064 2.3413 13.8772 2.61468 14.1506C2.88806 14.424 3.25885 14.5776 3.64547 14.5776H8.74762C9.13424 14.5776 9.50502 14.424 9.77841 14.1506C10.0518 13.8772 10.2054 13.5064 10.2054 13.1198V11.6621" stroke="#BB4500" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M6.55969 8.74645H15.3062L13.1196 6.55981" stroke="#BB4500" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -48,7 +48,7 @@ Para os itens do menu, utilizar largura 29px e para o título da Super Tag usar 
 O uso de classes CSS (className) é opcional.
 */
 // tipo SVG.
-export const Number1Icon = ({ width, className }: IconProperties) => (
+export const Number1Icon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} viewBox="0 0 25 23" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_7_1055)">
             <path d="M23.2359 0H1.16668C0.522339 0 0 0.490629 0 1.09585V21.8253C0 22.4306 0.522339 22.9212 1.16668 22.9212H23.2359C23.8803 22.9212 24.4026 22.4306 24.4026 21.8253V1.09585C24.4026 0.490629 23.8803 0 23.2359 0Z" fill="#8DB0C0" />
@@ -69,7 +69,7 @@ export const Number1Icon = ({ width, className }: IconProperties) => (
     </svg>
 );
 
-export const Number2Icon = ({ width, className }: IconProperties) => (
+export const Number2Icon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} viewBox="0 0 25 23" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_7_894)">
             <path d="M23.2359 0H1.16668C0.522339 0 0 0.490629 0 1.09585V21.8253C0 22.4306 0.522339 22.9212 1.16668 22.9212H23.2359C23.8803 22.9212 24.4026 22.4306 24.4026 21.8253V1.09585C24.4026 0.490629 23.8803 0 23.2359 0Z" fill="#8DB0C0" />
@@ -90,7 +90,7 @@ export const Number2Icon = ({ width, className }: IconProperties) => (
     </svg>
 );
 
-export const Number3Icon = ({ width, className }: IconProperties) => (
+export const Number3Icon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} viewBox="0 0 25 24" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_7_921)">
             <path d="M23.2359 6.10352e-05H1.16668C0.522339 6.10352e-05 0 0.49069 0 1.09591V21.8254C0 22.4306 0.522339 22.9213 1.16668 22.9213H23.2359C23.8803 22.9213 24.4026 22.4306 24.4026 21.8254V1.09591C24.4026 0.49069 23.8803 6.10352e-05 23.2359 6.10352e-05Z" fill="#8DB0C0" />
@@ -111,7 +111,7 @@ export const Number3Icon = ({ width, className }: IconProperties) => (
     </svg>
 );
 
-export const NumberNIcon = ({ width, className }: IconProperties) => (
+export const NumberNIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} viewBox="0 0 25 23" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <g clipPath="url(#clip0_7_906)">
             <path d="M23.2359 0H1.16668C0.522339 0 0 0.490629 0 1.09585V21.8253C0 22.4306 0.522339 22.9212 1.16668 22.9212H23.2359C23.8803 22.9212 24.4026 22.4306 24.4026 21.8253V1.09585C24.4026 0.490629 23.8803 0 23.2359 0Z" fill="#8DB0C0" />
@@ -133,43 +133,43 @@ export const NumberNIcon = ({ width, className }: IconProperties) => (
 );
 
 // tipo imagem
-export const AppleIcon = ({ width, className }: IconProperties) => (
+export const AppleIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={appleIcon} alt="Ícone de usuário pequeno" />
 );
 
-export const CraneIcon = ({ width, className }: IconProperties) => (
+export const CraneIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={craneIcon} alt="Ícone de usuário pequeno" />
 );
 
-export const EmojiIcon = ({ width, className }: IconProperties) => (
+export const EmojiIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={emojiIcon} alt="Ícone de usuário pequeno" />
 );
 
-export const FolderIcon = ({ width, className }: IconProperties) => (
+export const FolderIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={folderIcon} alt="Ícone de usuário pequeno" />
 );
 
-export const InvadersIcon = ({ width, className }: IconProperties) => (
+export const InvadersIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={invadersIcon} alt="Ícone de usuário pequeno" />
 );
 
-export const PenguinIcon = ({ width, className }: IconProperties) => (
+export const PenguinIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={penguinIcon} alt="Ícone de pinguim grande" />
 );
 
-export const RobotIcon = ({ width, className }: IconProperties) => (
+export const RobotIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={robotIcon} alt="Ícone de pinguim grande" />
 );
 
-export const SnakeIcon = ({ width, className }: IconProperties) => (
+export const SnakeIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={snakeIcon} alt="Ícone de pinguim grande" />
 );
 
-export const UserIcon = ({ width, className }: IconProperties) => (
+export const UserIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={userIcon} alt="Ícone de usuário grande" />
 );
 
-export const WindowIcon = ({ width, className }: IconProperties) => (
+export const WindowIcon = ({ width, className }: IconProps) => (
     <Image className={className} width={width} src={windowIcon} alt="Ícone de usuário grande" />
 );
 
@@ -178,7 +178,7 @@ export const WindowIcon = ({ width, className }: IconProperties) => (
 e no menu de seleção do tipo de propriedade.
 */
 // Ícones SVG.
-export const TitlePropIcon = ({ width, className }: IconProperties) => (
+export const TitlePropIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} height="24" viewBox="0 0 24 24" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path d="M13 5H21" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M13 9H18" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -189,14 +189,37 @@ export const TitlePropIcon = ({ width, className }: IconProperties) => (
     </svg>
 );
 
-export const AddPropIcon = ({ width, className }: IconProperties) => (
-    <svg className={className} width={width} height="24" viewBox="0 0 24 24" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
+export const AddPropIcon = ({ width, className }: IconProps) => (
+    <svg className={`${className}`} width={width} height="24" viewBox="0 0 24 24" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path d="M12 5V19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M5 12H19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
 );
 
-export const TextPropIcon = ({ width, className }: IconProperties) => (
+export const MovePropIcon = ({ width, className }: IconProps) => (
+    <svg className={className} width={width} height="24" viewBox="0 0 24 24" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
+        <path d="M8 5C8 5.26522 8.10536 5.51957 8.29289 5.70711C8.48043 5.89464 8.73478 6 9 6C9.26522 6 9.51957 5.89464 9.70711 5.70711C9.89464 5.51957 10 5.26522 10 5C10 4.73478 9.89464 4.48043 9.70711 4.29289C9.51957 4.10536 9.26522 4 9 4C8.73478 4 8.48043 4.10536 8.29289 4.29289C8.10536 4.48043 8 4.73478 8 5Z" stroke="#4C4C54" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8 12C8 12.2652 8.10536 12.5196 8.29289 12.7071C8.48043 12.8946 8.73478 13 9 13C9.26522 13 9.51957 12.8946 9.70711 12.7071C9.89464 12.5196 10 12.2652 10 12C10 11.7348 9.89464 11.4804 9.70711 11.2929C9.51957 11.1054 9.26522 11 9 11C8.73478 11 8.48043 11.1054 8.29289 11.2929C8.10536 11.4804 8 11.7348 8 12Z" stroke="#4C4C54" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M8 19C8 19.2652 8.10536 19.5196 8.29289 19.7071C8.48043 19.8946 8.73478 20 9 20C9.26522 20 9.51957 19.8946 9.70711 19.7071C9.89464 19.5196 10 19.2652 10 19C10 18.7348 9.89464 18.4804 9.70711 18.2929C9.51957 18.1054 9.26522 18 9 18C8.73478 18 8.48043 18.1054 8.29289 18.2929C8.10536 18.4804 8 18.7348 8 19Z" stroke="#4C4C54" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14 5C14 5.26522 14.1054 5.51957 14.2929 5.70711C14.4804 5.89464 14.7348 6 15 6C15.2652 6 15.5196 5.89464 15.7071 5.70711C15.8946 5.51957 16 5.26522 16 5C16 4.73478 15.8946 4.48043 15.7071 4.29289C15.5196 4.10536 15.2652 4 15 4C14.7348 4 14.4804 4.10536 14.2929 4.29289C14.1054 4.48043 14 4.73478 14 5Z" stroke="#4C4C54" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14 12C14 12.2652 14.1054 12.5196 14.2929 12.7071C14.4804 12.8946 14.7348 13 15 13C15.2652 13 15.5196 12.8946 15.7071 12.7071C15.8946 12.5196 16 12.2652 16 12C16 11.7348 15.8946 11.4804 15.7071 11.2929C15.5196 11.1054 15.2652 11 15 11C14.7348 11 14.4804 11.1054 14.2929 11.2929C14.1054 11.4804 14 11.7348 14 12Z" stroke="#4C4C54" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M14 19C14 19.2652 14.1054 19.5196 14.2929 19.7071C14.4804 19.8946 14.7348 20 15 20C15.2652 20 15.5196 19.8946 15.7071 19.7071C15.8946 19.5196 16 19.2652 16 19C16 18.7348 15.8946 18.4804 15.7071 18.2929C15.5196 18.1054 15.2652 18 15 18C14.7348 18 14.4804 18.1054 14.2929 18.2929C14.1054 18.4804 14 18.7348 14 19Z" stroke="#4C4C54" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+);
+
+export const ChangePropIcon = ({ width, className }: IconProps) => (
+    <svg className={className} width={width} height="24" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" xmlnsXlink="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z" />
+    </svg>
+);
+
+export const RemovePropIcon = ({ width, className }: IconProps) => (
+    <svg className={`size-6 ${className}`} width={width} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" xmlnsXlink="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+    </svg>
+);
+
+export const TextPropIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} height="24" viewBox="0 0 24 24" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path d="M14 3V7C14 7.26522 14.1054 7.51957 14.2929 7.70711C14.4804 7.89464 14.7348 8 15 8H19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M17 21H7C6.46957 21 5.96086 20.7893 5.58579 20.4142C5.21071 20.0391 5 19.5304 5 19V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H14L19 8V19C19 19.5304 18.7893 20.0391 18.4142 20.4142C18.0391 20.7893 17.5304 21 17 21Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -206,19 +229,19 @@ export const TextPropIcon = ({ width, className }: IconProperties) => (
     </svg>
 );
 
-export const RealPropIcon = ({ width, className }: IconProperties) => (
+export const RealPropIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} height="24" viewBox="0 0 18 21" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" clipRule="evenodd" d="M13.6387 2V6.45833H15.5137V2H13.6387ZM12.1207 0.482054C12.4294 0.1734 12.848 0 13.2845 0H15.8678C16.3043 0 16.723 0.1734 17.0316 0.482054C17.3403 0.790708 17.5137 1.20933 17.5137 1.64583V6.8125C17.5137 7.249 17.3403 7.66762 17.0316 7.97628C16.723 8.28494 16.3043 8.45833 15.8678 8.45833H13.2845C12.848 8.45833 12.4294 8.28494 12.1207 7.97628C11.8121 7.66762 11.6387 7.249 11.6387 6.8125V1.64583C11.6387 1.20933 11.8121 0.790708 12.1207 0.482054ZM7.17969 13.625V18.0833H9.05469V13.625H7.17969ZM5.66174 12.1071C5.9704 11.7984 6.38902 11.625 6.82552 11.625H9.40885C9.84535 11.625 10.264 11.7984 10.5726 12.1071C10.8813 12.4157 11.0547 12.8343 11.0547 13.2708V18.4375C11.0547 18.874 10.8813 19.2926 10.5726 19.6013C10.264 19.9099 9.84535 20.0833 9.40885 20.0833H6.82552C6.38902 20.0833 5.9704 19.9099 5.66174 19.6013C5.35309 19.2926 5.17969 18.874 5.17969 18.4375V13.2708C5.17969 12.8343 5.35309 12.4157 5.66174 12.1071ZM5.0924 1.12891C5.0924 0.576621 5.54012 0.128906 6.0924 0.128906H7.36566C7.91795 0.128906 8.36566 0.576621 8.36566 1.12891V7.49521C8.36566 8.04749 7.91795 8.49521 7.36566 8.49521C6.81338 8.49521 6.36566 8.04749 6.36566 7.49521V2.12891H6.0924C5.54012 2.12891 5.0924 1.68119 5.0924 1.12891ZM14.0052 12.5883C14.0052 12.036 14.4529 11.5883 15.0052 11.5883H16.2785C16.8308 11.5883 17.2785 12.036 17.2785 12.5883V18.9546C17.2785 19.5068 16.8308 19.9546 16.2785 19.9546C15.7262 19.9546 15.2785 19.5068 15.2785 18.9546V13.5883H15.0052C14.4529 13.5883 14.0052 13.1405 14.0052 12.5883ZM0 7.49393C0 6.94164 0.447715 6.49393 1 6.49393H1.01273C1.56502 6.49393 2.01273 6.94164 2.01273 7.49393C2.01273 8.04621 1.56502 8.49393 1.01273 8.49393H1C0.447715 8.49393 0 8.04621 0 7.49393ZM0 18.9533C0 18.401 0.447715 17.9533 1 17.9533H1.01273C1.56502 17.9533 2.01273 18.401 2.01273 18.9533C2.01273 19.5056 1.56502 19.9533 1.01273 19.9533H1C0.447715 19.9533 0 19.5056 0 18.9533Z" fill="white" />
     </svg>
 );
 
-export const CheckboxPropIcon = ({ width, className }: IconProperties) => (
+export const CheckboxPropIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} height="24" viewBox="0 0 24 24" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" clipRule="evenodd" d="M5.29289 5.29289C5.48043 5.10536 5.73478 5 6 5H15C15.5523 5 16 4.55228 16 4C16 3.44772 15.5523 3 15 3H6C5.20435 3 4.44129 3.31607 3.87868 3.87868C3.31607 4.44129 3 5.20435 3 6V18C3 18.7956 3.31607 19.5587 3.87868 20.1213C4.44129 20.6839 5.20435 21 6 21H18C18.7957 21 19.5587 20.6839 20.1213 20.1213C20.6839 19.5587 21 18.7957 21 18V12C21 11.4477 20.5523 11 20 11C19.4477 11 19 11.4477 19 12V18C19 18.2652 18.8946 18.5196 18.7071 18.7071C18.5196 18.8946 18.2652 19 18 19H6C5.73478 19 5.48043 18.8946 5.29289 18.7071C5.10536 18.5196 5 18.2652 5 18V6C5 5.73478 5.10536 5.48043 5.29289 5.29289ZM13.4142 14L20.7071 6.70711C21.0976 6.31658 21.0976 5.68342 20.7071 5.29289C20.3166 4.90237 19.6834 4.90237 19.2929 5.29289L12 12.5858L9.70711 10.2929C9.31658 9.90237 8.68342 9.90237 8.29289 10.2929C7.90237 10.6834 7.90237 11.3166 8.29289 11.7071L10.5858 14C11.3668 14.781 12.6332 14.781 13.4142 14Z" fill="white" />
     </svg>
 );
 
-export const DatePropIcon = ({ width, className }: IconProperties) => (
+export const DatePropIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} height="24" viewBox="0 0 24 24" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path d="M4 7C4 6.46957 4.21071 5.96086 4.58579 5.58579C4.96086 5.21071 5.46957 5 6 5H18C18.5304 5 19.0391 5.21071 19.4142 5.58579C19.7893 5.96086 20 6.46957 20 7V19C20 19.5304 19.7893 20.0391 19.4142 20.4142C19.0391 20.7893 18.5304 21 18 21H6C5.46957 21 4.96086 20.7893 4.58579 20.4142C4.21071 20.0391 4 19.5304 4 19V7Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M16 3V7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -229,7 +252,7 @@ export const DatePropIcon = ({ width, className }: IconProperties) => (
     </svg>
 );
 
-export const IntegerPropIcon = ({ width, className }: IconProperties) => (
+export const IntegerPropIcon = ({ width, className }: IconProps) => (
     <svg className={className} width={width} height="24" viewBox="0 0 24 24" fill="none" xmlnsXlink="http://www.w3.org/2000/svg">
         <path fillRule="evenodd" clipRule="evenodd" d="M8.74984 3.00075C8.74984 2.69741 8.56711 2.42393 8.28685 2.30784C8.0066 2.19176 7.68401 2.25593 7.46951 2.47042L5.46951 4.47042C5.17662 4.76332 5.17662 5.23819 5.46951 5.53108C5.7624 5.82398 6.23728 5.82398 6.53017 5.53108L7.24984 4.81141V9.25038H6.50068C6.08647 9.25038 5.75068 9.58616 5.75068 10.0004C5.75068 10.4146 6.08647 10.7504 6.50068 10.7504H7.97581C7.98379 10.7506 7.9918 10.7508 7.99984 10.7508C8.00788 10.7508 8.01589 10.7506 8.02387 10.7504H9.50068C9.9149 10.7504 10.2507 10.4146 10.2507 10.0004C10.2507 9.58616 9.9149 9.25038 9.50068 9.25038H8.74984V3.00075ZM7.11596 15.1168C7.35038 14.8824 7.66832 14.7507 7.99984 14.7507C8.33136 14.7507 8.6493 14.8824 8.88372 15.1168C9.11814 15.3512 9.24984 15.6692 9.24984 16.0007C9.24984 16.0897 9.18714 16.3092 8.99454 16.6543C8.82829 16.9522 8.61684 17.2552 8.42951 17.5103L5.46951 20.4703C5.25501 20.6848 5.19084 21.0074 5.30693 21.2877C5.42301 21.5679 5.69649 21.7507 5.99984 21.7507H9.99984C10.4141 21.7507 10.7498 21.4149 10.7498 21.0007C10.7498 20.5865 10.4141 20.2507 9.99984 20.2507H7.8105L9.53017 18.531C9.55653 18.5046 9.58089 18.4764 9.60304 18.4464C9.80694 18.1704 10.0802 17.787 10.3044 17.3853C10.512 17.0132 10.7498 16.5026 10.7498 16.0007C10.7498 15.2713 10.4601 14.5719 9.94438 14.0561C9.42866 13.5404 8.72918 13.2507 7.99984 13.2507C7.27049 13.2507 6.57102 13.5404 6.0553 14.0561C5.53957 14.5719 5.24984 15.2713 5.24984 16.0007C5.24984 16.4149 5.58563 16.7507 5.99984 16.7507C6.41405 16.7507 6.74984 16.4149 6.74984 16.0007C6.74984 15.6692 6.88153 15.3512 7.11596 15.1168ZM15.9485 7.45961C16.451 7.25147 17.004 7.19701 17.5374 7.30312C18.0708 7.40923 18.5608 7.67115 18.9454 8.05574C19.33 8.44033 19.592 8.93034 19.6981 9.46379C19.8042 9.99723 19.7497 10.5502 19.5416 11.0527C19.3925 11.4127 19.1693 11.7352 18.8884 12.0003C19.1693 12.2654 19.3925 12.5879 19.5416 12.9479C19.7497 13.4504 19.8042 14.0033 19.6981 14.5368C19.592 15.0702 19.33 15.5602 18.9454 15.9448C18.5608 16.3294 18.0708 16.5913 17.5374 16.6974C17.004 16.8036 16.451 16.7491 15.9485 16.541C15.446 16.3328 15.0165 15.9803 14.7144 15.5281C14.4122 15.0759 14.2509 14.5442 14.2509 14.0003C14.2509 13.5861 14.5867 13.2503 15.0009 13.2503C15.4151 13.2503 15.7509 13.5861 15.7509 14.0003C15.7509 14.2475 15.8242 14.4892 15.9616 14.6947C16.0989 14.9003 16.2941 15.0605 16.5225 15.1551C16.751 15.2497 17.0023 15.2745 17.2448 15.2263C17.4872 15.178 17.71 15.059 17.8848 14.8842C18.0596 14.7094 18.1787 14.4866 18.2269 14.2441C18.2751 14.0017 18.2504 13.7503 18.1557 13.5219C18.0611 13.2935 17.9009 13.0983 17.6954 12.9609C17.4898 12.8236 17.2481 12.7503 17.0009 12.7503C16.5867 12.7503 16.2509 12.4145 16.2509 12.0003C16.2509 11.5861 16.5867 11.2503 17.0009 11.2503C17.2481 11.2503 17.4898 11.177 17.6954 11.0396C17.9009 10.9023 18.0611 10.707 18.1557 10.4786C18.2504 10.2502 18.2751 9.9989 18.2269 9.75642C18.1787 9.51395 18.0596 9.29122 17.8848 9.1164C17.71 8.94158 17.4872 8.82253 17.2448 8.7743C17.0023 8.72607 16.751 8.75083 16.5225 8.84543C16.2941 8.94004 16.0989 9.10026 15.9616 9.30582C15.8242 9.51138 15.7509 9.75306 15.7509 10.0003C15.7509 10.4145 15.4151 10.7503 15.0009 10.7503C14.5867 10.7503 14.2509 10.4145 14.2509 10.0003C14.2509 9.45639 14.4122 8.9247 14.7144 8.47247C15.0165 8.02023 15.446 7.66776 15.9485 7.45961Z" fill="white" />
     </svg>

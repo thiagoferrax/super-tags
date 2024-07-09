@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState } from 'react'
 import dynamic from 'next/dynamic';
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { Emoji } from 'emoji-picker-react';
@@ -25,20 +25,17 @@ export default function ContentHeader() {
     const [title, setTitle] = useState('Sem título')
 
     return (
-        <div className="flex">
+        <div className="flex mb-10">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-link no-animation pl-0">
-                    <ChevronDownIcon className="size-3 text-white" />
+                    <ChevronDownIcon className="size-5 text-white" />
                     <Emoji unified={chosenEmoji.unified} size={50} />
                 </div>
-                <div tabIndex={0} className="dropdown-content menu menu-horizontal z-[1] left-0 top-14 p-2 rounded bg-base-200 shadow">
+                <div tabIndex={0} className="dropdown-content menu menu-horizontal z-1 left-0 top-14 p-2 rounded bg-base-200 shadow">
                     <EmojiPicker onEmojiClick={emojiClick} />
                 </div>
             </div>
-            <div className="inline-block">
-                <input className="font-black text-5xl text-white outline-none bg-transparent" type="text" name="input" value={title} onChange={(e) => setTitle(e.target.value)} />
-            </div>
-
+            <input className="font-black text-5xl text-white outline-none bg-transparent" type="text" name="content-header-title" value={title} onChange={(e) => setTitle(e.target.value)} />
         </div>
     )
 }
