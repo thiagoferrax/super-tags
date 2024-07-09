@@ -1,6 +1,6 @@
 import { Email, PasswordStrong } from '@repo/domain';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { GetErrorDescription } from '../../../../configurations/descriptionsErrors';
 
 
@@ -11,7 +11,6 @@ type UserViewModel = {
 }
 
 export type RegisterViewModel = {
-    isRequesting: boolean,
     formErrors: Errors
     RegisterUser: () => Promise<void>,
     setFormData: (userViewModel: UserViewModel) => void,
@@ -63,6 +62,9 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 
 
     async function RegisterUser(): Promise<void> {
+		if(isRequesting) {
+			return
+		}
         setIsRequesting(true);
         const newErrors = GetErrors();
         if (!HasErrors(newErrors)) {
