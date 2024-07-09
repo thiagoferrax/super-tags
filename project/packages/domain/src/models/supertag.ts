@@ -1,27 +1,29 @@
 import { ValidationError } from "../errors";
-import { Email } from "./email";
+import { Propriedade } from "./propriedade";
 
-export class User {
-    public readonly email: Email
+export class SuperTag {
     public readonly id: number | null
     public readonly name: string
-    public readonly passwordHash: string
+    public readonly superTags: SuperTag[]
+    public readonly propriedades: Propriedade[]
     constructor(
         id: number | null,
         name: string,
-        email: string,
-        passwordHash: string
+        superTags: SuperTag[] | [],
+        propriedades: Propriedade[] | []
     ) {
         if (!name) {
-            throw new ValidationError("User", "name", "NAME_REQUIRED")
+            throw new ValidationError("SuperTag", "name", "NAME_REQUIRED")
         }
-
-        if (!passwordHash) {
-            throw new ValidationError("User", "password", "PASSWORD_REQUIRED")
-        }
-        this.email = new Email(email)
-        this.passwordHash = passwordHash
         this.id = id
         this.name = name
+        this.superTags = superTags
+        this.propriedades = propriedades
+    }
+    Adicionar(superTag: SuperTag) {
+        this.superTags.push(superTag)
+    }
+    AdicionarPropriedade(propriedade: Propriedade) {
+        this.propriedades.push(propriedade)
     }
 }
