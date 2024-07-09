@@ -3,5 +3,5 @@ import { MakeAddUserRepository, MakeGetUserByEmailRepository } from "../../infra
 import { MakeHasher } from "../../infra/cryptography/make-hash";
 
 export function MakeCreateUser(): CreateUser {
-  return new CreateUser(MakeAddUserRepository(), MakeGetUserByEmailRepository(), MakeHasher())
+    return new CreateUser(MakeAddUserRepository(), MakeGetUserByEmailRepository(), MakeHasher())
 }

@@ -31,11 +31,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.16.0
+ * Prisma Client JS version: 5.16.1
  * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
  */
 Prisma.prismaVersion = {
-  client: "5.16.0",
+  client: "5.16.1",
   engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
 }
 
@@ -119,7 +119,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/alessandrocarvalhodesouza/Documents/projetos/super-tags/project/packages/infra-db/generated/postgres",
+      "value": "C:\\_\\Pessoal\\COD3R\\super-tags\\project\\packages\\infra-db\\generated\\postgres",
       "fromEnvVar": null
     },
     "config": {
@@ -128,19 +128,20 @@ const config = {
     "binaryTargets": [
       {
         "fromEnvVar": null,
-        "value": "darwin",
+        "value": "windows",
         "native": true
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/Users/alessandrocarvalhodesouza/Documents/projetos/super-tags/project/packages/infra-db/prisma/postgres/schema.prisma",
+    "sourceFilePath": "C:\\_\\Pessoal\\COD3R\\super-tags\\project\\packages\\infra-db\\prisma\\postgres\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../.env"
   },
   "relativePath": "../../prisma/postgres",
-  "clientVersion": "5.16.0",
+  "clientVersion": "5.16.1",
   "engineVersion": "34ace0eb2704183d2c05b60b52fba5c43c13f303",
   "datasourceNames": [
     "db"
