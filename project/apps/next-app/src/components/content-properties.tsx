@@ -15,7 +15,9 @@ export default function ContentProperties() {
 
     const removeProperty = (index: number) => {
         setPropertyList(propertyList => {
-            return propertyList.splice(index, 1)
+            let newPropertyList = [...propertyList]
+            newPropertyList.splice(index, 1)
+            return newPropertyList
         })
     }
 
