@@ -5,15 +5,30 @@ import { Property } from "./property";
 
 export default function ContentProperties() {
 
-    const [propertyList, setPropertyList] = useState<string[]>([]);
+    const [propertyList, setPropertyList] = useState<string[]>([])
 
     const addProperty = (proptype: string) => {
-        setPropertyList(propertyList => [...propertyList, proptype]);
-    };
+        setPropertyList(propertyList => {
+            return [...propertyList, proptype]
+        })
+    }
+
+    const removeProperty = (index: number) => {
+        setPropertyList(propertyList => {
+            return propertyList.splice(index, 1)
+        })
+    }
+
+    const changeProperty = (index: number, newProptype: string) => {
+        setPropertyList(propertyList => {
+            propertyList[index] = newProptype
+            return [...propertyList]
+        })
+    }
 
     const propertyListItems = propertyList.map((propertyListItem, index) =>
-        <Property proptype={propertyListItem} key={index} />
-    );
+        <Property proptype={propertyListItem} key={index} index={index} onRemoveProp={removeProperty} onChangeProperty={changeProperty} />
+    )
 
     return (
         <div>
