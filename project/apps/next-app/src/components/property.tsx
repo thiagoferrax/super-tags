@@ -64,7 +64,7 @@ export const Property = ({ proptype, index, onRemoveProp, onChangeProperty }: Pr
     }
 
     return (
-        <div className="flex h-8">
+        <div className="flex h-7">
             <Icon.MovePropIcon width={24} />
             {(() => {
                 switch (proptype) {
@@ -77,8 +77,8 @@ export const Property = ({ proptype, index, onRemoveProp, onChangeProperty }: Pr
                                     </div>
                                     {propertyMenu()}
                                 </div>
-                                <div className="flex grow top-[-4px] border-2 border-transparent rounded focus-within:border-neutral-600">
-                                    <input className="bg-zinc-900 h-7 px-2 focus-visible:outline-0 focus:bg-black" type="text" />
+                                <div className="flex grow ml-[-35px] mt-[-5px] border-2 border-transparent rounded focus-within:border-neutral-600">
+                                    <input className="bg-zinc-900 h-7 px-2 pl-9 focus-visible:outline-0 focus:bg-black" type="text" />
                                     <input className="grow bg-zinc-900 h-7 px-2 rounded-r focus-visible:outline-0 focus:bg-black" type="text" />
                                 </div>
                             </>
@@ -92,8 +92,8 @@ export const Property = ({ proptype, index, onRemoveProp, onChangeProperty }: Pr
                                     </div>
                                     {propertyMenu()}
                                 </div>
-                                <div className="flex grow top-[-4px] border-2 border-transparent rounded focus-within:border-neutral-600">
-                                    <input className="bg-zinc-900 h-7 px-2 focus-visible:outline-0 focus:bg-black" type="text" />
+                                <div className="flex grow ml-[-35px] mt-[-5px] border-2 border-transparent rounded focus-within:border-neutral-600">
+                                    <input className="bg-zinc-900 h-7 px-2 pl-9 focus-visible:outline-0 focus:bg-black" type="text" />
                                     <input className="grow bg-zinc-900 h-7 px-2 rounded-r focus-visible:outline-0 focus:bg-black" type="number" />
                                 </div>
                             </>
@@ -107,8 +107,8 @@ export const Property = ({ proptype, index, onRemoveProp, onChangeProperty }: Pr
                                     </div>
                                     {propertyMenu()}
                                 </div>
-                                <div className="flex grow top-[-4px] border-2 border-transparent rounded focus-within:border-neutral-600">
-                                    <input className="bg-zinc-900 h-7 px-2 focus-visible:outline-0 focus:bg-black" type="text" />
+                                <div className="flex grow ml-[-35px] mt-[-5px] border-2 border-transparent rounded focus-within:border-neutral-600">
+                                    <input className="bg-zinc-900 h-7 px-2 pl-9 focus-visible:outline-0 focus:bg-black" type="text" />
                                     <input className="grow bg-zinc-900 h-7 px-2 rounded-r focus-visible:outline-0 focus:bg-black" type="number" />
                                 </div>
                             </>
@@ -122,9 +122,9 @@ export const Property = ({ proptype, index, onRemoveProp, onChangeProperty }: Pr
                                     </div>
                                     {propertyMenu()}
                                 </div>
-                                <div className="flex grow top-[-4px] border-2 border-transparent rounded focus-within:border-neutral-600">
-                                    <input className="bg-zinc-900 h-7 px-2 focus-visible:outline-0 focus:bg-black" type="text" />
-                                    <input className="grow bg-zinc-900 h-7 px-2 rounded-r focus-visible:outline-0 focus:bg-black" type="checkbox" />
+                                <div className="flex grow ml-[-35px] mt-[-5px] border-2 border-transparent rounded focus-within:border-neutral-600">
+                                    <input className="bg-zinc-900 h-7 px-2 pl-9 focus-visible:outline-0 focus:bg-black" type="text" />
+                                    <input className="checkbox ml-1 mt-0.5" type="checkbox" />
                                 </div>
                             </>
                         )
@@ -137,8 +137,8 @@ export const Property = ({ proptype, index, onRemoveProp, onChangeProperty }: Pr
                                     </div>
                                     {propertyMenu()}
                                 </div>
-                                <div className="flex grow top-[-4px] border-2 border-transparent rounded focus-within:border-neutral-600">
-                                    <input className="bg-zinc-900 h-7 px-2 focus-visible:outline-0 focus:bg-black" type="text" />
+                                <div aria-disabled="true" className="flex grow ml-[-35px] mt-[-5px] border-2 border-transparent rounded focus-within:border-neutral-600 has-[&[type=date]]:bg-black">
+                                    <input className="bg-zinc-900 h-7 px-2 pl-9 focus-visible:outline-0 focus:bg-black" type="text" />
                                     <input className="grow bg-zinc-900 h-7 px-2 rounded-r focus-visible:outline-0 focus:bg-black" type="date" />
                                 </div>
                             </>
