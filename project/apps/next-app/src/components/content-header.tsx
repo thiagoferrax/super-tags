@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import { Emoji, EmojiStyle } from 'emoji-picker-react'
@@ -20,12 +20,18 @@ export default function ContentHeader() {
     // Set new title
     const [title, setTitle] = useState('Sem título')
 
+    const [isClient, setIsClient] = useState(false)
+
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
+
     return (
         <div className="flex mb-10">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-link no-animation pl-0">
                     <ChevronDownIcon className="size-5 text-white" />
-                    <Emoji unified={chosenEmoji.unified} size={50} />
+                    {isClient && <Emoji unified={chosenEmoji.unified} size={50} />}
                 </div>
                 <div tabIndex={0} className="dropdown-content menu menu-horizontal z-1 left-0 top-14 p-2 rounded bg-base-200 shadow">
                     <EmojiPicker onEmojiClick={emojiClick} />

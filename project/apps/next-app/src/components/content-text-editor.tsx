@@ -5,7 +5,8 @@ import StarterKit from '@tiptap/starter-kit'
 import Link from '@tiptap/extension-link'
 import Underline from '@tiptap/extension-underline'
 import Placeholder from '@tiptap/extension-placeholder'
-import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon, CodeBracketIcon, LinkIcon, LinkSlashIcon } from '@heroicons/react/24/outline'
+import TextAlign from '@tiptap/extension-text-align'
+import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon, CodeBracketIcon, LinkIcon, LinkSlashIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 
 export default function ContentTextEditor() {
     const editor = useEditor({
@@ -22,13 +23,15 @@ export default function ContentTextEditor() {
             Link.extend({
                 inclusive: false,
             }),
+            TextAlign.configure({
+                types: ['heading', 'paragraph'],
+            }),
         ],
         editorProps: {
             attributes: {
                 class: 'focus:outline-none',
             },
-        },
-        content: '<p>https://www.google.com/</p>',
+        }
     })
 
     // Link
@@ -60,7 +63,59 @@ export default function ContentTextEditor() {
             {editor && <BubbleMenu editor={editor} tippyOptions={{ duration: 100 }}>
                 <div className="bubble-menu flex bg-zinc-900 rounded border border-white">
                     <div className="flex border-r border-zinc-800">
-                        <button onClick={setLink} className={`px-2 py-1 rounded-l hover:bg-zinc-800 ${editor.isActive('link') ? 'is-active' : ''}`}>
+                        <div className="dropdown">
+                            <div tabIndex={0} role="button" className="btn btn-sm btn-link no-animation px-2 py-1 border-0 rounded-none rounded-l text-white font-normal no-underline hover:no-underline hover:bg-zinc-800">
+                                {/* <button className="dropdown flex items-center px-2 py-1 rounded-l hover:bg-zinc-800"> */}
+                                Text
+                                <ChevronDownIcon className="size-3 text-white" />
+                                {/* </button> */}
+                            </div>
+                            <ul tabIndex={0} className="dropdown-content menu top-7 bg-zinc-900 rounded border border-white">
+                                <li>
+                                    <button
+                                        onClick={() => editor.chain().focus().setTextAlign('left').run()}
+                                        className={`px-2 py-1 hover:bg-zinc-800 ${editor.isActive({ textAlign: 'left' }) ? 'is-active' : ''}`}
+                                    >
+                                        Left
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={() => editor.chain().focus().setTextAlign('center').run()}
+                                        className={`px-2 py-1 hover:bg-zinc-800 ${editor.isActive({ textAlign: 'center' }) ? 'is-active' : ''}`}
+                                    >
+                                        Center
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={() => editor.chain().focus().setTextAlign('right').run()}
+                                        className={`px-2 py-1 hover:bg-zinc-800 ${editor.isActive({ textAlign: 'right' }) ? 'is-active' : ''}`}
+                                    >
+                                        Right
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={() => editor.chain().focus().setTextAlign('justify').run()}
+                                        className={`px-2 py-1 hover:bg-zinc-800 ${editor.isActive({ textAlign: 'justify' }) ? 'is-active' : ''}`}
+                                    >
+                                        Justify
+                                    </button>
+                                </li>
+                                <li>
+                                    <button
+                                        onClick={() => editor.chain().focus().unsetTextAlign().run()}
+                                        className="px-2 py-1 hover:bg-zinc-800"
+                                    >
+                                        Unset
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="flex border-r border-zinc-800">
+                        <button onClick={setLink} className={`px-2 py-1 hover:bg-zinc-800 ${editor.isActive('link') ? 'is-active' : ''}`}>
                             <LinkIcon className="size-5 text-white" />
                         </button>
                         <button
