@@ -5,21 +5,21 @@ import * as icon from './icon'
 export default function Nav() {
     return (
         <nav className="w-80 pl-5 py-10 opacity-100 border-r border-neutral-600 overflow-auto text-white">
-            <input type="checkbox" className="absolute top-9 z-[2] left-5 w-5 h-4 opacity-0" />
+            <input type="checkbox" name="menu-display" className="absolute top-9 z-2 left-5 w-5 h-4 opacity-0" />
             <ul className="menu menu-xs rounded-lg w-[17.5rem] max-w-xs p-0 mb-7 bg-transparent">
                 <li className="mb-4">
-                    <Link href="/profile" className="rounded-none text-[.938rem]">
+                    <Link href="/profile" className="rounded-none text-2sm">
                         <icon.ProfileIcon width={12} className="mx-0.5" />
                         Meu Perfil
                     </Link>
                 </li>
                 <li className="mb-7">
-                    <Link href="/settings" className="rounded-none text-[.938rem]">
+                    <Link href="/settings" className="rounded-none text-2sm">
                         <icon.SettingsIcon width={18} />
                         Configurações
                     </Link>
                 </li>
-                <li className="text-[.813rem] text-white">SUPER TAGS</li>
+                <li className="text-2xs text-white">SUPER TAGS</li>
                 <li>
                     <details open>
                         <summary className="text-base font-medium">
@@ -147,7 +147,7 @@ export default function Nav() {
                     </a>
                 </li>
             </ul>
-            <button className="btn btn-wide h-10 min-h-10 font-normal text-[.938rem] border-neutral-600 hover:border-neutral-400">
+            <button className="btn btn-wide h-10 min-h-10 font-normal text-2sm border-neutral-600 hover:border-neutral-400">
                 <icon.AddPropIcon width={24} />
                 Nova SuperTag
             </button>
