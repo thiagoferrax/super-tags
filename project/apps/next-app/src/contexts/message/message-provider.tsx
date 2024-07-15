@@ -35,7 +35,7 @@ function MessageProvider({
 
 	async function UnexpectedError(error: Error) {
 		console.error(error)
-		await AddMessage("Erro Inesperado. Se o erro persistir contate o suporte.", MessageVariantEnum.error)
+		await AddMessage("Erro inesperado. Se o erro persistir contate o suporte.", MessageVariantEnum.error)
 	}
 
 	function DeleteMessage(id: number) {

@@ -6,7 +6,7 @@ import { useRegisterController } from './use-register-controller'
 
 export default function Page() {
 	const router = useRouter()
-	const { RegisterUser, formErrors, isSubmitDisabled, setFormData, formData } = useRegisterController({ router })
+	const { RegisterUser, formErrors, isSubmitDisabled, setFormData, formData, isRequesting } = useRegisterController({ router })
 
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
@@ -53,10 +53,15 @@ export default function Page() {
 					/>
 
 					<span>{formErrors.password}</span>
-					<input
-						className="text-sm mb-2.5 bg-violet-700 h-11 border border-white rounded disabled:bg-violet-400"
-						type="submit" value="Register"
-						disabled={isSubmitDisabled} />
+					{
+						isRequesting
+							? <span className="loading loading-spinner text-primary self-center mb-2.5"></span>
+							:
+							<input
+								className="text-sm mb-2.5 bg-violet-700 h-11 border border-white rounded disabled:bg-violet-400"
+								type="submit" value="Register"
+								disabled={isSubmitDisabled} />
+					}
 					<Link
 						className="text-sm text-center leading-9 mb-2.5 h-11 border border-white/[.15] rounded"
 						href="/signin"

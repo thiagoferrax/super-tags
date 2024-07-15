@@ -1,5 +1,5 @@
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { AuthorizationContext } from '../../../contexts/authorization/authorization-context';
 import { MessageContext, MessageVariantEnum } from '../../../contexts/message/message-context';
 import { GetErrorDescription } from '../../../configurations/descriptionsErrors';
@@ -39,6 +39,12 @@ export function useSignInController({ router }: useSignInControllerProps): Sigin
 		password: undefined
 	})
 
+	useEffect(() => {
+		if (authorizationContext.isAuthenticated) {
+			router.push("/")
+		}
+	}, [])
+
 	function HasErrors(_errors: Errors): boolean {
 		return Object.keys(_errors).some(key => _errors[key])
 	}
@@ -73,7 +79,7 @@ export function useSignInController({ router }: useSignInControllerProps): Sigin
 				const data = await res.json()
 				if (res.status === 200) {
 					// guardar o token no localstorage
-					await authorizationContext.SignIn(data)
+					await authorizationContext.SignIn(data.token)
 					router.push('/');
 				} else if (res.status === 400) {
 

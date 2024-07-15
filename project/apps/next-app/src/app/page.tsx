@@ -1,12 +1,20 @@
-"use client"
-import { withPrivateRoute } from "../contexts/authorization/with-private-router";
+'use client'
+import React from 'react'
+import Content from "../components/content";
+import Header from "../components/header";
+import Nav from "../components/nav";
+import { withPrivateRoute } from '../contexts/authorization/with-private-router';
 
 function Home() {
-	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
-			Olá Mundo
-		</main>
-	);
+    return (
+        <div className="h-screen flex flex-col overflow-hidden">
+            <Header />
+            <div className="flex grow bg-black overflow-auto">
+                <Nav />
+                <Content>Home Page</Content>
+            </div>
+        </div>
+    )
 }
 
 export default withPrivateRoute(Home)

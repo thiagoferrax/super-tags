@@ -31,10 +31,16 @@ function AuthorizationProvider({
 		setIsAuthenticated(true)
 	}
 
+	async function Logout(): Promise<void> {
+		localStorage.removeItem("token")
+		setIsAuthenticated(false)
+	}
+
 	return (
 		<AuthorizationContext.Provider value={{
 			isAuthenticated,
-			SignIn
+			SignIn,
+			Logout
 
 		}}>
 			{isLoading ? <div>Loading...</div> : children}

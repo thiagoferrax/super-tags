@@ -2,7 +2,7 @@ import { Email, PasswordStrong } from '@repo/domain';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useContext, useState } from 'react';
 import { GetErrorDescription } from '../../../configurations/descriptionsErrors';
-import { MessageContext } from '../../../contexts/message/message-context';
+import { MessageContext, MessageVariantEnum } from '../../../contexts/message/message-context';
 
 
 type UserViewModel = {
@@ -12,6 +12,7 @@ type UserViewModel = {
 }
 
 export type RegisterViewModel = {
+	isRequesting: boolean
 	formErrors: Errors
 	RegisterUser: () => Promise<void>,
 	setFormData: (userViewModel: UserViewModel) => void,
@@ -68,7 +69,7 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 			return
 		}
 		setIsRequesting(true);
-		const newErrors = GetErrors();
+		const newErrors = {} //GetErrors();
 		if (!HasErrors(newErrors)) {
 			try {
 				const httpResponse = await fetch('http://localhost:3000/api/users', {
@@ -77,6 +78,7 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 				})
 				if (httpResponse.status === 201) {
 					router.push('/signin')
+					messageContext.AddMessage("Usuário registrado com sucesso.", MessageVariantEnum.success)
 				} else if (httpResponse.status === 400) {
 					const httpReponseData = await httpResponse.json()
 					const description = GetErrorDescription(httpReponseData.errorCode)
@@ -94,6 +96,7 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 		setIsRequesting(false)
 	}
 	return {
+		isRequesting,
 		RegisterUser,
 		formErrors: errors,
 		setFormData,
