@@ -1,10 +1,12 @@
 import React from "react";
 
 export type AuthorizationContextResult = {
-	isAuthenticated: boolean
+	isAuthenticated: boolean,
+	SignIn: (token: string) => Promise<void>
 }
 
 
 export const AuthorizationContext = React.createContext<AuthorizationContextResult>({
-	isAuthenticated: false
+	isAuthenticated: false,
+	SignIn: async () => { }
 })

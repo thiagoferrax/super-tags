@@ -9,13 +9,13 @@ const descriptionsErrors: {
     EMAIL_INVALID: "Email é inválido",
     PASSWORD_REQUIRED: "Password é obrigatória",
     PASSWORD_NOT_STRONG_ENOUGH: "Password não é suficientemente forte",
-    USER_ALREADY_EXISTS: "Utilizador já registado"
+    USER_ALREADY_EXISTS: "Utilizador já registado",
+	INVALID_CREDENTIALS: "Credenciais inválidas"
 }
 
-export function GetErrorDescription(key: string | undefined): string | undefined {
+export function GetErrorDescription(key: string): string {
     if (!key)
-        return undefined
+        throw new Error("Nenhuma key foi fornecida para obtenção da descrição.")
 
     return descriptionsErrors[key] || key;
-
 }

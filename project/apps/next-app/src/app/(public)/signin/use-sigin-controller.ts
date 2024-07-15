@@ -1,5 +1,8 @@
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthorizationContext } from '../../../contexts/authorization/authorization-context';
+import { MessageContext, MessageVariantEnum } from '../../../contexts/message/message-context';
+import { GetErrorDescription } from '../../../configurations/descriptionsErrors';
 
 
 type CredentialsViewModel = {
@@ -8,6 +11,7 @@ type CredentialsViewModel = {
 }
 
 export type SiginViewModel = {
+	isRequesting: boolean
 	formErrors: Errors
 	SignIn: () => Promise<void>,
 	setFormData: (userViewModel: CredentialsViewModel) => void,
@@ -24,6 +28,8 @@ type Errors = {
 
 export function useSignInController({ router }: useSignInControllerProps): SiginViewModel {
 	const [isRequesting, setIsRequesting] = useState(false);
+	const authorizationContext = useContext(AuthorizationContext)
+	const messageContext = useContext(MessageContext)
 	const [formData, setFormData] = useState<CredentialsViewModel>({
 		username: '',
 		password: ''
@@ -64,17 +70,20 @@ export function useSignInController({ router }: useSignInControllerProps): Sigin
 					method: 'POST',
 					body: JSON.stringify(formData)
 				})
+				const data = await res.json()
 				if (res.status === 200) {
 					// guardar o token no localstorage
+					await authorizationContext.SignIn(data)
 					router.push('/');
-				}
-				else {
-					const data = await res.json()
-					alert(data.error)
+				} else if (res.status === 400) {
+
+					messageContext.AddMessage(GetErrorDescription(data.errorCode), MessageVariantEnum.error)
+				} else {
+					throw new Error("API Error")
 				}
 
 			} catch (error: any) {
-				alert(error.message)
+				messageContext.UnexpectedError(error)
 			}
 		} else {
 			setErrors(newErrors);
@@ -82,6 +91,7 @@ export function useSignInController({ router }: useSignInControllerProps): Sigin
 		setIsRequesting(false)
 	}
 	return {
+		isRequesting: isRequesting,
 		SignIn,
 		formErrors: errors,
 		setFormData,
