@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { ProfileIcon, SettingsIcon, SignoutIcon } from "./icon";
+import { AuthorizationContext } from "../contexts/authorization/authorization-context";
+import { useRouter } from 'next/navigation'
 
 interface Props {
     name: string,
@@ -10,6 +12,8 @@ interface Props {
 };
 
 export default function UserInfo({ name, email, photo }: Props) {
+	const router = useRouter()
+	const authorizationContext = useContext(AuthorizationContext)
     return (
         <div className="flex flex-col flex-wrap max-h-12">
             <div className="text-white">{name}</div>
@@ -35,10 +39,13 @@ export default function UserInfo({ name, email, photo }: Props) {
                         </Link>
                     </li>
                     <li className="text-orange-700 border-t border-neutral-600">
-                        <Link href="/signin?logout=true" className="rounded-t-none rounded-b-md">
+                        <button onClick={async ()=> {
+							await authorizationContext.Logout()
+							router.push('/signin')
+						}} className="rounded-t-none rounded-b-md">
                             <SignoutIcon width={16} />
                             Sair da Aplicação
-                        </Link>
+                        </button>
                     </li>
                 </ul>
             </div>

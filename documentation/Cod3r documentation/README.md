@@ -4,24 +4,24 @@
 
 ### Requisitos Funcionais:
 
-1. **Registro de usuário**:
+1. **Registro de usuário**: feito
 
    - Um usuário deve conseguir criar uma conta na aplicação provendo nome, email e senha.
    - Um usuário só poderá se registrar na aplicação se possuir uma senha forte
    - Caso haja algum problema no registro, o usuário precisa ser avisado disso através de algum feedback visual
 
-2. **Login**:
+2. **Login**: feito
 
    - Um usuário deve fazer login na aplicação utilizando e-mail e senha
    - Ao fazer login, o usuário precisa ser redirecionado para a parte interna da aplicação que não estará disponível para usuários não logados
    - Caso haja algum problema no login, o usuário precisa ser avisado disso através de algum feedback visual
 
-3. **Logout**:
+3. **Logout**: feito
 
    - Um usuário deve conseguir se deslogar da aplicação uma vez que esteja na parte interna da aplicação
    - Ao se deslogar, o usuário deve retornar para a lágina de login
 
-4. **Sessão**
+4. **Sessão**: feito
    - Ao fazer o login, a sessão do usuário deve se manter ativa por um período de tempo (exemplo, uma semana), ou seja, se o usuário fechar o navegador nesse intervalo de tempo, ao abrí-lo novamente dentro do período de tempo estipulado, ele deve continuar logado
 
 ### Detalhes Adicionais:

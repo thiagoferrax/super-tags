@@ -1,7 +1,8 @@
 import { Email, PasswordStrong } from '@repo/domain';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import React, { useState, useEffect } from 'react';
-import { GetErrorDescription } from '../../../../configurations/descriptionsErrors';
+import { useContext, useState } from 'react';
+import { GetErrorDescription } from '../../../configurations/descriptionsErrors';
+import { MessageContext, MessageVariantEnum } from '../../../contexts/message/message-context';
 
 
 type UserViewModel = {
@@ -11,7 +12,7 @@ type UserViewModel = {
 }
 
 export type RegisterViewModel = {
-	isRequesting: boolean,
+	isRequesting: boolean
 	formErrors: Errors
 	RegisterUser: () => Promise<void>,
 	setFormData: (userViewModel: UserViewModel) => void,
@@ -27,7 +28,9 @@ type Errors = {
 }
 
 export function useRegisterController({ router }: useRegisterControllerProps): RegisterViewModel {
+	const messageContext = useContext(MessageContext)
 	const [isRequesting, setIsRequesting] = useState(false);
+
 	const [formData, setFormData] = useState<UserViewModel>({
 		name: '',
 		email: '',
@@ -38,14 +41,11 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 		email: undefined,
 		password: undefined
 	})
-	// useEffect(() => {
-	// 	const newErrors = GetErrors()
-	// 	setErrors(newErrors);
-	// }, [formData])
 
 	function HasErrors(_errors: Errors): boolean {
 		return Object.keys(_errors).some(key => _errors[key])
 	}
+
 
 	function GetErrors(): Errors {
 		const errors: Errors = {
@@ -56,24 +56,39 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 		if (!formData.name) {
 			errors.name = "Nome é obrigatório"
 		}
-		errors.email = GetErrorDescription(Email.getErrorIfExists(formData.email)?.code)
-		errors.password = GetErrorDescription(PasswordStrong.getErrorIfExists(formData.password)?.code)
+		const emailErrorCode = Email.getErrorIfExists(formData.email)?.code;
+		const passwordErrorCode = PasswordStrong.getErrorIfExists(formData.password)?.code;
+		errors.email = emailErrorCode ? GetErrorDescription(emailErrorCode) : undefined
+		errors.password = passwordErrorCode ? GetErrorDescription(passwordErrorCode) : passwordErrorCode
 		return errors
 	}
 
 
 	async function RegisterUser(): Promise<void> {
+		if (isRequesting) {
+			return
+		}
 		setIsRequesting(true);
-		const newErrors = GetErrors();
+		const newErrors = {} //GetErrors();
 		if (!HasErrors(newErrors)) {
 			try {
-				await fetch('http://localhost:3000/api/users', {
+				const httpResponse = await fetch('http://localhost:3000/api/users', {
 					method: 'POST',
 					body: JSON.stringify(formData)
 				})
-				router.push('/signin')
+				if (httpResponse.status === 201) {
+					router.push('/signin')
+					messageContext.AddMessage("Usuário registrado com sucesso.", MessageVariantEnum.success)
+				} else if (httpResponse.status === 400) {
+					const httpReponseData = await httpResponse.json()
+					const description = GetErrorDescription(httpReponseData.errorCode)
+					messageContext.AddMessage(description)
+				} else {
+					throw new Error("API Error")
+				}
+
 			} catch (error: any) {
-				alert(error.message)
+				messageContext.UnexpectedError(error)
 			}
 		} else {
 			setErrors(newErrors);

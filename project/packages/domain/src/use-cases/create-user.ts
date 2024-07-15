@@ -21,12 +21,12 @@ export class CreateUser {
 	async Execute(params: CreateUserParams): Promise<void> {
 
 		new PasswordStrong(params.password)
-		const hashedPassword = await this.hasher.Hash(params.password)
-		const newUser = new User(null, params.name, params.email, hashedPassword);
-		const foundUser = await this.getUserByEmail.GetByEmail(newUser.email.value)
+		const foundUser = await this.getUserByEmail.GetByEmail(params.email)
 		if (foundUser) {
 			throw new ValidationError("CreateUser", null, "USER_ALREADY_EXISTS")
 		}
+		const hashedPassword = await this.hasher.Hash(params.password)
+		const newUser = new User(null, params.name, params.email, hashedPassword);
 		await this.addUserRepository.Add(newUser)
 	}
 }

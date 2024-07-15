@@ -17,8 +17,10 @@
     "author": "José Micael Almeida Costa",
     "license": "ISC",
     "dependencies": {
+        "@repo/domain": "*",
+        "@types/jsonwebtoken": "^9.0.6",
         "bcrypt": "^5.1.1",
-        "@repo/domain": "*"
+        "jsonwebtoken": "^9.0.2"
     },
     "devDependencies": {
         "@faker-js/faker": "^8.4.1",
