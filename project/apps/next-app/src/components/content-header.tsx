@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { ChevronDownIcon } from '@heroicons/react/24/outline'
-import { Emoji, EmojiStyle } from 'emoji-picker-react'
+import { Emoji } from 'emoji-picker-react'
 
 const EmojiPicker = dynamic(() => import('emoji-picker-react'), { ssr: false })
 
@@ -20,6 +20,7 @@ export default function ContentHeader() {
     // Set new title
     const [title, setTitle] = useState('Sem título')
 
+    // Ensure that this is rendered on client
     const [isClient, setIsClient] = useState(false)
 
     useEffect(() => {

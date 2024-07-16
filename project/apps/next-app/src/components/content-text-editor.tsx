@@ -6,7 +6,7 @@ import Link from '@tiptap/extension-link'
 import Underline from '@tiptap/extension-underline'
 import Placeholder from '@tiptap/extension-placeholder'
 import TextAlign from '@tiptap/extension-text-align'
-import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon, CodeBracketIcon, LinkIcon, LinkSlashIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon, CodeBracketIcon, LinkIcon, LinkSlashIcon, ChevronDownIcon, Bars3BottomLeftIcon, Bars3BottomRightIcon, Bars3Icon, Bars3CenterLeftIcon } from '@heroicons/react/24/outline'
 
 export default function ContentTextEditor() {
     const editor = useEditor({
@@ -36,7 +36,7 @@ export default function ContentTextEditor() {
 
     // Link
     const setLink = useCallback(() => {
-        const previousUrl = editor.getAttributes('link').href
+        const previousUrl = editor!.getAttributes('link').href
         const url = window.prompt('URL', previousUrl)
 
         // cancelled
@@ -46,12 +46,12 @@ export default function ContentTextEditor() {
 
         // empty
         if (url === '') {
-            editor.chain().focus().extendMarkRange('link').unsetLink().run()
+            editor!.chain().focus().extendMarkRange('link').unsetLink().run()
             return
         }
 
         // update link
-        editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
+        editor!.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
     }, [editor])
 
     if (!editor) {
@@ -76,7 +76,7 @@ export default function ContentTextEditor() {
                                         onClick={() => editor.chain().focus().setTextAlign('left').run()}
                                         className={`px-2 py-1 hover:bg-zinc-800 ${editor.isActive({ textAlign: 'left' }) ? 'is-active' : ''}`}
                                     >
-                                        Left
+                                        <Bars3BottomLeftIcon className="size-5 text-white" />
                                     </button>
                                 </li>
                                 <li>
@@ -84,7 +84,7 @@ export default function ContentTextEditor() {
                                         onClick={() => editor.chain().focus().setTextAlign('center').run()}
                                         className={`px-2 py-1 hover:bg-zinc-800 ${editor.isActive({ textAlign: 'center' }) ? 'is-active' : ''}`}
                                     >
-                                        Center
+                                        <Bars3CenterLeftIcon className="size-5 text-white" />
                                     </button>
                                 </li>
                                 <li>
@@ -92,7 +92,7 @@ export default function ContentTextEditor() {
                                         onClick={() => editor.chain().focus().setTextAlign('right').run()}
                                         className={`px-2 py-1 hover:bg-zinc-800 ${editor.isActive({ textAlign: 'right' }) ? 'is-active' : ''}`}
                                     >
-                                        Right
+                                        <Bars3BottomRightIcon className="size-5 text-white" />
                                     </button>
                                 </li>
                                 <li>
@@ -100,7 +100,7 @@ export default function ContentTextEditor() {
                                         onClick={() => editor.chain().focus().setTextAlign('justify').run()}
                                         className={`px-2 py-1 hover:bg-zinc-800 ${editor.isActive({ textAlign: 'justify' }) ? 'is-active' : ''}`}
                                     >
-                                        Justify
+                                        <Bars3Icon className="size-5 text-white" />
                                     </button>
                                 </li>
                                 <li>
@@ -156,6 +156,12 @@ export default function ContentTextEditor() {
                             className={`px-2 py-1 rounded-r hover:bg-zinc-800 ${editor.isActive('code') ? 'is-active' : ''}`}
                         >
                             <CodeBracketIcon className="size-5 text-white" />
+                        </button>
+                        <button
+                            onClick={() => editor.chain().focus().toggleBlockquote().run()}
+                            className={editor.isActive('blockquote') ? 'is-active' : ''}
+                        >
+                            <Bars3BottomLeftIcon className="size-5 text-white" />
                         </button>
                     </div>
                 </div>
