@@ -16,11 +16,11 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.16.1
+ * Prisma Client JS version: 5.16.2
  * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
  */
 Prisma.prismaVersion = {
-  client: "5.16.1",
+  client: "5.16.2",
   engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
 }
 
@@ -126,6 +126,20 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.SuperTagScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  texto: 'texto',
+  parentId: 'parentId'
+};
+
+exports.Prisma.PropriedadeScalarFieldEnum = {
+  seqProp: 'seqProp',
+  chave: 'chave',
+  valor: 'valor',
+  superTagId: 'superTagId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -136,9 +150,16 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  SuperTag: 'SuperTag',
+  Propriedade: 'Propriedade'
 };
 
 /**
