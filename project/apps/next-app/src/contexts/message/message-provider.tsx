@@ -8,7 +8,7 @@ export type MessageInfo = {
 	variant: MessageVariantEnum
 }
 
-function MessageProvider({
+export default function MessageProvider({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
@@ -49,13 +49,13 @@ function MessageProvider({
 			UnexpectedError
 
 		}}>
-			<div className='relative'>
-				<ul className='absolute top-2 right-2 w-80 flex flex-col gap-2'>
-					{messages.map(m => (
+			<div className="relative">
+				<ul role="alert" className="absolute z-10 top-2 right-[calc(50vw-160px)] w-80 flex flex-col gap-2">
+					{messages.map((m, index) => (
 						<li
-							className='text-white border-white rounded-[5px] border-2 border-white/[.15] p-4 text-sm
-								flex gap-2
-							'
+							className={`alert alert-${m.variant} text-white border-white rounded-[5px] border-2 border-white/15 p-4 text-sm
+								flex gap-2`}
+							key={index}
 						>
 							<span>{m.variant}</span>
 							<span>{m.text}</span>
@@ -69,5 +69,3 @@ function MessageProvider({
 		</MessageContext.Provider>
 	)
 }
-
-export default MessageProvider
