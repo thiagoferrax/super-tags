@@ -12,26 +12,30 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
+  id       Int        @id @default(autoincrement())
+  email    String     @unique
   name     String
   password String
+  SuperTag SuperTag[]
 }
 
 model SuperTag {
-  id           Int           @id @default(autoincrement())
-  titulo       String        @unique
-  propriedades Propriedade[]
-  texto        String        @db.VarChar(500)
-  parentId     Int?          @unique
-  tagFilha     SuperTag?     @relation("PaiEFilha", fields: [parentId], references: [id])
-  tagPai       SuperTag?     @relation("PaiEFilha")
+  id          Int           @id @default(autoincrement())
+  titulo      String        @unique
+  propriedade Propriedade[]
+  texto       String        @db.VarChar(500)
+  parentId    Int?          @unique
+  user        User          @relation(fields: [userId], references: [id])
+  userId      Int
+  tagFilha    SuperTag?     @relation("PaiEFilha", fields: [parentId], references: [id])
+  tagPai      SuperTag?     @relation("PaiEFilha")
 }
 
 model Propriedade {
   seqProp    Int      @id @default(autoincrement())
   chave      String
   valor      String
+  tipo       String
   tag        SuperTag @relation(fields: [superTagId], references: [id])
   superTagId Int
 }

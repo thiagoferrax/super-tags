@@ -130,13 +130,15 @@ exports.Prisma.SuperTagScalarFieldEnum = {
   id: 'id',
   titulo: 'titulo',
   texto: 'texto',
-  parentId: 'parentId'
+  parentId: 'parentId',
+  userId: 'userId'
 };
 
 exports.Prisma.PropriedadeScalarFieldEnum = {
   seqProp: 'seqProp',
   chave: 'chave',
   valor: 'valor',
+  tipo: 'tipo',
   superTagId: 'superTagId'
 };
 

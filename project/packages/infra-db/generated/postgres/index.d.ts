@@ -1046,15 +1046,46 @@ export namespace Prisma {
 
 
   /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    SuperTag: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    SuperTag?: boolean | UserCountOutputTypeCountSuperTagArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSuperTagArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SuperTagWhereInput
+  }
+
+
+  /**
    * Count Type SuperTagCountOutputType
    */
 
   export type SuperTagCountOutputType = {
-    propriedades: number
+    propriedade: number
   }
 
   export type SuperTagCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    propriedades?: boolean | SuperTagCountOutputTypeCountPropriedadesArgs
+    propriedade?: boolean | SuperTagCountOutputTypeCountPropriedadeArgs
   }
 
   // Custom InputTypes
@@ -1071,7 +1102,7 @@ export namespace Prisma {
   /**
    * SuperTagCountOutputType without action
    */
-  export type SuperTagCountOutputTypeCountPropriedadesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SuperTagCountOutputTypeCountPropriedadeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PropriedadeWhereInput
   }
 
@@ -1270,6 +1301,8 @@ export namespace Prisma {
     email?: boolean
     name?: boolean
     password?: boolean
+    SuperTag?: boolean | User$SuperTagArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1286,10 +1319,17 @@ export namespace Prisma {
     password?: boolean
   }
 
+  export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    SuperTag?: boolean | User$SuperTagArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
-    objects: {}
+    objects: {
+      SuperTag: Prisma.$SuperTagPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       email: string
@@ -1659,6 +1699,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    SuperTag<T extends User$SuperTagArgs<ExtArgs> = {}>(args?: Subset<T, User$SuperTagArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SuperTagPayload<ExtArgs>, T, "findMany"> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1705,6 +1746,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1719,6 +1764,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where: UserWhereUniqueInput
@@ -1732,6 +1781,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * Filter, which User to fetch.
      */
@@ -1777,6 +1830,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which User to fetch.
      */
     where?: UserWhereInput
@@ -1821,6 +1878,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter, which Users to fetch.
      */
     where?: UserWhereInput
@@ -1859,6 +1920,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
     /**
      * The data needed to create a User.
      */
@@ -1900,6 +1965,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The data needed to update a User.
      */
     data: XOR<UserUpdateInput, UserUncheckedUpdateInput>
@@ -1932,6 +2001,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * The filter to search for the User to update in case it exists.
      */
     where: UserWhereUniqueInput
@@ -1954,6 +2027,10 @@ export namespace Prisma {
      */
     select?: UserSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    /**
      * Filter which User to delete.
      */
     where: UserWhereUniqueInput
@@ -1970,6 +2047,26 @@ export namespace Prisma {
   }
 
   /**
+   * User.SuperTag
+   */
+  export type User$SuperTagArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SuperTag
+     */
+    select?: SuperTagSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SuperTagInclude<ExtArgs> | null
+    where?: SuperTagWhereInput
+    orderBy?: SuperTagOrderByWithRelationInput | SuperTagOrderByWithRelationInput[]
+    cursor?: SuperTagWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SuperTagScalarFieldEnum | SuperTagScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1977,6 +2074,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the User
      */
     select?: UserSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
   }
 
 
@@ -1995,11 +2096,13 @@ export namespace Prisma {
   export type SuperTagAvgAggregateOutputType = {
     id: number | null
     parentId: number | null
+    userId: number | null
   }
 
   export type SuperTagSumAggregateOutputType = {
     id: number | null
     parentId: number | null
+    userId: number | null
   }
 
   export type SuperTagMinAggregateOutputType = {
@@ -2007,6 +2110,7 @@ export namespace Prisma {
     titulo: string | null
     texto: string | null
     parentId: number | null
+    userId: number | null
   }
 
   export type SuperTagMaxAggregateOutputType = {
@@ -2014,6 +2118,7 @@ export namespace Prisma {
     titulo: string | null
     texto: string | null
     parentId: number | null
+    userId: number | null
   }
 
   export type SuperTagCountAggregateOutputType = {
@@ -2021,6 +2126,7 @@ export namespace Prisma {
     titulo: number
     texto: number
     parentId: number
+    userId: number
     _all: number
   }
 
@@ -2028,11 +2134,13 @@ export namespace Prisma {
   export type SuperTagAvgAggregateInputType = {
     id?: true
     parentId?: true
+    userId?: true
   }
 
   export type SuperTagSumAggregateInputType = {
     id?: true
     parentId?: true
+    userId?: true
   }
 
   export type SuperTagMinAggregateInputType = {
@@ -2040,6 +2148,7 @@ export namespace Prisma {
     titulo?: true
     texto?: true
     parentId?: true
+    userId?: true
   }
 
   export type SuperTagMaxAggregateInputType = {
@@ -2047,6 +2156,7 @@ export namespace Prisma {
     titulo?: true
     texto?: true
     parentId?: true
+    userId?: true
   }
 
   export type SuperTagCountAggregateInputType = {
@@ -2054,6 +2164,7 @@ export namespace Prisma {
     titulo?: true
     texto?: true
     parentId?: true
+    userId?: true
     _all?: true
   }
 
@@ -2148,6 +2259,7 @@ export namespace Prisma {
     titulo: string
     texto: string
     parentId: number | null
+    userId: number
     _count: SuperTagCountAggregateOutputType | null
     _avg: SuperTagAvgAggregateOutputType | null
     _sum: SuperTagSumAggregateOutputType | null
@@ -2174,7 +2286,9 @@ export namespace Prisma {
     titulo?: boolean
     texto?: boolean
     parentId?: boolean
-    propriedades?: boolean | SuperTag$propriedadesArgs<ExtArgs>
+    userId?: boolean
+    propriedade?: boolean | SuperTag$propriedadeArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     tagFilha?: boolean | SuperTag$tagFilhaArgs<ExtArgs>
     tagPai?: boolean | SuperTag$tagPaiArgs<ExtArgs>
     _count?: boolean | SuperTagCountOutputTypeDefaultArgs<ExtArgs>
@@ -2185,6 +2299,8 @@ export namespace Prisma {
     titulo?: boolean
     texto?: boolean
     parentId?: boolean
+    userId?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
     tagFilha?: boolean | SuperTag$tagFilhaArgs<ExtArgs>
   }, ExtArgs["result"]["superTag"]>
 
@@ -2193,22 +2309,26 @@ export namespace Prisma {
     titulo?: boolean
     texto?: boolean
     parentId?: boolean
+    userId?: boolean
   }
 
   export type SuperTagInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    propriedades?: boolean | SuperTag$propriedadesArgs<ExtArgs>
+    propriedade?: boolean | SuperTag$propriedadeArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
     tagFilha?: boolean | SuperTag$tagFilhaArgs<ExtArgs>
     tagPai?: boolean | SuperTag$tagPaiArgs<ExtArgs>
     _count?: boolean | SuperTagCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SuperTagIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
     tagFilha?: boolean | SuperTag$tagFilhaArgs<ExtArgs>
   }
 
   export type $SuperTagPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "SuperTag"
     objects: {
-      propriedades: Prisma.$PropriedadePayload<ExtArgs>[]
+      propriedade: Prisma.$PropriedadePayload<ExtArgs>[]
+      user: Prisma.$UserPayload<ExtArgs>
       tagFilha: Prisma.$SuperTagPayload<ExtArgs> | null
       tagPai: Prisma.$SuperTagPayload<ExtArgs> | null
     }
@@ -2217,6 +2337,7 @@ export namespace Prisma {
       titulo: string
       texto: string
       parentId: number | null
+      userId: number
     }, ExtArgs["result"]["superTag"]>
     composites: {}
   }
@@ -2581,7 +2702,8 @@ export namespace Prisma {
    */
   export interface Prisma__SuperTagClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    propriedades<T extends SuperTag$propriedadesArgs<ExtArgs> = {}>(args?: Subset<T, SuperTag$propriedadesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropriedadePayload<ExtArgs>, T, "findMany"> | Null>
+    propriedade<T extends SuperTag$propriedadeArgs<ExtArgs> = {}>(args?: Subset<T, SuperTag$propriedadeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PropriedadePayload<ExtArgs>, T, "findMany"> | Null>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     tagFilha<T extends SuperTag$tagFilhaArgs<ExtArgs> = {}>(args?: Subset<T, SuperTag$tagFilhaArgs<ExtArgs>>): Prisma__SuperTagClient<$Result.GetResult<Prisma.$SuperTagPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     tagPai<T extends SuperTag$tagPaiArgs<ExtArgs> = {}>(args?: Subset<T, SuperTag$tagPaiArgs<ExtArgs>>): Prisma__SuperTagClient<$Result.GetResult<Prisma.$SuperTagPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
     /**
@@ -2617,6 +2739,7 @@ export namespace Prisma {
     readonly titulo: FieldRef<"SuperTag", 'String'>
     readonly texto: FieldRef<"SuperTag", 'String'>
     readonly parentId: FieldRef<"SuperTag", 'Int'>
+    readonly userId: FieldRef<"SuperTag", 'Int'>
   }
     
 
@@ -2935,9 +3058,9 @@ export namespace Prisma {
   }
 
   /**
-   * SuperTag.propriedades
+   * SuperTag.propriedade
    */
-  export type SuperTag$propriedadesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SuperTag$propriedadeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Propriedade
      */
@@ -3025,6 +3148,7 @@ export namespace Prisma {
     seqProp: number | null
     chave: string | null
     valor: string | null
+    tipo: string | null
     superTagId: number | null
   }
 
@@ -3032,6 +3156,7 @@ export namespace Prisma {
     seqProp: number | null
     chave: string | null
     valor: string | null
+    tipo: string | null
     superTagId: number | null
   }
 
@@ -3039,6 +3164,7 @@ export namespace Prisma {
     seqProp: number
     chave: number
     valor: number
+    tipo: number
     superTagId: number
     _all: number
   }
@@ -3058,6 +3184,7 @@ export namespace Prisma {
     seqProp?: true
     chave?: true
     valor?: true
+    tipo?: true
     superTagId?: true
   }
 
@@ -3065,6 +3192,7 @@ export namespace Prisma {
     seqProp?: true
     chave?: true
     valor?: true
+    tipo?: true
     superTagId?: true
   }
 
@@ -3072,6 +3200,7 @@ export namespace Prisma {
     seqProp?: true
     chave?: true
     valor?: true
+    tipo?: true
     superTagId?: true
     _all?: true
   }
@@ -3166,6 +3295,7 @@ export namespace Prisma {
     seqProp: number
     chave: string
     valor: string
+    tipo: string
     superTagId: number
     _count: PropriedadeCountAggregateOutputType | null
     _avg: PropriedadeAvgAggregateOutputType | null
@@ -3192,6 +3322,7 @@ export namespace Prisma {
     seqProp?: boolean
     chave?: boolean
     valor?: boolean
+    tipo?: boolean
     superTagId?: boolean
     tag?: boolean | SuperTagDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["propriedade"]>
@@ -3200,6 +3331,7 @@ export namespace Prisma {
     seqProp?: boolean
     chave?: boolean
     valor?: boolean
+    tipo?: boolean
     superTagId?: boolean
     tag?: boolean | SuperTagDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["propriedade"]>
@@ -3208,6 +3340,7 @@ export namespace Prisma {
     seqProp?: boolean
     chave?: boolean
     valor?: boolean
+    tipo?: boolean
     superTagId?: boolean
   }
 
@@ -3227,6 +3360,7 @@ export namespace Prisma {
       seqProp: number
       chave: string
       valor: string
+      tipo: string
       superTagId: number
     }, ExtArgs["result"]["propriedade"]>
     composites: {}
@@ -3625,6 +3759,7 @@ export namespace Prisma {
     readonly seqProp: FieldRef<"Propriedade", 'Int'>
     readonly chave: FieldRef<"Propriedade", 'String'>
     readonly valor: FieldRef<"Propriedade", 'String'>
+    readonly tipo: FieldRef<"Propriedade", 'String'>
     readonly superTagId: FieldRef<"Propriedade", 'Int'>
   }
     
@@ -3986,7 +4121,8 @@ export namespace Prisma {
     id: 'id',
     titulo: 'titulo',
     texto: 'texto',
-    parentId: 'parentId'
+    parentId: 'parentId',
+    userId: 'userId'
   };
 
   export type SuperTagScalarFieldEnum = (typeof SuperTagScalarFieldEnum)[keyof typeof SuperTagScalarFieldEnum]
@@ -3996,6 +4132,7 @@ export namespace Prisma {
     seqProp: 'seqProp',
     chave: 'chave',
     valor: 'valor',
+    tipo: 'tipo',
     superTagId: 'superTagId'
   };
 
@@ -4084,6 +4221,7 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    SuperTag?: SuperTagListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -4091,6 +4229,7 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     password?: SortOrder
+    SuperTag?: SuperTagOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -4101,6 +4240,7 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    SuperTag?: SuperTagListRelationFilter
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -4133,7 +4273,9 @@ export namespace Prisma {
     titulo?: StringFilter<"SuperTag"> | string
     texto?: StringFilter<"SuperTag"> | string
     parentId?: IntNullableFilter<"SuperTag"> | number | null
-    propriedades?: PropriedadeListRelationFilter
+    userId?: IntFilter<"SuperTag"> | number
+    propriedade?: PropriedadeListRelationFilter
+    user?: XOR<UserRelationFilter, UserWhereInput>
     tagFilha?: XOR<SuperTagNullableRelationFilter, SuperTagWhereInput> | null
     tagPai?: XOR<SuperTagNullableRelationFilter, SuperTagWhereInput> | null
   }
@@ -4143,7 +4285,9 @@ export namespace Prisma {
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrderInput | SortOrder
-    propriedades?: PropriedadeOrderByRelationAggregateInput
+    userId?: SortOrder
+    propriedade?: PropriedadeOrderByRelationAggregateInput
+    user?: UserOrderByWithRelationInput
     tagFilha?: SuperTagOrderByWithRelationInput
     tagPai?: SuperTagOrderByWithRelationInput
   }
@@ -4156,7 +4300,9 @@ export namespace Prisma {
     OR?: SuperTagWhereInput[]
     NOT?: SuperTagWhereInput | SuperTagWhereInput[]
     texto?: StringFilter<"SuperTag"> | string
-    propriedades?: PropriedadeListRelationFilter
+    userId?: IntFilter<"SuperTag"> | number
+    propriedade?: PropriedadeListRelationFilter
+    user?: XOR<UserRelationFilter, UserWhereInput>
     tagFilha?: XOR<SuperTagNullableRelationFilter, SuperTagWhereInput> | null
     tagPai?: XOR<SuperTagNullableRelationFilter, SuperTagWhereInput> | null
   }, "id" | "titulo" | "parentId">
@@ -4166,6 +4312,7 @@ export namespace Prisma {
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrderInput | SortOrder
+    userId?: SortOrder
     _count?: SuperTagCountOrderByAggregateInput
     _avg?: SuperTagAvgOrderByAggregateInput
     _max?: SuperTagMaxOrderByAggregateInput
@@ -4181,6 +4328,7 @@ export namespace Prisma {
     titulo?: StringWithAggregatesFilter<"SuperTag"> | string
     texto?: StringWithAggregatesFilter<"SuperTag"> | string
     parentId?: IntNullableWithAggregatesFilter<"SuperTag"> | number | null
+    userId?: IntWithAggregatesFilter<"SuperTag"> | number
   }
 
   export type PropriedadeWhereInput = {
@@ -4190,6 +4338,7 @@ export namespace Prisma {
     seqProp?: IntFilter<"Propriedade"> | number
     chave?: StringFilter<"Propriedade"> | string
     valor?: StringFilter<"Propriedade"> | string
+    tipo?: StringFilter<"Propriedade"> | string
     superTagId?: IntFilter<"Propriedade"> | number
     tag?: XOR<SuperTagRelationFilter, SuperTagWhereInput>
   }
@@ -4198,6 +4347,7 @@ export namespace Prisma {
     seqProp?: SortOrder
     chave?: SortOrder
     valor?: SortOrder
+    tipo?: SortOrder
     superTagId?: SortOrder
     tag?: SuperTagOrderByWithRelationInput
   }
@@ -4209,6 +4359,7 @@ export namespace Prisma {
     NOT?: PropriedadeWhereInput | PropriedadeWhereInput[]
     chave?: StringFilter<"Propriedade"> | string
     valor?: StringFilter<"Propriedade"> | string
+    tipo?: StringFilter<"Propriedade"> | string
     superTagId?: IntFilter<"Propriedade"> | number
     tag?: XOR<SuperTagRelationFilter, SuperTagWhereInput>
   }, "seqProp">
@@ -4217,6 +4368,7 @@ export namespace Prisma {
     seqProp?: SortOrder
     chave?: SortOrder
     valor?: SortOrder
+    tipo?: SortOrder
     superTagId?: SortOrder
     _count?: PropriedadeCountOrderByAggregateInput
     _avg?: PropriedadeAvgOrderByAggregateInput
@@ -4232,6 +4384,7 @@ export namespace Prisma {
     seqProp?: IntWithAggregatesFilter<"Propriedade"> | number
     chave?: StringWithAggregatesFilter<"Propriedade"> | string
     valor?: StringWithAggregatesFilter<"Propriedade"> | string
+    tipo?: StringWithAggregatesFilter<"Propriedade"> | string
     superTagId?: IntWithAggregatesFilter<"Propriedade"> | number
   }
 
@@ -4239,6 +4392,7 @@ export namespace Prisma {
     email: string
     name: string
     password: string
+    SuperTag?: SuperTagCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -4246,12 +4400,14 @@ export namespace Prisma {
     email: string
     name: string
     password: string
+    SuperTag?: SuperTagUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    SuperTag?: SuperTagUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -4259,6 +4415,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    SuperTag?: SuperTagUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -4284,7 +4441,8 @@ export namespace Prisma {
   export type SuperTagCreateInput = {
     titulo: string
     texto: string
-    propriedades?: PropriedadeCreateNestedManyWithoutTagInput
+    propriedade?: PropriedadeCreateNestedManyWithoutTagInput
+    user: UserCreateNestedOneWithoutSuperTagInput
     tagFilha?: SuperTagCreateNestedOneWithoutTagPaiInput
     tagPai?: SuperTagCreateNestedOneWithoutTagFilhaInput
   }
@@ -4294,14 +4452,16 @@ export namespace Prisma {
     titulo: string
     texto: string
     parentId?: number | null
-    propriedades?: PropriedadeUncheckedCreateNestedManyWithoutTagInput
+    userId: number
+    propriedade?: PropriedadeUncheckedCreateNestedManyWithoutTagInput
     tagPai?: SuperTagUncheckedCreateNestedOneWithoutTagFilhaInput
   }
 
   export type SuperTagUpdateInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
-    propriedades?: PropriedadeUpdateManyWithoutTagNestedInput
+    propriedade?: PropriedadeUpdateManyWithoutTagNestedInput
+    user?: UserUpdateOneRequiredWithoutSuperTagNestedInput
     tagFilha?: SuperTagUpdateOneWithoutTagPaiNestedInput
     tagPai?: SuperTagUpdateOneWithoutTagFilhaNestedInput
   }
@@ -4311,7 +4471,8 @@ export namespace Prisma {
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
-    propriedades?: PropriedadeUncheckedUpdateManyWithoutTagNestedInput
+    userId?: IntFieldUpdateOperationsInput | number
+    propriedade?: PropriedadeUncheckedUpdateManyWithoutTagNestedInput
     tagPai?: SuperTagUncheckedUpdateOneWithoutTagFilhaNestedInput
   }
 
@@ -4320,6 +4481,7 @@ export namespace Prisma {
     titulo: string
     texto: string
     parentId?: number | null
+    userId: number
   }
 
   export type SuperTagUpdateManyMutationInput = {
@@ -4332,31 +4494,36 @@ export namespace Prisma {
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
   }
 
   export type PropriedadeCreateInput = {
     chave: string
     valor: string
-    tag: SuperTagCreateNestedOneWithoutPropriedadesInput
+    tipo: string
+    tag: SuperTagCreateNestedOneWithoutPropriedadeInput
   }
 
   export type PropriedadeUncheckedCreateInput = {
     seqProp?: number
     chave: string
     valor: string
+    tipo: string
     superTagId: number
   }
 
   export type PropriedadeUpdateInput = {
     chave?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
-    tag?: SuperTagUpdateOneRequiredWithoutPropriedadesNestedInput
+    tipo?: StringFieldUpdateOperationsInput | string
+    tag?: SuperTagUpdateOneRequiredWithoutPropriedadeNestedInput
   }
 
   export type PropriedadeUncheckedUpdateInput = {
     seqProp?: IntFieldUpdateOperationsInput | number
     chave?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
     superTagId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4364,18 +4531,21 @@ export namespace Prisma {
     seqProp?: number
     chave: string
     valor: string
+    tipo: string
     superTagId: number
   }
 
   export type PropriedadeUpdateManyMutationInput = {
     chave?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
   }
 
   export type PropriedadeUncheckedUpdateManyInput = {
     seqProp?: IntFieldUpdateOperationsInput | number
     chave?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
     superTagId?: IntFieldUpdateOperationsInput | number
   }
 
@@ -4403,6 +4573,16 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type SuperTagListRelationFilter = {
+    every?: SuperTagWhereInput
+    some?: SuperTagWhereInput
+    none?: SuperTagWhereInput
+  }
+
+  export type SuperTagOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -4485,6 +4665,11 @@ export namespace Prisma {
     none?: PropriedadeWhereInput
   }
 
+  export type UserRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
   export type SuperTagNullableRelationFilter = {
     is?: SuperTagWhereInput | null
     isNot?: SuperTagWhereInput | null
@@ -4504,11 +4689,13 @@ export namespace Prisma {
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrder
+    userId?: SortOrder
   }
 
   export type SuperTagAvgOrderByAggregateInput = {
     id?: SortOrder
     parentId?: SortOrder
+    userId?: SortOrder
   }
 
   export type SuperTagMaxOrderByAggregateInput = {
@@ -4516,6 +4703,7 @@ export namespace Prisma {
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrder
+    userId?: SortOrder
   }
 
   export type SuperTagMinOrderByAggregateInput = {
@@ -4523,11 +4711,13 @@ export namespace Prisma {
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrder
+    userId?: SortOrder
   }
 
   export type SuperTagSumOrderByAggregateInput = {
     id?: SortOrder
     parentId?: SortOrder
+    userId?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4555,6 +4745,7 @@ export namespace Prisma {
     seqProp?: SortOrder
     chave?: SortOrder
     valor?: SortOrder
+    tipo?: SortOrder
     superTagId?: SortOrder
   }
 
@@ -4567,6 +4758,7 @@ export namespace Prisma {
     seqProp?: SortOrder
     chave?: SortOrder
     valor?: SortOrder
+    tipo?: SortOrder
     superTagId?: SortOrder
   }
 
@@ -4574,6 +4766,7 @@ export namespace Prisma {
     seqProp?: SortOrder
     chave?: SortOrder
     valor?: SortOrder
+    tipo?: SortOrder
     superTagId?: SortOrder
   }
 
@@ -4582,8 +4775,36 @@ export namespace Prisma {
     superTagId?: SortOrder
   }
 
+  export type SuperTagCreateNestedManyWithoutUserInput = {
+    create?: XOR<SuperTagCreateWithoutUserInput, SuperTagUncheckedCreateWithoutUserInput> | SuperTagCreateWithoutUserInput[] | SuperTagUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SuperTagCreateOrConnectWithoutUserInput | SuperTagCreateOrConnectWithoutUserInput[]
+    createMany?: SuperTagCreateManyUserInputEnvelope
+    connect?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+  }
+
+  export type SuperTagUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SuperTagCreateWithoutUserInput, SuperTagUncheckedCreateWithoutUserInput> | SuperTagCreateWithoutUserInput[] | SuperTagUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SuperTagCreateOrConnectWithoutUserInput | SuperTagCreateOrConnectWithoutUserInput[]
+    createMany?: SuperTagCreateManyUserInputEnvelope
+    connect?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type SuperTagUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SuperTagCreateWithoutUserInput, SuperTagUncheckedCreateWithoutUserInput> | SuperTagCreateWithoutUserInput[] | SuperTagUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SuperTagCreateOrConnectWithoutUserInput | SuperTagCreateOrConnectWithoutUserInput[]
+    upsert?: SuperTagUpsertWithWhereUniqueWithoutUserInput | SuperTagUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SuperTagCreateManyUserInputEnvelope
+    set?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+    disconnect?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+    delete?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+    connect?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+    update?: SuperTagUpdateWithWhereUniqueWithoutUserInput | SuperTagUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SuperTagUpdateManyWithWhereWithoutUserInput | SuperTagUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SuperTagScalarWhereInput | SuperTagScalarWhereInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -4594,11 +4815,31 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type SuperTagUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SuperTagCreateWithoutUserInput, SuperTagUncheckedCreateWithoutUserInput> | SuperTagCreateWithoutUserInput[] | SuperTagUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SuperTagCreateOrConnectWithoutUserInput | SuperTagCreateOrConnectWithoutUserInput[]
+    upsert?: SuperTagUpsertWithWhereUniqueWithoutUserInput | SuperTagUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SuperTagCreateManyUserInputEnvelope
+    set?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+    disconnect?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+    delete?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+    connect?: SuperTagWhereUniqueInput | SuperTagWhereUniqueInput[]
+    update?: SuperTagUpdateWithWhereUniqueWithoutUserInput | SuperTagUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SuperTagUpdateManyWithWhereWithoutUserInput | SuperTagUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SuperTagScalarWhereInput | SuperTagScalarWhereInput[]
+  }
+
   export type PropriedadeCreateNestedManyWithoutTagInput = {
     create?: XOR<PropriedadeCreateWithoutTagInput, PropriedadeUncheckedCreateWithoutTagInput> | PropriedadeCreateWithoutTagInput[] | PropriedadeUncheckedCreateWithoutTagInput[]
     connectOrCreate?: PropriedadeCreateOrConnectWithoutTagInput | PropriedadeCreateOrConnectWithoutTagInput[]
     createMany?: PropriedadeCreateManyTagInputEnvelope
     connect?: PropriedadeWhereUniqueInput | PropriedadeWhereUniqueInput[]
+  }
+
+  export type UserCreateNestedOneWithoutSuperTagInput = {
+    create?: XOR<UserCreateWithoutSuperTagInput, UserUncheckedCreateWithoutSuperTagInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSuperTagInput
+    connect?: UserWhereUniqueInput
   }
 
   export type SuperTagCreateNestedOneWithoutTagPaiInput = {
@@ -4638,6 +4879,14 @@ export namespace Prisma {
     update?: PropriedadeUpdateWithWhereUniqueWithoutTagInput | PropriedadeUpdateWithWhereUniqueWithoutTagInput[]
     updateMany?: PropriedadeUpdateManyWithWhereWithoutTagInput | PropriedadeUpdateManyWithWhereWithoutTagInput[]
     deleteMany?: PropriedadeScalarWhereInput | PropriedadeScalarWhereInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutSuperTagNestedInput = {
+    create?: XOR<UserCreateWithoutSuperTagInput, UserUncheckedCreateWithoutSuperTagInput>
+    connectOrCreate?: UserCreateOrConnectWithoutSuperTagInput
+    upsert?: UserUpsertWithoutSuperTagInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSuperTagInput, UserUpdateWithoutSuperTagInput>, UserUncheckedUpdateWithoutSuperTagInput>
   }
 
   export type SuperTagUpdateOneWithoutTagPaiNestedInput = {
@@ -4692,18 +4941,18 @@ export namespace Prisma {
     update?: XOR<XOR<SuperTagUpdateToOneWithWhereWithoutTagFilhaInput, SuperTagUpdateWithoutTagFilhaInput>, SuperTagUncheckedUpdateWithoutTagFilhaInput>
   }
 
-  export type SuperTagCreateNestedOneWithoutPropriedadesInput = {
-    create?: XOR<SuperTagCreateWithoutPropriedadesInput, SuperTagUncheckedCreateWithoutPropriedadesInput>
-    connectOrCreate?: SuperTagCreateOrConnectWithoutPropriedadesInput
+  export type SuperTagCreateNestedOneWithoutPropriedadeInput = {
+    create?: XOR<SuperTagCreateWithoutPropriedadeInput, SuperTagUncheckedCreateWithoutPropriedadeInput>
+    connectOrCreate?: SuperTagCreateOrConnectWithoutPropriedadeInput
     connect?: SuperTagWhereUniqueInput
   }
 
-  export type SuperTagUpdateOneRequiredWithoutPropriedadesNestedInput = {
-    create?: XOR<SuperTagCreateWithoutPropriedadesInput, SuperTagUncheckedCreateWithoutPropriedadesInput>
-    connectOrCreate?: SuperTagCreateOrConnectWithoutPropriedadesInput
-    upsert?: SuperTagUpsertWithoutPropriedadesInput
+  export type SuperTagUpdateOneRequiredWithoutPropriedadeNestedInput = {
+    create?: XOR<SuperTagCreateWithoutPropriedadeInput, SuperTagUncheckedCreateWithoutPropriedadeInput>
+    connectOrCreate?: SuperTagCreateOrConnectWithoutPropriedadeInput
+    upsert?: SuperTagUpsertWithoutPropriedadeInput
     connect?: SuperTagWhereUniqueInput
-    update?: XOR<XOR<SuperTagUpdateToOneWithWhereWithoutPropriedadesInput, SuperTagUpdateWithoutPropriedadesInput>, SuperTagUncheckedUpdateWithoutPropriedadesInput>
+    update?: XOR<XOR<SuperTagUpdateToOneWithWhereWithoutPropriedadeInput, SuperTagUpdateWithoutPropriedadeInput>, SuperTagUncheckedUpdateWithoutPropriedadeInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -4813,15 +5062,71 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type SuperTagCreateWithoutUserInput = {
+    titulo: string
+    texto: string
+    propriedade?: PropriedadeCreateNestedManyWithoutTagInput
+    tagFilha?: SuperTagCreateNestedOneWithoutTagPaiInput
+    tagPai?: SuperTagCreateNestedOneWithoutTagFilhaInput
+  }
+
+  export type SuperTagUncheckedCreateWithoutUserInput = {
+    id?: number
+    titulo: string
+    texto: string
+    parentId?: number | null
+    propriedade?: PropriedadeUncheckedCreateNestedManyWithoutTagInput
+    tagPai?: SuperTagUncheckedCreateNestedOneWithoutTagFilhaInput
+  }
+
+  export type SuperTagCreateOrConnectWithoutUserInput = {
+    where: SuperTagWhereUniqueInput
+    create: XOR<SuperTagCreateWithoutUserInput, SuperTagUncheckedCreateWithoutUserInput>
+  }
+
+  export type SuperTagCreateManyUserInputEnvelope = {
+    data: SuperTagCreateManyUserInput | SuperTagCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SuperTagUpsertWithWhereUniqueWithoutUserInput = {
+    where: SuperTagWhereUniqueInput
+    update: XOR<SuperTagUpdateWithoutUserInput, SuperTagUncheckedUpdateWithoutUserInput>
+    create: XOR<SuperTagCreateWithoutUserInput, SuperTagUncheckedCreateWithoutUserInput>
+  }
+
+  export type SuperTagUpdateWithWhereUniqueWithoutUserInput = {
+    where: SuperTagWhereUniqueInput
+    data: XOR<SuperTagUpdateWithoutUserInput, SuperTagUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SuperTagUpdateManyWithWhereWithoutUserInput = {
+    where: SuperTagScalarWhereInput
+    data: XOR<SuperTagUpdateManyMutationInput, SuperTagUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SuperTagScalarWhereInput = {
+    AND?: SuperTagScalarWhereInput | SuperTagScalarWhereInput[]
+    OR?: SuperTagScalarWhereInput[]
+    NOT?: SuperTagScalarWhereInput | SuperTagScalarWhereInput[]
+    id?: IntFilter<"SuperTag"> | number
+    titulo?: StringFilter<"SuperTag"> | string
+    texto?: StringFilter<"SuperTag"> | string
+    parentId?: IntNullableFilter<"SuperTag"> | number | null
+    userId?: IntFilter<"SuperTag"> | number
+  }
+
   export type PropriedadeCreateWithoutTagInput = {
     chave: string
     valor: string
+    tipo: string
   }
 
   export type PropriedadeUncheckedCreateWithoutTagInput = {
     seqProp?: number
     chave: string
     valor: string
+    tipo: string
   }
 
   export type PropriedadeCreateOrConnectWithoutTagInput = {
@@ -4834,10 +5139,29 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserCreateWithoutSuperTagInput = {
+    email: string
+    name: string
+    password: string
+  }
+
+  export type UserUncheckedCreateWithoutSuperTagInput = {
+    id?: number
+    email: string
+    name: string
+    password: string
+  }
+
+  export type UserCreateOrConnectWithoutSuperTagInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutSuperTagInput, UserUncheckedCreateWithoutSuperTagInput>
+  }
+
   export type SuperTagCreateWithoutTagPaiInput = {
     titulo: string
     texto: string
-    propriedades?: PropriedadeCreateNestedManyWithoutTagInput
+    propriedade?: PropriedadeCreateNestedManyWithoutTagInput
+    user: UserCreateNestedOneWithoutSuperTagInput
     tagFilha?: SuperTagCreateNestedOneWithoutTagPaiInput
   }
 
@@ -4846,7 +5170,8 @@ export namespace Prisma {
     titulo: string
     texto: string
     parentId?: number | null
-    propriedades?: PropriedadeUncheckedCreateNestedManyWithoutTagInput
+    userId: number
+    propriedade?: PropriedadeUncheckedCreateNestedManyWithoutTagInput
   }
 
   export type SuperTagCreateOrConnectWithoutTagPaiInput = {
@@ -4857,7 +5182,8 @@ export namespace Prisma {
   export type SuperTagCreateWithoutTagFilhaInput = {
     titulo: string
     texto: string
-    propriedades?: PropriedadeCreateNestedManyWithoutTagInput
+    propriedade?: PropriedadeCreateNestedManyWithoutTagInput
+    user: UserCreateNestedOneWithoutSuperTagInput
     tagPai?: SuperTagCreateNestedOneWithoutTagFilhaInput
   }
 
@@ -4865,7 +5191,8 @@ export namespace Prisma {
     id?: number
     titulo: string
     texto: string
-    propriedades?: PropriedadeUncheckedCreateNestedManyWithoutTagInput
+    userId: number
+    propriedade?: PropriedadeUncheckedCreateNestedManyWithoutTagInput
     tagPai?: SuperTagUncheckedCreateNestedOneWithoutTagFilhaInput
   }
 
@@ -4897,7 +5224,32 @@ export namespace Prisma {
     seqProp?: IntFilter<"Propriedade"> | number
     chave?: StringFilter<"Propriedade"> | string
     valor?: StringFilter<"Propriedade"> | string
+    tipo?: StringFilter<"Propriedade"> | string
     superTagId?: IntFilter<"Propriedade"> | number
+  }
+
+  export type UserUpsertWithoutSuperTagInput = {
+    update: XOR<UserUpdateWithoutSuperTagInput, UserUncheckedUpdateWithoutSuperTagInput>
+    create: XOR<UserCreateWithoutSuperTagInput, UserUncheckedCreateWithoutSuperTagInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutSuperTagInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutSuperTagInput, UserUncheckedUpdateWithoutSuperTagInput>
+  }
+
+  export type UserUpdateWithoutSuperTagInput = {
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type UserUncheckedUpdateWithoutSuperTagInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    email?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
   }
 
   export type SuperTagUpsertWithoutTagPaiInput = {
@@ -4914,7 +5266,8 @@ export namespace Prisma {
   export type SuperTagUpdateWithoutTagPaiInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
-    propriedades?: PropriedadeUpdateManyWithoutTagNestedInput
+    propriedade?: PropriedadeUpdateManyWithoutTagNestedInput
+    user?: UserUpdateOneRequiredWithoutSuperTagNestedInput
     tagFilha?: SuperTagUpdateOneWithoutTagPaiNestedInput
   }
 
@@ -4923,7 +5276,8 @@ export namespace Prisma {
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
-    propriedades?: PropriedadeUncheckedUpdateManyWithoutTagNestedInput
+    userId?: IntFieldUpdateOperationsInput | number
+    propriedade?: PropriedadeUncheckedUpdateManyWithoutTagNestedInput
   }
 
   export type SuperTagUpsertWithoutTagFilhaInput = {
@@ -4940,7 +5294,8 @@ export namespace Prisma {
   export type SuperTagUpdateWithoutTagFilhaInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
-    propriedades?: PropriedadeUpdateManyWithoutTagNestedInput
+    propriedade?: PropriedadeUpdateManyWithoutTagNestedInput
+    user?: UserUpdateOneRequiredWithoutSuperTagNestedInput
     tagPai?: SuperTagUpdateOneWithoutTagFilhaNestedInput
   }
 
@@ -4948,77 +5303,117 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
-    propriedades?: PropriedadeUncheckedUpdateManyWithoutTagNestedInput
+    userId?: IntFieldUpdateOperationsInput | number
+    propriedade?: PropriedadeUncheckedUpdateManyWithoutTagNestedInput
     tagPai?: SuperTagUncheckedUpdateOneWithoutTagFilhaNestedInput
   }
 
-  export type SuperTagCreateWithoutPropriedadesInput = {
+  export type SuperTagCreateWithoutPropriedadeInput = {
     titulo: string
     texto: string
+    user: UserCreateNestedOneWithoutSuperTagInput
     tagFilha?: SuperTagCreateNestedOneWithoutTagPaiInput
     tagPai?: SuperTagCreateNestedOneWithoutTagFilhaInput
   }
 
-  export type SuperTagUncheckedCreateWithoutPropriedadesInput = {
+  export type SuperTagUncheckedCreateWithoutPropriedadeInput = {
     id?: number
     titulo: string
     texto: string
     parentId?: number | null
+    userId: number
     tagPai?: SuperTagUncheckedCreateNestedOneWithoutTagFilhaInput
   }
 
-  export type SuperTagCreateOrConnectWithoutPropriedadesInput = {
+  export type SuperTagCreateOrConnectWithoutPropriedadeInput = {
     where: SuperTagWhereUniqueInput
-    create: XOR<SuperTagCreateWithoutPropriedadesInput, SuperTagUncheckedCreateWithoutPropriedadesInput>
+    create: XOR<SuperTagCreateWithoutPropriedadeInput, SuperTagUncheckedCreateWithoutPropriedadeInput>
   }
 
-  export type SuperTagUpsertWithoutPropriedadesInput = {
-    update: XOR<SuperTagUpdateWithoutPropriedadesInput, SuperTagUncheckedUpdateWithoutPropriedadesInput>
-    create: XOR<SuperTagCreateWithoutPropriedadesInput, SuperTagUncheckedCreateWithoutPropriedadesInput>
+  export type SuperTagUpsertWithoutPropriedadeInput = {
+    update: XOR<SuperTagUpdateWithoutPropriedadeInput, SuperTagUncheckedUpdateWithoutPropriedadeInput>
+    create: XOR<SuperTagCreateWithoutPropriedadeInput, SuperTagUncheckedCreateWithoutPropriedadeInput>
     where?: SuperTagWhereInput
   }
 
-  export type SuperTagUpdateToOneWithWhereWithoutPropriedadesInput = {
+  export type SuperTagUpdateToOneWithWhereWithoutPropriedadeInput = {
     where?: SuperTagWhereInput
-    data: XOR<SuperTagUpdateWithoutPropriedadesInput, SuperTagUncheckedUpdateWithoutPropriedadesInput>
+    data: XOR<SuperTagUpdateWithoutPropriedadeInput, SuperTagUncheckedUpdateWithoutPropriedadeInput>
   }
 
-  export type SuperTagUpdateWithoutPropriedadesInput = {
+  export type SuperTagUpdateWithoutPropriedadeInput = {
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
+    user?: UserUpdateOneRequiredWithoutSuperTagNestedInput
     tagFilha?: SuperTagUpdateOneWithoutTagPaiNestedInput
     tagPai?: SuperTagUpdateOneWithoutTagFilhaNestedInput
   }
 
-  export type SuperTagUncheckedUpdateWithoutPropriedadesInput = {
+  export type SuperTagUncheckedUpdateWithoutPropriedadeInput = {
     id?: IntFieldUpdateOperationsInput | number
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    userId?: IntFieldUpdateOperationsInput | number
     tagPai?: SuperTagUncheckedUpdateOneWithoutTagFilhaNestedInput
+  }
+
+  export type SuperTagCreateManyUserInput = {
+    id?: number
+    titulo: string
+    texto: string
+    parentId?: number | null
+  }
+
+  export type SuperTagUpdateWithoutUserInput = {
+    titulo?: StringFieldUpdateOperationsInput | string
+    texto?: StringFieldUpdateOperationsInput | string
+    propriedade?: PropriedadeUpdateManyWithoutTagNestedInput
+    tagFilha?: SuperTagUpdateOneWithoutTagPaiNestedInput
+    tagPai?: SuperTagUpdateOneWithoutTagFilhaNestedInput
+  }
+
+  export type SuperTagUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    titulo?: StringFieldUpdateOperationsInput | string
+    texto?: StringFieldUpdateOperationsInput | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
+    propriedade?: PropriedadeUncheckedUpdateManyWithoutTagNestedInput
+    tagPai?: SuperTagUncheckedUpdateOneWithoutTagFilhaNestedInput
+  }
+
+  export type SuperTagUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    titulo?: StringFieldUpdateOperationsInput | string
+    texto?: StringFieldUpdateOperationsInput | string
+    parentId?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PropriedadeCreateManyTagInput = {
     seqProp?: number
     chave: string
     valor: string
+    tipo: string
   }
 
   export type PropriedadeUpdateWithoutTagInput = {
     chave?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
   }
 
   export type PropriedadeUncheckedUpdateWithoutTagInput = {
     seqProp?: IntFieldUpdateOperationsInput | number
     chave?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
   }
 
   export type PropriedadeUncheckedUpdateManyWithoutTagInput = {
     seqProp?: IntFieldUpdateOperationsInput | number
     chave?: StringFieldUpdateOperationsInput | string
     valor?: StringFieldUpdateOperationsInput | string
+    tipo?: StringFieldUpdateOperationsInput | string
   }
 
 
@@ -5026,6 +5421,10 @@ export namespace Prisma {
   /**
    * Aliases for legacy arg types
    */
+    /**
+     * @deprecated Use UserCountOutputTypeDefaultArgs instead
+     */
+    export type UserCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = UserCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use SuperTagCountOutputTypeDefaultArgs instead
      */
