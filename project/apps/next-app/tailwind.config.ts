@@ -21,4 +21,10 @@ export default {
     require('daisyui'),
     require('@tailwindcss/typography'),
   ],
+  safelist: [
+    "alert-error",
+    "alert-success",
+    "alert-info",
+    "alert-warning"
+  ],
 } satisfies Config
