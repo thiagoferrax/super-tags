@@ -4,11 +4,18 @@ export enum MessageVariantEnum {
 	error = "error",
 	success = "success",
 	info = "info",
-	warning = "warning",
+	warning = "warning"
+}
+
+export enum MessageTitleEnum {
+	error = "Erro",
+	success = "Sucesso",
+	info = "info",
+	warning = "Atenção"
 }
 
 export type MessageContextResult = {
-	AddMessage: (message: string, variant?: MessageVariantEnum) => Promise<void>
+	AddMessage: (message: string, title?: MessageTitleEnum, variant?: MessageVariantEnum) => Promise<void>
 	UnexpectedError: (error: Error) => Promise<void>
 }
 
