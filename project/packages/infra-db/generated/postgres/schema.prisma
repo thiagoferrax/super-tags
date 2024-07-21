@@ -21,6 +21,7 @@ model User {
 
 model SuperTag {
   id          Int           @id @default(autoincrement())
+  emoji       String
   titulo      String        @unique
   propriedade Propriedade[]
   texto       String        @db.VarChar(500)

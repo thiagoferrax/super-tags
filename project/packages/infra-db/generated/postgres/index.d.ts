@@ -2107,6 +2107,7 @@ export namespace Prisma {
 
   export type SuperTagMinAggregateOutputType = {
     id: number | null
+    emoji: string | null
     titulo: string | null
     texto: string | null
     parentId: number | null
@@ -2115,6 +2116,7 @@ export namespace Prisma {
 
   export type SuperTagMaxAggregateOutputType = {
     id: number | null
+    emoji: string | null
     titulo: string | null
     texto: string | null
     parentId: number | null
@@ -2123,6 +2125,7 @@ export namespace Prisma {
 
   export type SuperTagCountAggregateOutputType = {
     id: number
+    emoji: number
     titulo: number
     texto: number
     parentId: number
@@ -2145,6 +2148,7 @@ export namespace Prisma {
 
   export type SuperTagMinAggregateInputType = {
     id?: true
+    emoji?: true
     titulo?: true
     texto?: true
     parentId?: true
@@ -2153,6 +2157,7 @@ export namespace Prisma {
 
   export type SuperTagMaxAggregateInputType = {
     id?: true
+    emoji?: true
     titulo?: true
     texto?: true
     parentId?: true
@@ -2161,6 +2166,7 @@ export namespace Prisma {
 
   export type SuperTagCountAggregateInputType = {
     id?: true
+    emoji?: true
     titulo?: true
     texto?: true
     parentId?: true
@@ -2256,6 +2262,7 @@ export namespace Prisma {
 
   export type SuperTagGroupByOutputType = {
     id: number
+    emoji: string
     titulo: string
     texto: string
     parentId: number | null
@@ -2283,6 +2290,7 @@ export namespace Prisma {
 
   export type SuperTagSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    emoji?: boolean
     titulo?: boolean
     texto?: boolean
     parentId?: boolean
@@ -2296,6 +2304,7 @@ export namespace Prisma {
 
   export type SuperTagSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    emoji?: boolean
     titulo?: boolean
     texto?: boolean
     parentId?: boolean
@@ -2306,6 +2315,7 @@ export namespace Prisma {
 
   export type SuperTagSelectScalar = {
     id?: boolean
+    emoji?: boolean
     titulo?: boolean
     texto?: boolean
     parentId?: boolean
@@ -2334,6 +2344,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      emoji: string
       titulo: string
       texto: string
       parentId: number | null
@@ -2736,6 +2747,7 @@ export namespace Prisma {
    */ 
   interface SuperTagFieldRefs {
     readonly id: FieldRef<"SuperTag", 'Int'>
+    readonly emoji: FieldRef<"SuperTag", 'String'>
     readonly titulo: FieldRef<"SuperTag", 'String'>
     readonly texto: FieldRef<"SuperTag", 'String'>
     readonly parentId: FieldRef<"SuperTag", 'Int'>
@@ -4119,6 +4131,7 @@ export namespace Prisma {
 
   export const SuperTagScalarFieldEnum: {
     id: 'id',
+    emoji: 'emoji',
     titulo: 'titulo',
     texto: 'texto',
     parentId: 'parentId',
@@ -4270,6 +4283,7 @@ export namespace Prisma {
     OR?: SuperTagWhereInput[]
     NOT?: SuperTagWhereInput | SuperTagWhereInput[]
     id?: IntFilter<"SuperTag"> | number
+    emoji?: StringFilter<"SuperTag"> | string
     titulo?: StringFilter<"SuperTag"> | string
     texto?: StringFilter<"SuperTag"> | string
     parentId?: IntNullableFilter<"SuperTag"> | number | null
@@ -4282,6 +4296,7 @@ export namespace Prisma {
 
   export type SuperTagOrderByWithRelationInput = {
     id?: SortOrder
+    emoji?: SortOrder
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrderInput | SortOrder
@@ -4299,6 +4314,7 @@ export namespace Prisma {
     AND?: SuperTagWhereInput | SuperTagWhereInput[]
     OR?: SuperTagWhereInput[]
     NOT?: SuperTagWhereInput | SuperTagWhereInput[]
+    emoji?: StringFilter<"SuperTag"> | string
     texto?: StringFilter<"SuperTag"> | string
     userId?: IntFilter<"SuperTag"> | number
     propriedade?: PropriedadeListRelationFilter
@@ -4309,6 +4325,7 @@ export namespace Prisma {
 
   export type SuperTagOrderByWithAggregationInput = {
     id?: SortOrder
+    emoji?: SortOrder
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrderInput | SortOrder
@@ -4325,6 +4342,7 @@ export namespace Prisma {
     OR?: SuperTagScalarWhereWithAggregatesInput[]
     NOT?: SuperTagScalarWhereWithAggregatesInput | SuperTagScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"SuperTag"> | number
+    emoji?: StringWithAggregatesFilter<"SuperTag"> | string
     titulo?: StringWithAggregatesFilter<"SuperTag"> | string
     texto?: StringWithAggregatesFilter<"SuperTag"> | string
     parentId?: IntNullableWithAggregatesFilter<"SuperTag"> | number | null
@@ -4439,6 +4457,7 @@ export namespace Prisma {
   }
 
   export type SuperTagCreateInput = {
+    emoji: string
     titulo: string
     texto: string
     propriedade?: PropriedadeCreateNestedManyWithoutTagInput
@@ -4449,6 +4468,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedCreateInput = {
     id?: number
+    emoji: string
     titulo: string
     texto: string
     parentId?: number | null
@@ -4458,6 +4478,7 @@ export namespace Prisma {
   }
 
   export type SuperTagUpdateInput = {
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     propriedade?: PropriedadeUpdateManyWithoutTagNestedInput
@@ -4468,6 +4489,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -4478,6 +4500,7 @@ export namespace Prisma {
 
   export type SuperTagCreateManyInput = {
     id?: number
+    emoji: string
     titulo: string
     texto: string
     parentId?: number | null
@@ -4485,12 +4508,14 @@ export namespace Prisma {
   }
 
   export type SuperTagUpdateManyMutationInput = {
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
   }
 
   export type SuperTagUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -4686,6 +4711,7 @@ export namespace Prisma {
 
   export type SuperTagCountOrderByAggregateInput = {
     id?: SortOrder
+    emoji?: SortOrder
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrder
@@ -4700,6 +4726,7 @@ export namespace Prisma {
 
   export type SuperTagMaxOrderByAggregateInput = {
     id?: SortOrder
+    emoji?: SortOrder
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrder
@@ -4708,6 +4735,7 @@ export namespace Prisma {
 
   export type SuperTagMinOrderByAggregateInput = {
     id?: SortOrder
+    emoji?: SortOrder
     titulo?: SortOrder
     texto?: SortOrder
     parentId?: SortOrder
@@ -5063,6 +5091,7 @@ export namespace Prisma {
   }
 
   export type SuperTagCreateWithoutUserInput = {
+    emoji: string
     titulo: string
     texto: string
     propriedade?: PropriedadeCreateNestedManyWithoutTagInput
@@ -5072,6 +5101,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedCreateWithoutUserInput = {
     id?: number
+    emoji: string
     titulo: string
     texto: string
     parentId?: number | null
@@ -5110,6 +5140,7 @@ export namespace Prisma {
     OR?: SuperTagScalarWhereInput[]
     NOT?: SuperTagScalarWhereInput | SuperTagScalarWhereInput[]
     id?: IntFilter<"SuperTag"> | number
+    emoji?: StringFilter<"SuperTag"> | string
     titulo?: StringFilter<"SuperTag"> | string
     texto?: StringFilter<"SuperTag"> | string
     parentId?: IntNullableFilter<"SuperTag"> | number | null
@@ -5158,6 +5189,7 @@ export namespace Prisma {
   }
 
   export type SuperTagCreateWithoutTagPaiInput = {
+    emoji: string
     titulo: string
     texto: string
     propriedade?: PropriedadeCreateNestedManyWithoutTagInput
@@ -5167,6 +5199,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedCreateWithoutTagPaiInput = {
     id?: number
+    emoji: string
     titulo: string
     texto: string
     parentId?: number | null
@@ -5180,6 +5213,7 @@ export namespace Prisma {
   }
 
   export type SuperTagCreateWithoutTagFilhaInput = {
+    emoji: string
     titulo: string
     texto: string
     propriedade?: PropriedadeCreateNestedManyWithoutTagInput
@@ -5189,6 +5223,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedCreateWithoutTagFilhaInput = {
     id?: number
+    emoji: string
     titulo: string
     texto: string
     userId: number
@@ -5264,6 +5299,7 @@ export namespace Prisma {
   }
 
   export type SuperTagUpdateWithoutTagPaiInput = {
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     propriedade?: PropriedadeUpdateManyWithoutTagNestedInput
@@ -5273,6 +5309,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedUpdateWithoutTagPaiInput = {
     id?: IntFieldUpdateOperationsInput | number
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -5292,6 +5329,7 @@ export namespace Prisma {
   }
 
   export type SuperTagUpdateWithoutTagFilhaInput = {
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     propriedade?: PropriedadeUpdateManyWithoutTagNestedInput
@@ -5301,6 +5339,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedUpdateWithoutTagFilhaInput = {
     id?: IntFieldUpdateOperationsInput | number
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     userId?: IntFieldUpdateOperationsInput | number
@@ -5309,6 +5348,7 @@ export namespace Prisma {
   }
 
   export type SuperTagCreateWithoutPropriedadeInput = {
+    emoji: string
     titulo: string
     texto: string
     user: UserCreateNestedOneWithoutSuperTagInput
@@ -5318,6 +5358,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedCreateWithoutPropriedadeInput = {
     id?: number
+    emoji: string
     titulo: string
     texto: string
     parentId?: number | null
@@ -5342,6 +5383,7 @@ export namespace Prisma {
   }
 
   export type SuperTagUpdateWithoutPropriedadeInput = {
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     user?: UserUpdateOneRequiredWithoutSuperTagNestedInput
@@ -5351,6 +5393,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedUpdateWithoutPropriedadeInput = {
     id?: IntFieldUpdateOperationsInput | number
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -5360,12 +5403,14 @@ export namespace Prisma {
 
   export type SuperTagCreateManyUserInput = {
     id?: number
+    emoji: string
     titulo: string
     texto: string
     parentId?: number | null
   }
 
   export type SuperTagUpdateWithoutUserInput = {
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     propriedade?: PropriedadeUpdateManyWithoutTagNestedInput
@@ -5375,6 +5420,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null
@@ -5384,6 +5430,7 @@ export namespace Prisma {
 
   export type SuperTagUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
+    emoji?: StringFieldUpdateOperationsInput | string
     titulo?: StringFieldUpdateOperationsInput | string
     texto?: StringFieldUpdateOperationsInput | string
     parentId?: NullableIntFieldUpdateOperationsInput | number | null

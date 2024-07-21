@@ -1,34 +1,32 @@
 import { SuperTag } from "../models/supertag";
 import { ISuperTagRepository } from "../services";
-import { ValidationError } from "..";
+import { MenuSuperTag, ValidationError } from "..";
 
-export type CreateSuperTagParams = {
+export type CreateMenuSuperTagParams = {
   icone: string;
   titulo: string;
-  texto: string;
   parentId: number | null;
 };
 
-export class CreateSuperTag {
+export class CreateMenuSuperTag {
   constructor(private readonly superTagRepository: ISuperTagRepository) {}
 
-  async Execute(params: CreateSuperTagParams): Promise<void> {
+  async Execute(params: CreateMenuSuperTagParams): Promise<void> {
     const foundSuperTag = await this.superTagRepository.GetByTitulo(
       params.titulo
     );
     if (foundSuperTag) {
       throw new ValidationError(
-        "CreateSuperTag",
+        "CreateMenuSuperTag",
         null,
-        "SUPERTAG_ALREADY_EXISTS"
+        "MENU_SUPERTAG_ALREADY_EXISTS"
       );
     }
-    const superTag = new SuperTag(
+    const menuSuperTag = new MenuSuperTag(
       null,
       params.icone,
       params.titulo,
-      params.texto,
-      []
+      params.parentId
     );
   }
 }

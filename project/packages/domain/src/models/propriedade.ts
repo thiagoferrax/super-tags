@@ -1,5 +1,5 @@
-import { NomeSimples } from "./nomeSimples";
-import { PropriedadeValor } from "./propriedadeValor";
+import { NomeSimples } from "./nome-simples";
+import { PropriedadeValor } from "./propriedade-valor";
 
 export class Propriedade {
   public readonly id: number | null;

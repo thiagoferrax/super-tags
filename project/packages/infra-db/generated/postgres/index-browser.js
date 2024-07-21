@@ -128,6 +128,7 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.SuperTagScalarFieldEnum = {
   id: 'id',
+  emoji: 'emoji',
   titulo: 'titulo',
   texto: 'texto',
   parentId: 'parentId',
