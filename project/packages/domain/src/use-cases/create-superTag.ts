@@ -3,7 +3,7 @@ import { ISuperTagRepository } from "../services";
 import { ValidationError } from "..";
 
 export type CreateSuperTagParams = {
-  icone: string;
+  emoji: string;
   titulo: string;
   texto: string;
   parentId: number | null;
@@ -25,7 +25,7 @@ export class CreateSuperTag {
     }
     const superTag = new SuperTag(
       null,
-      params.icone,
+      params.emoji,
       params.titulo,
       params.texto,
       []

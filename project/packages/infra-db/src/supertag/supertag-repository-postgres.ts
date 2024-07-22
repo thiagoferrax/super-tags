@@ -51,7 +51,8 @@ export class SuperTagRepositoryPostgres implements ISuperTagRepository {
   async GetById(id: number): Promise<SuperTag | undefined> {
     const superTag = await this._db.superTag.findUnique({
       where: {
-        parentId: id,
+        id,
+        userId: this._userId,
       },
     });
 
@@ -64,5 +65,44 @@ export class SuperTagRepositoryPostgres implements ISuperTagRepository {
           []
         )
       : undefined;
+  }
+
+  async GetByUserId(): Promise<SuperTag[] | undefined> {
+    const superTag = await this._db.superTag.findMany({
+      where: {
+        userId: this._userId,
+      },
+    });
+
+    const ListaSuperTag: SuperTag[] = [];
+
+    superTag.map((st) =>
+      ListaSuperTag.push(new SuperTag(st.id, st.emoji, st.titulo, st.texto, []))
+    );
+
+    return ListaSuperTag;
+  }
+
+  async GetByTitulo(titulo: string): Promise<SuperTag | undefined> {
+    const superTag = await this._db.superTag.findUnique({
+      where: {
+        titulo,
+        userId: this._userId,
+      },
+    });
+
+    return superTag
+      ? new SuperTag(
+          superTag.id,
+          superTag.emoji,
+          superTag.titulo,
+          superTag.titulo,
+          []
+        )
+      : undefined;
+  }
+
+  async ClearAll(): Promise<void> {
+    await this._db.superTag.deleteMany();
   }
 }
