@@ -7,6 +7,7 @@ import Underline from '@tiptap/extension-underline'
 import Placeholder from '@tiptap/extension-placeholder'
 import TextAlign from '@tiptap/extension-text-align'
 import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon, CodeBracketIcon, LinkIcon, LinkSlashIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import './content-text-editor.css'
 
 export default function ContentTextEditor() {
     const editor = useEditor({
@@ -36,7 +37,7 @@ export default function ContentTextEditor() {
 
     // Link
     const setLink = useCallback(() => {
-        const previousUrl = editor.getAttributes('link').href
+        const previousUrl = editor!.getAttributes('link').href
         const url = window.prompt('URL', previousUrl)
 
         // cancelled
@@ -46,12 +47,12 @@ export default function ContentTextEditor() {
 
         // empty
         if (url === '') {
-            editor.chain().focus().extendMarkRange('link').unsetLink().run()
+            editor!.chain().focus().extendMarkRange('link').unsetLink().run()
             return
         }
 
         // update link
-        editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
+        editor!.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
     }, [editor])
 
     if (!editor) {
@@ -65,10 +66,8 @@ export default function ContentTextEditor() {
                     <div className="flex border-r border-zinc-800">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-sm btn-link no-animation px-2 py-1 border-0 rounded-none rounded-l text-white font-normal no-underline hover:no-underline hover:bg-zinc-800">
-                                {/* <button className="dropdown flex items-center px-2 py-1 rounded-l hover:bg-zinc-800"> */}
                                 Text
                                 <ChevronDownIcon className="size-3 text-white" />
-                                {/* </button> */}
                             </div>
                             <ul tabIndex={0} className="dropdown-content menu top-7 bg-zinc-900 rounded border border-white">
                                 <li>

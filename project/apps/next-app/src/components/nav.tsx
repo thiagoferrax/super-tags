@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import * as icon from './icon'
+import NavMenu from "./nav-menu"
 
 export default function Nav() {
     return (
@@ -21,7 +22,7 @@ export default function Nav() {
                 </li>
                 <li className="text-2xs text-white">SUPER TAGS</li>
                 <li>
-                    <details open>
+                    {/* <details open>
                         <summary className="text-base font-medium">
                             <icon.UserIcon width={29} />
                             <span className="truncate">Fundamentos</span>
@@ -94,9 +95,10 @@ export default function Nav() {
                                 </details>
                             </li>
                         </ul>
-                    </details>
+                    </details> */}
+                    <NavMenu />
                 </li>
-                <li>
+                {/* <li>
                     <details open>
                         <summary className="text-base font-medium">
                             <icon.UserIcon width={25} />
@@ -145,7 +147,7 @@ export default function Nav() {
                         <icon.InvadersIcon width={29} />
                         <span className="truncate">reports-final-2.pdf</span>
                     </a>
-                </li>
+                </li> */}
             </ul>
             <button className="btn btn-wide h-10 min-h-10 font-normal text-2sm border-neutral-600 hover:border-neutral-400">
                 <icon.AddPropIcon width={24} />
