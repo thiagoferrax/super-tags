@@ -1,5 +1,5 @@
 /* eslint-disable no-console, react/no-access-state-in-setstate, react/no-danger, no-param-reassign */
-import React from 'react'
+import React, { useState } from 'react'
 import './nav-menu.css'
 import Tree from 'rc-tree';
 /* import Tree, { TreeNode } from 'rc-tree'; */
@@ -28,28 +28,31 @@ export default function NavMenu() {
         expandedKeys: string[]
     }
 
-    const state = {
-        gData,
-        autoExpandParent: true,
-        expandedKeys: ['0-0-key', '0-0-0-key', '0-0-0-0-key'],
-    };
+    const [state, setState] = useState(
+        {
+            gData,
+            autoExpandParent: true,
+            expandedKeys: ['0-0-key', '0-0-0-key', '0-0-0-0-key'],
+        }
+    )
+
 
     const onDragEnter = ({ expandedKeys }: State): void => {
         console.log('enter', expandedKeys);
         setState({
-            expandedKeys,
+            ...state, expandedKeys
         });
     };
 
-    const onDrop = info => {
+    const onDrop = (info: any) => {
         console.log('drop', info);
         const dropKey = info.node.props.eventKey;
         const dragKey = info.dragNode.props.eventKey;
         const dropPos = info.node.props.pos.split('-');
         const dropPosition = info.dropPosition - Number(dropPos[dropPos.length - 1]);
 
-        const loop = (data, key, callback) => {
-            data.forEach((item, index, arr) => {
+        const loop = (data: any, key: any, callback: any) => {
+            data.forEach((item: any, index: any, arr: any) => {
                 if (item.key === key) {
                     callback(item, index, arr);
                     return;
@@ -62,15 +65,15 @@ export default function NavMenu() {
         const data = [...state.gData];
 
         // Find dragObject
-        let dragObj;
-        loop(data, dragKey, (item, index, arr) => {
+        let dragObj: any;
+        loop(data, dragKey, (item: any, index: any, arr: any) => {
             arr.splice(index, 1);
             dragObj = item;
         });
 
         if (!info.dropToGap) {
             // Drop on the content
-            loop(data, dropKey, item => {
+            loop(data, dropKey, (item: any) => {
                 item.children = item.children || [];
                 // where to insert 示例添加到尾部，可以是随意位置
                 item.children.push(dragObj);
@@ -80,16 +83,16 @@ export default function NavMenu() {
             info.node.props.expanded && // Is expanded
             dropPosition === 1 // On the bottom gap
         ) {
-            loop(data, dropKey, item => {
+            loop(data, dropKey, (item: any) => {
                 item.children = item.children || [];
                 // where to insert 示例添加到尾部，可以是随意位置
                 item.children.unshift(dragObj);
             });
         } else {
             // Drop on the gap
-            let ar;
-            let i;
-            loop(data, dropKey, (item, index, arr) => {
+            let ar: any[];
+            let i: number = 0;
+            loop(data, dropKey, (item: any, index: any, arr: any) => {
                 ar = arr;
                 i = index;
             });
@@ -101,13 +104,14 @@ export default function NavMenu() {
         }
 
         setState({
-            gData: data,
+            ...state, gData: data
         });
     };
 
-    const onExpand = expandedKeys => {
+    const onExpand = (expandedKeys: String[]) => {
         console.log('onExpand', expandedKeys);
         setState({
+            ...state,
             expandedKeys,
             autoExpandParent: false,
         });
