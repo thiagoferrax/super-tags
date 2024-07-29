@@ -8,6 +8,9 @@ type UsersDTO = {
 }
 
 export class UserRepositoryInMemory implements IUserRepository, IAddUserRepository, IGetUserByEmailRepository {
+	GetById(id: number): Promise<User | null> {
+		throw new Error("Method not implemented.")
+	}
 
 
     private static _usersInMemory: UsersDTO[] = []

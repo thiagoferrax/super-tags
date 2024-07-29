@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useSignInController } from './use-sigin-controller'
+import Loading from '../../../components/loading'
 
 export default function Page() {
 	const router = useRouter()
@@ -38,7 +39,7 @@ export default function Page() {
 					<span>{formErrors.password}</span>
 					{
 						isRequesting
-							? <span className="loading loading-spinner text-primary self-center mb-2.5"></span>
+							? <Loading className="mb-2.5"></Loading>
 							: <input
 								className="text-sm mb-2.5mb-2.5 bg-violet-700 h-11 border border-white rounded"
 								type="submit"

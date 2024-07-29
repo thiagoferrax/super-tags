@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react'
 import { AuthorizationContext } from './authorization-context';
+import Loading from '../../components/loading';
 
 function AuthorizationProvider({
 	children,
@@ -26,7 +27,7 @@ function AuthorizationProvider({
 		setIsLoading(false)
 	}
 
-	async function  SignIn(token: string) {
+	async function SignIn(token: string) {
 		localStorage.setItem("token", token)
 		setIsAuthenticated(true)
 	}
@@ -43,7 +44,7 @@ function AuthorizationProvider({
 			Logout
 
 		}}>
-			{isLoading ? <div>Loading...</div> : children}
+			{isLoading ? <Loading /> : children}
 		</AuthorizationContext.Provider>
 	)
 }

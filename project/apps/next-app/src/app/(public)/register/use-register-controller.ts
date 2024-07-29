@@ -3,6 +3,8 @@ import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.share
 import { useContext, useState } from 'react';
 import { GetErrorDescription } from '../../../configurations/descriptionsErrors';
 import { MessageContext, MessageVariantEnum } from '../../../contexts/message/message-context';
+import { useConfigurations } from '../../../contexts/configurations/useConfigurations';
+import { useApi } from '../../../hooks/useApi';
 
 
 type UserViewModel = {
@@ -29,6 +31,7 @@ type Errors = {
 
 export function useRegisterController({ router }: useRegisterControllerProps): RegisterViewModel {
 	const messageContext = useContext(MessageContext)
+	const { Request } = useApi()
 	const [isRequesting, setIsRequesting] = useState(false);
 
 	const [formData, setFormData] = useState<UserViewModel>({
@@ -72,16 +75,16 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 		const newErrors = {} //GetErrors();
 		if (!HasErrors(newErrors)) {
 			try {
-				const httpResponse = await fetch('http://localhost:3000/api/users', {
-					method: 'POST',
-					body: JSON.stringify(formData)
+				const res = await Request({
+					url: "/api/users",
+					method: "POST",
+					body: formData
 				})
-				if (httpResponse.status === 201) {
+				if (res.status === 201) {
 					router.push('/signin')
 					messageContext.AddMessage("Usuário registrado com sucesso.", MessageVariantEnum.success)
-				} else if (httpResponse.status === 400) {
-					const httpReponseData = await httpResponse.json()
-					const description = GetErrorDescription(httpReponseData.errorCode)
+				} else if (res.status === 400) {
+					const description = GetErrorDescription(res.data.errorCode)
 					messageContext.AddMessage(description)
 				} else {
 					throw new Error("API Error")

@@ -1,23 +1,9 @@
-import { ValidationError } from "@repo/domain"
-import { MakeSignIn } from "@repo/main"
-import { HttpResponse } from "../utils/HttpResponse"
 
+import { makeSignInController } from "@repo/main"
+import { NextAdapter } from "../utils/adapters/NextAdapter";
 
 export const POST = async (request: Request) => {
-	try {
-		const body = await request.json()
-		const signInUseCase = MakeSignIn()
-		const response = await signInUseCase.Execute({
-			username: body.username,
-			password: body.password
-		})
+	const controller = new NextAdapter(makeSignInController())
+	return await controller.Execute(request)
+};
 
-		return new Response(JSON.stringify(response), { status: 200 })
-	} catch (err: any) {
-		if (err instanceof ValidationError) {
-			return HttpResponse.BadRequestError(err.code)
-		}
-		console.error(err)
-		return HttpResponse.UnexpectedError()
-	}
-}
