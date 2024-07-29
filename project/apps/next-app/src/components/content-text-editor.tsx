@@ -7,6 +7,7 @@ import Underline from '@tiptap/extension-underline'
 import Placeholder from '@tiptap/extension-placeholder'
 import TextAlign from '@tiptap/extension-text-align'
 import { BoldIcon, ItalicIcon, StrikethroughIcon, UnderlineIcon, CodeBracketIcon, LinkIcon, LinkSlashIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import './content-text-editor.css'
 
 export default function ContentTextEditor() {
     const editor = useEditor({
@@ -36,7 +37,7 @@ export default function ContentTextEditor() {
 
     // Link
     const setLink = useCallback(() => {
-        const previousUrl = editor.getAttributes('link').href
+        const previousUrl = editor!.getAttributes('link').href
         const url = window.prompt('URL', previousUrl)
 
         // cancelled
@@ -46,12 +47,12 @@ export default function ContentTextEditor() {
 
         // empty
         if (url === '') {
-            editor.chain().focus().extendMarkRange('link').unsetLink().run()
+            editor!.chain().focus().extendMarkRange('link').unsetLink().run()
             return
         }
 
         // update link
-        editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
+        editor!.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
     }, [editor])
 
     if (!editor) {
