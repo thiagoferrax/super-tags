@@ -5,12 +5,12 @@ export interface IIndexable {
 const descriptionsErrors: {
     [key: string]: string
 } = {
-    EMAIL_REQUIRED: "Email é obrigatório",
-    EMAIL_INVALID: "Email é inválido",
-    PASSWORD_REQUIRED: "Password é obrigatória",
-    PASSWORD_NOT_STRONG_ENOUGH: "Password não é suficientemente forte",
-    USER_ALREADY_EXISTS: "Utilizador já registado",
-	INVALID_CREDENTIALS: "Credenciais inválidas"
+    EMAIL_REQUIRED: "E-mail é obrigatório",
+    EMAIL_INVALID: "E-mail é inválido",
+    PASSWORD_REQUIRED: "Senha é obrigatória",
+    PASSWORD_NOT_STRONG_ENOUGH: "Senha não é suficientemente forte",
+    USER_ALREADY_EXISTS: "Usuário já registrado",
+    INVALID_CREDENTIALS: "Credenciais inválidas"
 }
 
 export function GetErrorDescription(key: string): string {

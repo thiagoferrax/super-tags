@@ -1,19 +1,23 @@
 import React from "react";
 
 export enum MessageVariantEnum {
-	error = "ERROR",
+	error = "error",
 	success = "success",
-	info = "success",
-	warning = "warning",
+	info = "info",
+	warning = "warning"
 }
 
-
+export enum MessageTitleEnum {
+	error = "Erro",
+	success = "Sucesso",
+	info = "info",
+	warning = "Atenção"
+}
 
 export type MessageContextResult = {
-	AddMessage: (message: string, variant?: MessageVariantEnum) => Promise<void>
+	AddMessage: (message: string, title?: MessageTitleEnum, variant?: MessageVariantEnum) => Promise<void>
 	UnexpectedError: (error: Error) => Promise<void>
 }
-
 
 export const MessageContext = React.createContext<MessageContextResult>({
 	AddMessage: async () => { },

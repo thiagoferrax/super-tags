@@ -8,25 +8,25 @@ import { useApi } from '../../../hooks/useApi';
 
 
 type UserViewModel = {
-	name: string,
-	email: string,
-	password: string
+    name: string,
+    email: string,
+    password: string
 }
 
 export type RegisterViewModel = {
-	isRequesting: boolean
-	formErrors: Errors
-	RegisterUser: () => Promise<void>,
-	setFormData: (userViewModel: UserViewModel) => void,
-	isSubmitDisabled: boolean
-	formData: UserViewModel
+    isRequesting: boolean
+    formErrors: Errors
+    RegisterUser: () => Promise<void>,
+    setFormData: (userViewModel: UserViewModel) => void,
+    isSubmitDisabled: boolean
+    formData: UserViewModel
 }
 
 type useRegisterControllerProps = {
-	router: AppRouterInstance
+    router: AppRouterInstance
 }
 type Errors = {
-	[key: string]: string | undefined
+    [key: string]: string | undefined
 }
 
 export function useRegisterController({ router }: useRegisterControllerProps): RegisterViewModel {
@@ -34,37 +34,37 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 	const { Request } = useApi()
 	const [isRequesting, setIsRequesting] = useState(false);
 
-	const [formData, setFormData] = useState<UserViewModel>({
-		name: '',
-		email: '',
-		password: ''
-	})
-	const [errors, setErrors] = useState<Errors>({
-		name: undefined,
-		email: undefined,
-		password: undefined
-	})
+    const [formData, setFormData] = useState<UserViewModel>({
+        name: '',
+        email: '',
+        password: ''
+    })
+    const [errors, setErrors] = useState<Errors>({
+        name: undefined,
+        email: undefined,
+        password: undefined
+    })
 
-	function HasErrors(_errors: Errors): boolean {
-		return Object.keys(_errors).some(key => _errors[key])
-	}
+    function HasErrors(_errors: Errors): boolean {
+        return Object.keys(_errors).some(key => _errors[key])
+    }
 
 
-	function GetErrors(): Errors {
-		const errors: Errors = {
-			name: undefined,
-			email: undefined,
-			password: undefined
-		};
-		if (!formData.name) {
-			errors.name = "Nome é obrigatório"
-		}
-		const emailErrorCode = Email.getErrorIfExists(formData.email)?.code;
-		const passwordErrorCode = PasswordStrong.getErrorIfExists(formData.password)?.code;
-		errors.email = emailErrorCode ? GetErrorDescription(emailErrorCode) : undefined
-		errors.password = passwordErrorCode ? GetErrorDescription(passwordErrorCode) : passwordErrorCode
-		return errors
-	}
+    function GetErrors(): Errors {
+        const errors: Errors = {
+            name: undefined,
+            email: undefined,
+            password: undefined
+        };
+        if (!formData.name) {
+            errors.name = "Nome é obrigatório"
+        }
+        const emailErrorCode = Email.getErrorIfExists(formData.email)?.code;
+        const passwordErrorCode = PasswordStrong.getErrorIfExists(formData.password)?.code;
+        errors.email = emailErrorCode ? GetErrorDescription(emailErrorCode) : undefined
+        errors.password = passwordErrorCode ? GetErrorDescription(passwordErrorCode) : passwordErrorCode
+        return errors
+    }
 
 
 	async function RegisterUser(): Promise<void> {
@@ -90,20 +90,20 @@ export function useRegisterController({ router }: useRegisterControllerProps): R
 					throw new Error("API Error")
 				}
 
-			} catch (error: any) {
-				messageContext.UnexpectedError(error)
-			}
-		} else {
-			setErrors(newErrors);
-		}
-		setIsRequesting(false)
-	}
-	return {
-		isRequesting,
-		RegisterUser,
-		formErrors: errors,
-		setFormData,
-		isSubmitDisabled: isRequesting,
-		formData
-	}
+            } catch (error: any) {
+                messageContext.UnexpectedError(error)
+            }
+        } else {
+            setErrors(newErrors);
+        }
+        setIsRequesting(false)
+    }
+    return {
+        isRequesting,
+        RegisterUser,
+        formErrors: errors,
+        setFormData,
+        isSubmitDisabled: isRequesting,
+        formData
+    }
 }

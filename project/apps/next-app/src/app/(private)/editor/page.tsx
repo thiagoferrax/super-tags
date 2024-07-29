@@ -4,6 +4,8 @@ import Header from '../../../components/header'
 import Nav from '../../../components/nav'
 import Content from '../../../components/content'
 import ContentHeader from '../../../components/content-header'
+import ContentProperties from '../../../components/content-properties'
+import ContentTextEditor from "../../../components/content-text-editor"
 
 export default function Page() {
     return (
@@ -13,6 +15,8 @@ export default function Page() {
                 <Nav />
                 <Content>
                     <ContentHeader />
+                    <ContentProperties />
+                    <ContentTextEditor />
                 </Content>
             </div>
         </div>
