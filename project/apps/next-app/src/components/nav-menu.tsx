@@ -1,4 +1,3 @@
-/* eslint-disable no-console, react/no-access-state-in-setstate, react/no-danger, no-param-reassign */
 import React, { useState } from 'react'
 import './nav-menu.css'
 import Tree from 'rc-tree';
@@ -85,12 +84,12 @@ export default function NavMenu() {
         ) {
             loop(data, dropKey, (item: any) => {
                 item.children = item.children || [];
-                // where to insert 示例添加到尾部，可以是随意位置
+                // where to insert examples are added to the end and can be at any location
                 item.children.unshift(dragObj);
             });
         } else {
             // Drop on the gap
-            let ar: any[];
+            let ar: any[] = [];
             let i: number = 0;
             loop(data, dropKey, (item: any, index: any, arr: any) => {
                 ar = arr;
@@ -108,7 +107,7 @@ export default function NavMenu() {
         });
     };
 
-    const onExpand = (expandedKeys: String[]) => {
+    const onExpand = (expandedKeys: string[]) => {
         console.log('onExpand', expandedKeys);
         setState({
             ...state,
@@ -119,12 +118,14 @@ export default function NavMenu() {
 
     const { expandedKeys } = state;
 
+    const onDragStart = () => { }
+
     return (
         <>
             <Tree
                 defaultExpandAll
                 showLine
-                expandedKeys={expandedKeys}
+                expandedKeys={expandedKeys as any}
                 onExpand={onExpand}
                 autoExpandParent={state.autoExpandParent}
                 draggable
