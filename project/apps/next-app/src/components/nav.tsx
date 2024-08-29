@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as Icons from './icon'
 
 type NavProps = {
@@ -10,15 +10,20 @@ type NavProps = {
 
 function NavItem({ label, icon }: NavProps) {
 	return (
-		<a className="text-base font-medium">
-			<Icons.PenguinIcon width={29} />
-			<span className="truncate">aula-1</span>
-		</a>
+		<li>
+			<a className="text-base font-medium">
+				<Icons.PenguinIcon width={29} />
+				<span className="truncate">{label}</span>
+			</a>
+		</li>
 	)
 }
 
 
 export default function Nav() {
+	useEffect(()=>{
+		console.log("passou")
+	})
 	return (
 		<nav className="w-80 pl-5 py-10 opacity-100 border-r border-neutral-600 overflow-auto text-white">
 			<input type="checkbox" className="absolute top-9 z-[2] left-5 w-5 h-4 opacity-0" />
@@ -40,7 +45,7 @@ export default function Nav() {
 			<button
 				className="btn btn-wide h-10 min-h-10 font-normal text-[.938rem] border-neutral-600 hover:border-neutral-400 mb-2"
 			>
-				<Icons.AddPropIcon width={24} />
+				<Icons.AddPropIcon className='text-black' width={24} />
 				Nova SuperTag
 			</button>
 			<ul className="menu menu-xs rounded-lg w-[17.5rem] max-w-xs p-0 bg-transparent">

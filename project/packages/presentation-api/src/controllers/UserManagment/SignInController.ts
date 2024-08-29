@@ -15,7 +15,7 @@ export class SignInController implements IApiController<SignInParams> {
 				username: req.body.username
 			})
 			return HttpResponseUtils.Ok({
-				id: res.token
+				token: res.token
 			})
 		} catch (err: any) {
 			console.error(err);

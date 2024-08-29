@@ -20,8 +20,7 @@ model User {
 
 model SuperTag {
   id          Int           @id @default(autoincrement())
-  emoji       String
-  titulo      String        @unique
+  titulo      String        @db.VarChar(30)
   conteudo    String        @db.VarChar(500)
   icon        String        @db.VarChar(30)
   userId      Int

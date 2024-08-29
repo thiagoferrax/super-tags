@@ -5,3 +5,5 @@ export * from './supertag'
 export * from './UserTokenInformation'
 export * from "./menu-supertag";
 export * from "./propriedade";
+export * from "./nome-simples";
+export * from "./propriedade-valor";

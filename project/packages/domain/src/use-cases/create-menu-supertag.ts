@@ -25,8 +25,7 @@ export class CreateMenuSuperTag {
     const menuSuperTag = new MenuSuperTag(
       null,
       params.icone,
-      params.titulo,
-      params.parentId
+      params.titulo
     );
   }
 }

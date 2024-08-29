@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 
 
 
-export function withPrivateRoute(Component: React.ComponentType) {
+export function withPrivateRoute(Component: React.ElementType) {
 	return (props: any) => {
 		const contextValues = useContext(AuthorizationContext);
 		if (!contextValues.isAuthenticated) {

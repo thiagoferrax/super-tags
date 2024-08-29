@@ -1,14 +1,26 @@
-import { ISuperTagRepository, SuperTag } from "@repo/domain";
+import { ISuperTagRepository, SuperTag, PropriedadeValor, NomeSimples, Propriedade  } from "@repo/domain";
 import { PrismaClient } from "../../generated/postgres";
 import { IconEnum } from "@repo/domain/src/models/Icons";
-import { Propriedade } from "@repo/domain/src/models/propriedade";
-import { NomeSimples } from "@repo/domain/src/models/nomeSimples";
-import { PropriedadeValor } from "@repo/domain/src/models/propriedadeValor";
 
 export class SuperTagRepositoryPostgres implements ISuperTagRepository {
 	_db: PrismaClient;
 	constructor() {
 		this._db = new PrismaClient();
+	}
+	Edit(supertag: SuperTag): Promise<void> {
+		throw new Error("Method not implemented.");
+	}
+	ClearAll(): Promise<void> {
+		throw new Error("Method not implemented.");
+	}
+	GetByUserId(): Promise<SuperTag[] | undefined> {
+		throw new Error("Method not implemented.");
+	}
+	GetById(id: number): Promise<SuperTag | undefined> {
+		throw new Error("Method not implemented.");
+	}
+	GetByTitulo(titulo: string): Promise<SuperTag | undefined> {
+		throw new Error("Method not implemented.");
 	}
 	async GetAll(userId: number): Promise<SuperTag[]> {
 		console.log(userId)

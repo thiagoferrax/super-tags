@@ -4,3 +4,4 @@ export * from './create-superTag'
 export * from './get-all-superTag'
 export * from './IUseCase'
 export * from "./create-menu-supertag";
+export * from "./users-get-all";

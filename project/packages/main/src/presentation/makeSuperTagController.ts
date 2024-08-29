@@ -1,4 +1,4 @@
-import { CreateSuperTagParams, GetAllSuperTag } from '@repo/domain';
+import { CreateSuperTagParams, GetAllSuperTag, GetAllSuperTagParams } from '@repo/domain';
 import { CreateSuperTagController, GetAllSuperTagController, IApiController } from '@repo/presentation-api'
 import { MakeCreateSuperTag } from '../domain/use-cases/make-create-super-tag';
 import { makeAuthorizationController } from './makeAuthorizationController';
@@ -11,7 +11,7 @@ export function makeCreateSuperTagController(): IApiController<CreateSuperTagPar
 		)
 	)
 }
-export function makeGetAllSuperTagsController(): IApiController<void> {
+export function makeGetAllSuperTagsController(): IApiController<GetAllSuperTagParams> {
 	return makeAuthorizationController(
 		new GetAllSuperTagController(
 			new GetAllSuperTag(makeSuperTagRepository())
