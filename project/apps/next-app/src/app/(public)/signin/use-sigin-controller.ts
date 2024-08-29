@@ -3,6 +3,8 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthorizationContext } from '../../../contexts/authorization/authorization-context';
 import { MessageContext, MessageVariantEnum } from '../../../contexts/message/message-context';
 import { GetErrorDescription } from '../../../configurations/descriptionsErrors';
+import { useConfigurations } from '../../../contexts/configurations/useConfigurations';
+import { useApi } from '../../../hooks/useApi';
 
 
 type CredentialsViewModel = {
@@ -29,6 +31,7 @@ type Errors = {
 export function useSignInController({ router }: useSignInControllerProps): SiginViewModel {
 	const [isRequesting, setIsRequesting] = useState(false);
 	const authorizationContext = useContext(AuthorizationContext)
+	const { Request } = useApi()
 	const messageContext = useContext(MessageContext)
 	const [formData, setFormData] = useState<CredentialsViewModel>({
 		username: '',
@@ -72,18 +75,18 @@ export function useSignInController({ router }: useSignInControllerProps): Sigin
 		const newErrors = GetErrors();
 		if (!HasErrors(newErrors)) {
 			try {
-				const res = await fetch('http://localhost:3000/api/signin', {
-					method: 'POST',
-					body: JSON.stringify(formData)
+				const res = await Request({
+					url: "/api/signin",
+					method: "POST",
+					body: formData
 				})
-				const data = await res.json()
 				if (res.status === 200) {
 					// guardar o token no localstorage
-					await authorizationContext.SignIn(data.token)
+					await authorizationContext.SignIn(res.data.token)
 					router.push('/');
 				} else if (res.status === 400) {
 
-					messageContext.AddMessage(GetErrorDescription(data.errorCode), MessageVariantEnum.error)
+					messageContext.AddMessage(GetErrorDescription(res.data.errorCode), MessageVariantEnum.error)
 				} else {
 					throw new Error("API Error")
 				}

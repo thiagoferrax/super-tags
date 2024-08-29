@@ -1,9 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    formats: ["image/webp", "image/avif"],
-  },
+	reactStrictMode: false,
+	images: {
+		formats: ["image/webp", "image/avif"],
+	},
+	async redirects() {
+        return [
+          {
+            source: '/',
+            destination: '/home',
+            permanent: false,
+          },]
+      },
 };
 
 export default nextConfig;

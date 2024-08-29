@@ -9,9 +9,12 @@
     "license": "ISC",
     "devDependencies": {
         "@repo/eslint-config": "*",
-        "@repo/typescript-config": "*",
+        "@repo/typescript-config": "*"
+    },
+    "dependencies": {
         "@repo/domain": "*",
         "@repo/infra-db": "*",
-        "@repo/infra-cryptography": "*"
+        "@repo/infra-cryptography": "*",
+        "@repo/presentation-api": "*"
     }
 }

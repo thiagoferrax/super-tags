@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { useRegisterController } from './use-register-controller'
 import { InformationCircleIcon } from "@heroicons/react/16/solid"
+import Loading from '../../../components/loading'
 
 export default function Page() {
 	const router = useRouter()
@@ -85,8 +86,9 @@ export default function Page() {
 					{formErrors.password && <span className="text-red-500 text-xs italic">{formErrors.password}</span>}
 					{
 						isRequesting
-							? <span className="loading loading-spinner text-primary self-center mb-2.5"></span>
-							: <input
+							? <Loading className="mb-2.5"></Loading>
+							:
+							<input
 								className="text-sm mt-9 mb-2.5 bg-violet-700 h-11 border border-white rounded disabled:bg-violet-400"
 								type="submit" value="Register"
 								disabled={isSubmitDisabled}

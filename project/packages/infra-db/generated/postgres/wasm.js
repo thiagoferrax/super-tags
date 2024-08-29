@@ -6,7 +6,7 @@ const {
   objectEnumValues,
   makeStrictEnum,
   Public,
-  getRuntime,
+  getRuntime
 } = require('./runtime/index-browser.js')
 
 
@@ -16,12 +16,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 5.16.1
- * Query Engine version: 34ace0eb2704183d2c05b60b52fba5c43c13f303
+ * Prisma Client JS version: 5.19.0
+ * Query Engine version: 5fe21811a6ba0b952a3bc71400666511fe3b902f
  */
 Prisma.prismaVersion = {
-  client: "5.16.1",
-  engine: "34ace0eb2704183d2c05b60b52fba5c43c13f303"
+  client: "5.19.0",
+  engine: "5fe21811a6ba0b952a3bc71400666511fe3b902f"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -126,6 +126,22 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.SuperTagScalarFieldEnum = {
+  id: 'id',
+  titulo: 'titulo',
+  conteudo: 'conteudo',
+  icon: 'icon',
+  userId: 'userId'
+};
+
+exports.Prisma.PropriedadeScalarFieldEnum = {
+  id: 'id',
+  chave: 'chave',
+  valor: 'valor',
+  tipo: 'tipo',
+  superTagId: 'superTagId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -138,7 +154,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  SuperTag: 'SuperTag',
+  Propriedade: 'Propriedade'
 };
 
 /**

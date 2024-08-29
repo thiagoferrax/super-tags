@@ -2,25 +2,25 @@ import { IAddUserRepository, IGetUserByEmailRepository, IUserRepository } from "
 import { UserRepositoryInMemory, UserRepositoryPostgres, UserRepositorySQLite } from "@repo/infra-db";
 
 function MakeUserRepositoryInMemory(): UserRepositoryInMemory {
-    return new UserRepositoryInMemory()
+	return new UserRepositoryInMemory()
 }
 function MakeUserRepositorySQLite(): UserRepositorySQLite {
-    return new UserRepositorySQLite()
+	return new UserRepositorySQLite()
 }
 function MakeUserRepositoryPostgres(): UserRepositoryPostgres {
-    return new UserRepositoryPostgres()
+	return new UserRepositoryPostgres(process.env.DATABASE_URL_POSTGRES!)
 }
 
 
 export function MakeUserRepository(): IUserRepository {
-    return MakeUserRepositoryPostgres()
+	return MakeUserRepositoryPostgres()
 }
 
 export function MakeAddUserRepository(): IAddUserRepository {
-    return MakeUserRepositoryPostgres()
+	return MakeUserRepositoryPostgres()
 }
 
 export function MakeGetUserByEmailRepository(): IGetUserByEmailRepository {
-    return MakeUserRepositoryPostgres()
+	return MakeUserRepositoryPostgres()
 }
 

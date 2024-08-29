@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import AuthorizationProvider from "../contexts/authorization/authorization-provider";
 import MessageProvider from "../contexts/message/message-provider";
+import ConfigurationsProvider from "../contexts/configurations/ConfigurationsProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,14 +17,17 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+
 	return (
 		<html lang="pt">
-			<body className={inter.className}>
-				<MessageProvider>
-					<AuthorizationProvider>
-						{children}
-					</AuthorizationProvider>
-				</MessageProvider>
+			<body className={inter.className} suppressHydrationWarning={true}>
+				<ConfigurationsProvider>
+					<MessageProvider>
+						<AuthorizationProvider>
+							{children}
+						</AuthorizationProvider>
+					</MessageProvider>
+				</ConfigurationsProvider>
 			</body>
 		</html>
 	);

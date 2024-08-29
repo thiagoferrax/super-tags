@@ -3,11 +3,26 @@ import { PrismaClient } from "../../generated/postgres"
 
 export class UserRepositoryPostgres implements IUserRepository, IAddUserRepository, IGetUserByEmailRepository {
 	_db: PrismaClient
-	constructor() {
-		this._db = new PrismaClient()
+	constructor(connectionString: string) {
+		this._db = new PrismaClient({
+			datasources: {
+				db: {
+					url: connectionString,
+				},
+			}
+		})
 	}
+	async GetById(id: number): Promise<User | null> {
+		const user = await this._db.user.findFirst({
+			where: {
+				id
+			}
+		})
+		return user ? new User(user.id, user.name, user.email, user.password) : null
+	}
+
 	async GetAll(): Promise<User[]> {
-		const users = await this._db.user.findMany()		
+		const users = await this._db.user.findMany()
 		return users.map(u => new User(u.id, u.name, u.email, u.password))
 	}
 

@@ -6,6 +6,9 @@ export class UserRepositorySQLite implements IUserRepository, IAddUserRepository
     constructor() {
         this._db = new PrismaClient()
     }
+	GetById(id: number): Promise<User | null> {
+		throw new Error("Method not implemented.")
+	}
 
     async GetAll(): Promise<User[]> {
         const users = await this._db.user.findMany()
